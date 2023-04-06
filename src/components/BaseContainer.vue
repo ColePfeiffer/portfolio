@@ -1,6 +1,6 @@
 <template>
-  <div class="window">
-    <div class="title-bar">
+  <div class="window" :class="{ 'expanded': isExpanded }">
+    <div class="title-bar" :style="{ backgroundColor: titlebarColor }">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -8,7 +8,10 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button class="close" @click="$router.push('/')">
+        <button class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
+          <q-icon :name="expandIcon" size="16px" class="text-black" />
+        </button>
+        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
           <q-icon name="mdi-close" size="16px" class="text-black " />
         </button>
       </div>
@@ -18,6 +21,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "baseContainer",
@@ -30,22 +34,51 @@ export default {
       type: String,
       default: "",
     },
+    titlebarColor: {
+      type: String,
+      default: "#c0c0c0"
+    }
+  },
+  data() {
+    return {
+      isExpanded: false,
+    };
+  },
+  computed: {
+    expandIcon() {
+      return this.isExpanded ? 'mdi-window-restore' : 'mdi-window-maximize';
+    },
+  },
+  methods: {
+    toggleExpand() {
+      this.isExpanded = !this.isExpanded;
+    },
   },
 };
 </script>
+
 <style scoped>
 .window {
-
   background-color: #fff;
   border: 2px solid #000;
   box-shadow: 3px 3px #000;
   margin: 20px auto;
+  transition: all 0.5s ease-in-out;
+}
+
+.window.expanded {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  z-index: 2002;
 }
 
 .title-bar {
   position: relative;
   height: 22px;
-  background-color: #c0c0c0;
   border-bottom: 2px solid #000;
   padding: 3px;
   font-size: 12px;
@@ -75,7 +108,6 @@ export default {
 .close {
   width: 16px;
   height: 16px;
-  background-color: #ff0000;
   border: 1.7px solid #181818;
   margin-left: 5px;
   display: flex;
@@ -85,7 +117,25 @@ export default {
 
 .close:hover {
   cursor: pointer;
+  background-color: magenta !important;
 }
+
+.expand:hover {
+  cursor: pointer;
+  background-color: yellow !important;
+}
+
+.expand {
+  width: 16px;
+  height: 16px;
+  border: 1.7px solid #181818;
+  margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
 
 .window-body {
   padding: 10px;
