@@ -28,7 +28,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
 
 $primary: #18181b;
-$secondary: #f5e901;
+$secondary: #fff001;
 $accent: #ed008c;
 $info: #03aced;
 

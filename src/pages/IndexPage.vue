@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="row justify-center">
-      <div v-intersection="onIntersection" class="bg-red" style="height: 10px">dd</div>
+      <div v-intersection="onIntersection" style="height: 10px" />
       <!-- This should fade out and then reroute to /work -->
       <div class="col-6 col-xs-12 col-md-6">
         <transition name="fade" @after-leave="navigateToWork">
