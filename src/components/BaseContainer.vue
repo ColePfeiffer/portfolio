@@ -1,5 +1,5 @@
 <template>
-  <div class="window" :class="{ 'expanded': isExpanded }">
+  <div class="window" :class="{ expanded: isExpanded }">
     <div class="title-bar" :style="{ backgroundColor: titlebarColor }">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
@@ -8,11 +8,19 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
+        <button
+          class="expand"
+          @click="toggleExpand"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon :name="expandIcon" size="16px" class="text-black" />
         </button>
-        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
-          <q-icon name="mdi-close" size="16px" class="text-black " />
+        <button
+          class="close"
+          @click="$emit('close')"
+          :style="{ backgroundColor: titlebarColor }"
+        >
+          <q-icon name="mdi-close" size="16px" class="text-black" />
         </button>
       </div>
     </div>
@@ -36,8 +44,8 @@ export default {
     },
     titlebarColor: {
       type: String,
-      default: "#c0c0c0"
-    }
+      default: "#c0c0c0",
+    },
   },
   data() {
     return {
@@ -46,7 +54,7 @@ export default {
   },
   computed: {
     expandIcon() {
-      return this.isExpanded ? 'mdi-window-restore' : 'mdi-window-maximize';
+      return this.isExpanded ? "mdi-window-restore" : "mdi-window-maximize";
     },
   },
   methods: {
@@ -62,7 +70,7 @@ export default {
   background-color: #fff;
   border: 2px solid #000;
   box-shadow: 3px 3px #000;
-  margin: 20px auto;
+  margin: 5px auto;
   transition: all 0.5s ease-in-out;
 }
 
@@ -134,8 +142,6 @@ export default {
   justify-content: center;
   align-items: center;
 }
-
-
 
 .window-body {
   padding: 10px;
