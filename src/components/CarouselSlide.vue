@@ -1,21 +1,12 @@
 <template>
-  <BaseContainer
-    :title="containerTitle"
-    :icon="containerIcon"
-    :titlebarColor="containerTitlebarColor"
-  >
+  <BaseContainer :title="containerTitle" :icon="containerIcon" :titlebarColor="containerTitlebarColor">
     <div class="row justify-center items-center">
-      <div class="col-0.5" style="width: 5%"></div>
-      <div class="col-11" style="width: 90%">
-        <BaseProjectContainer
-          :name="projectName"
-          :image="projectImage"
-          :description="projectDescription"
-          :features="projectFeatures"
-          :languages="projectLanguages"
-        />
+      <div class="col-0.5" style="width: 3%"></div>
+      <div class="col-11" style="width: 94%">
+        <BaseProjectContainer :name="projectName" :subtitle="projectSubtitle" :image="projectImage"
+          :description="projectDescription" :features="projectFeatures" :languages="projectLanguages" />
       </div>
-      <div class="col-0.5" style="width: 5%"></div>
+      <div class="col-0.5" style="width: 3%"></div>
     </div>
   </BaseContainer>
 </template>
@@ -34,6 +25,7 @@ export default defineComponent({
     containerIcon: String,
     containerTitlebarColor: String,
     projectName: String,
+    projectSubtitle: String,
     projectImage: String,
     projectDescription: String,
     projectFeatures: Array,
