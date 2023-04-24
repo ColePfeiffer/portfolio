@@ -89,12 +89,13 @@
         <div class="project-description text-body-1 q-mt-md text-justify">{{ description }}</div>
 
         <q-dialog v-model="showImageModal" class="project-image-modal" style="background-color: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(5px);">
+                  backdrop-filter: blur(5px);">
           <q-img :src="images[currentImageIndex]" class="q-pa-md" />
-          <q-card-actions class="justify-center">
+
+          <q-card-actions class="justify-center q-mt-md col-12"
+            style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
             <q-btn label="Prev" color="primary" class="q-mr-md" @click="prevImage" v-if="hasPrevImage" />
             <q-btn label="Next" color="primary" class="q-ml-md" @click="nextImage" v-if="hasNextImage" />
-            <q-btn label="Close" color="primary" @click="showImageModal = false" />
           </q-card-actions>
         </q-dialog>
       </q-card-section>
