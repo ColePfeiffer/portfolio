@@ -1,6 +1,6 @@
 <template>
   <q-page>
-    <div class="row justify-center">
+    <div class=" row justify-center">
       <div class="col-6 col-xs-12 col-md-6">
         <q-carousel v-model="slide" transition-prev="slide-down" transition-next="slide-up" swipeable animated
           control-color="green" prev-icon="mdi-chevron-left" next-icon="mdi-chevron-right"
@@ -10,9 +10,10 @@
             class="column no-wrap flex-center carousel-slide">
             <CarouselSlide :slideName="project.slideName" :containerTitle="project.containerTitle"
               :containerIcon="project.containerIcon" :containerTitlebarColor="project.containerTitlebarColor"
-              :projectName="project.projectName" :projectSubtitle="project.projectSubtitle"
-              :projectImage="project.projectImage" :projectDescription="project.projectDescription"
-              :projectFeatures="project.projectFeatures" :projectLanguages="project.projectLanguages" />
+              :projectName="project.name" :projectSubtitle="project.subtitle" :projectImages="project.images"
+              :projectDescription="project.description" :projectFeatures="project.features"
+              :projectLanguages="project.languages" :projectDate="project.date" :projectGitHub="project.gitHub"
+              :projectLive="project.live" />
           </q-carousel-slide>
         </q-carousel>
       </div>
@@ -32,29 +33,35 @@ export default defineComponent({
     const projects = [
       {
         slideName: 1,
-        containerTitle: "../work/projects/01/toEGO",
-        containerIcon: "mdi-code-braces",
+        containerTitle: "../work/projects/01/ToEGO",
+        containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#ed008c",
-        projectName: "toEGO",
-        projectSubtitle: "Diary App for Introspection",
-        projectImage: "images/project_toEGO.png",
-        projectDescription:
-          "toEGO is a diary app for introspection that I developed using Vue.js and Quasar as part of my bachelor's thesis. With toEGO, users can create notes throughout the day to track their thoughts, emotions, and experiences. These notes can be looked through and reflected on before creating a diary entry. With customizable templates for notes and diary entries, users can easily format and save text for future use, and set default templates to be used automatically when creating a new entry or a new note. One of the app's unique features is its customizable interface, allowing users to style the app to their liking by creating themes, reminiscent of the customization options offered by platforms like MySpace and blog sites of the past.",
-        projectFeatures: ["customizable", "mood tracking"],
-        projectLanguages: ["Vue.js", "Quasar", "Webpack", "HTML/CSS/JS"],
+        date: "2022 - 2023",
+        name: "ToEGO",
+        subtitle: "Diary App for Introspection",
+        images: ["images/project_toEGO.png"],
+        description:
+          "ToEGO is a diary app for introspection that I developed using Vue.js and Quasar as part of my bachelor's thesis. With ToEGO, users can create notes throughout the day to track their thoughts, emotions, and experiences. These notes can be looked through and reflected on before creating a diary entry. With customizable templates for notes and diary entries, users can easily format and save text for future use, and set default templates to be used automatically when creating a new entry or a new note. One of the app's unique features is its customizable interface, allowing users to style the app to their liking by creating themes, reminiscent of the customization options offered by platforms like MySpace and blog sites of the past.",
+        features: ["customizable ui", "mood tracking", "reuseable templates"],
+        languages: ["Vue.js", "Quasar", "Webpack", "HTML/CSS/JS", "Firebase"],
+        gitHub: "https://github.com/ColePfeiffer/toEgo",
+        live: "https://colepfeiffer.github.io/",
       },
       {
         slideName: 2,
-        containerTitle: "Project 2",
-        containerIcon: "mdi-code-braces",
+        containerTitle: "../work/projects/02/RoomMe",
+        date: "2021",
+        containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#ed008c",
-        projectName: "Project 2",
-        projectSubtitle: "Diary App for Introspection",
-        projectImage: "https://via.placeholder.com/300x200.png",
-        projectDescription:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut aliquam tincidunt, nunc nisl aliquam nis",
-        projectFeatures: ["Feature 1", "Feature 2", "Feature 3"],
-        projectLanguages: ["Language 1", "Language 2", "Language 3"],
+        name: "RoomMe",
+        subtitle: "Managing tool for shared flats",
+        images: ["images/RoomMe_01.png", "images/RoomMe_02.png", "images/RoomMe_04.png", "images/RoomMe_05.png", "images/RoomMe_06.png"],
+        description:
+          "RoomMe is a management tool designed specifically for individuals living in shared flats. This intuitive application enables users to create cleaning schedules, allocate tasks among roommates, and customize rules to fit their preferences. For example, roommates can assign specific tasks to particular individuals or rotate them between themselves. They can also set the frequency for each task, whether it be weekly, bi-weekly, or monthly. RoomMe offers a unique family tree feature that shows users who lived in each room and when. The chat function facilitates easy communication among roommates, while the expense tracking feature allows users to monitor costs and split them accordingly. Roommates can add items to a shared grocery list and log purchases in the app. They can specify which roommates the item will be shared with, and the app will provide a clear breakdown of who owes what to whom.",
+        features: ["cleaning schedules", "rotation of assigned tasks", "expense tracking", "family tree for rooms",],
+        languages: ["Vue.js", "Vuetify", "Webpack", "HTML/CSS/JS"],
+        gitHub: "https://github.com/ColePfeiffer/room_me",
+        live: "",
       },
       // Add more projects here...
     ];
