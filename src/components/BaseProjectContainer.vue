@@ -1,8 +1,22 @@
 <template>
   <div>
     <q-card class="q-mb-md q-card" style="background-color: whitesmoke;">
-      <q-img :src="images[currentImageIndex]" class="project-image q-pa-md" @click="showImageModal = true"
-        :options="{ imgClass: 'my-image-class', imgStyle: 'object-fit: contain;' }" />
+      <!-- Image and video -->
+      <q-img v-if="!images[currentImageIndex].isVideo" :src="images[currentImageIndex].src" class="project-image "
+        @click="showImageModal = true" :options="{ imgClass: 'my-image-class', imgStyle: 'object-fit: contain;' }" />
+      <div v-else>
+        <q-video :src="images[currentImageIndex].src" @click.prevent />
+      </div>
+      <!-- Navigation buttons for when there is at least one video to display -->
+      <div v-if="hasAtLeastOneVideo" class="justify-center items-center row">
+        <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="prevImage"
+          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
+        <div class="col-10 text-center image-description">
+          {{ images[currentImageIndex].description }}
+        </div>
+        <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="nextImage"
+          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
+      </div>
       <q-card-section>
         <div class="project-name text-h3">{{ name }}</div>
         <div class="project-subtitle text-caption col-6 text-weight-bold">
@@ -88,10 +102,12 @@
         <!-- Description -->
         <div class="project-description text-body-1 q-mt-md text-justify">{{ description }}</div>
 
-        <q-dialog v-model="showImageModal" class="project-image-modal" style="background-color: rgba(0, 0, 0, 0.5);
-                  backdrop-filter: blur(5px);">
-          <q-img :src="images[currentImageIndex]" class="q-pa-md" />
+        <q-dialog v-model="showImageModal" class="project-image-modal"
+          style="background-color: rgba(0, 0, 0, 0.5);
+                                                                                                                                                                                          backdrop-filter: blur(5px);">
 
+          <q-img v-if="!images[currentImageIndex].isVideo" :src="images[currentImageIndex].src" class="q-pa-md" />
+          <q-video v-else class="fit" src="https://drive.google.com/file/d/1S4EIoc8cpTn7_1LdPCVabsm04QEgg3ZT/preview" />
           <q-card-actions class="justify-center q-mt-md col-12"
             style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
             <q-btn label="Prev" color="primary" class="q-mr-md" @click="prevImage" v-if="hasPrevImage" />
@@ -159,6 +175,13 @@ export default {
       console.log("hasNextImage....", this.currentImageIndex)
       return this.currentImageIndex < this.images.length - 1;
     },
+    hasAtLeastOneVideo() {
+      if (this.images.filter(image => image.isVideo === true).length > 0) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   },
   methods: {
     nextImage() {
@@ -173,6 +196,7 @@ export default {
         this.currentImageIndex--;
       }
     },
+
   },
   watch: {
     image() {
@@ -184,6 +208,16 @@ export default {
 </script>
 
 <style scoped>
+.image-description {
+  color: gray;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.nav-button-for-video {
+  color: gray;
+}
+
 a:visited {
   color: #009999;
 }
@@ -219,6 +253,10 @@ a:visited {
 
 .project-description {
   margin-top: 16px;
+}
+
+.project-image {
+  max-height: 450px;
 }
 
 .project-image-modal {
