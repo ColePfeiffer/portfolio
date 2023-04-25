@@ -108,7 +108,8 @@
     }" />
     <q-header style="background-color: transparent">
       <q-toolbar class="bg-transparent" style="height: 50px">
-        <q-tabs no-caps v-model="currentTab" class="text-grey-10 absolute-center">
+        <q-tabs no-caps v-model="currentTab" class="text-white absolute-center"
+          style="text-shadow: darkblue 1px 1px 3px;">
           <q-tab v-for="tab in firstTabs" :key="tab.label" :name="tab.route" :label="tab.label" @click="navigateTo" />
           <img src="../assets/eye2.png" style="max-width: 40px" />
           <q-tab v-for="tab in secondTabs" :key="tab.label" :name="tab.route" :label="tab.label" @click="navigateTo" />

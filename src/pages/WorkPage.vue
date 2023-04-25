@@ -1,8 +1,5 @@
 <template>
-  <q-carousel v-model="slide" transition-prev="slide-down" transition-next="slide-up" swipeable animated
-    control-color="green" prev-icon="mdi-chevron-left" next-icon="mdi-chevron-right"
-    navigation-icon="radio_button_unchecked" navigation navigation-position="top" arrows
-    class="bg-transparent full-height carousel" @before-transition="test" style="pointer-events: none;">
+  <BaseCarousel>
     <q-carousel-slide v-for="(project, index) in projects" :key="index" :name="project.slideName"
       class="column no-wrap flex-center carousel-slide">
       <CarouselSlide :slideName="project.slideName" :containerTitle="project.containerTitle"
@@ -12,18 +9,19 @@
         :projectLanguages="project.languages" :projectDate="project.date" :projectGitHub="project.gitHub"
         :projectLive="project.live" />
     </q-carousel-slide>
-  </q-carousel>
+  </BaseCarousel>
 </template>
 
 <script>
+import BaseCarousel from "src/components/BaseCarousel.vue";
 import CarouselSlide from "src/components/CarouselSlide.vue";
 import { defineComponent, ref, onMounted } from "vue";
+import { Screen } from 'quasar'
 
 export default defineComponent({
   name: "WorkPage",
-  components: { CarouselSlide },
+  components: { BaseCarousel, CarouselSlide },
   setup() {
-    var slide = ref(1);
     const projects = [
       {
         slideName: 1,
@@ -58,12 +56,12 @@ export default defineComponent({
         live: "",
       },
       {
-        slideName: 2,
+        slideName: 3,
         containerTitle: "../work/projects/02/RoomMe",
         date: "2021",
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#ed008c",
-        name: "RoomMe",
+        name: "MÖPP",
         subtitle: "Managing tool for shared flats",
         images: ["images/RoomMe_01.png", "images/RoomMe_02.png", "images/RoomMe_04.png", "images/RoomMe_05.png", "images/RoomMe_06.png"],
         description:
@@ -77,20 +75,39 @@ export default defineComponent({
     ];
     onMounted(() => {
       console.log("myheader mounted");
-      console.log(slide.value);
       console.log(projects);
     });
 
     return {
-      slide,
       projects,
     };
   },
   methods: {
-    test() {
-      console.log(this.slide);
-    },
   },
+  computed: {
+    calculatedSpacing() {
+      // lt less than, gt greater than
+      if (Screen.xs) {
+        return "-5%";
+      } else if (Screen.lt.md) {
+        return "-3%";
+      } else if (Screen.md) {
+        return "0%";
+      } else {
+        return "15%";
+      }
+    },
+    leftArrowSpacing() {
+      let obj = {};
+      obj.left = this.calculatedSpacing;
+      return obj;
+    },
+    rightArrowSpacing() {
+      let obj = {};
+      obj.right = this.calculatedSpacing;
+      return obj;
+    }
+  }
 });
 </script>
 
@@ -102,19 +119,17 @@ export default defineComponent({
   padding-right: 0px;
 }
 
-.q-carousel__prev-arrow,
-.q-carousel__next-arrow {
+.arrow-left,
+.arrow-right {
   position: absolute;
-  left: 15%;
-  top: 50%;
   transform: translateY(-50%);
   pointer-events: auto;
+  text-shadow: purple 1px 1px 3px;
 }
 
-
-.q-carousel__next-arrow {
+.arrow-right {
   left: auto;
-  right: 15%;
+
 }
 
 .q-carousel__navigation-icon,
