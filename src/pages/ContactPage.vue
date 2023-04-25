@@ -1,7 +1,7 @@
 <template>
-  <q-page>
-    <div class="row justify-center">
-      <div class="col-6 col-xs-12 col-md-6">
+  <q-page style="pointer-events: none">
+    <div class="row justify-center fit">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
         <BaseContainer title="../Contact/WriteMe.txt" icon="mdi-application">
           Cyan: <br />
           Text color: #009999 <br />
@@ -21,8 +21,6 @@
         </BaseContainer>
       </div>
     </div>
-
-
   </q-page>
 </template>
 

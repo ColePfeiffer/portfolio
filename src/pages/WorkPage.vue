@@ -1,7 +1,7 @@
 <template>
-  <q-page>
-    <div class=" row justify-center">
-      <div class="col-6 col-xs-12 col-md-6">
+  <q-page style="pointer-events: none">
+    <div class="row justify-center fit">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
         <q-carousel v-model="slide" transition-prev="slide-down" transition-next="slide-up" swipeable animated
           control-color="green" prev-icon="mdi-chevron-left" next-icon="mdi-chevron-right"
           navigation-icon="radio_button_unchecked" navigation arrows class="bg-transparent full-height q-px-xs carousel"

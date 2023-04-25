@@ -1,9 +1,9 @@
 <template>
-  <q-page>
-    <div class="row justify-center">
-      <div v-intersection="onIntersection" style="height: 10px" />
-      <!-- This should fade out and then reroute to /work -->
-      <div class="col-6 col-xs-12 col-md-6">
+  <q-page style="pointer-events: none">
+    <div class="row justify-center fit">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
+        <div v-intersection="onIntersection" style="height: 10px" />
+        <!-- This should fade out and then reroute to /work -->
         <transition name="fade" @after-leave="navigateToWork">
           <div v-if="isVisible" class="fade-container">
             <BaseContainer title="../Home/Welcome.txt" titlebarColor="#03aced" icon="mdi-home" width="600px">
