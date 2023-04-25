@@ -15,8 +15,7 @@
 <script>
 import BaseCarousel from "src/components/BaseCarousel.vue";
 import CarouselSlide from "src/components/CarouselSlide.vue";
-import { defineComponent, ref, onMounted } from "vue";
-import { Screen } from 'quasar'
+import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "WorkPage",
@@ -73,67 +72,12 @@ export default defineComponent({
       },
       // Add more projects here...
     ];
-    onMounted(() => {
-      console.log("myheader mounted");
-      console.log(projects);
-    });
-
     return {
       projects,
     };
   },
   methods: {
   },
-  computed: {
-    calculatedSpacing() {
-      // lt less than, gt greater than
-      if (Screen.xs) {
-        return "-5%";
-      } else if (Screen.lt.md) {
-        return "-3%";
-      } else if (Screen.md) {
-        return "0%";
-      } else {
-        return "15%";
-      }
-    },
-    leftArrowSpacing() {
-      let obj = {};
-      obj.left = this.calculatedSpacing;
-      return obj;
-    },
-    rightArrowSpacing() {
-      let obj = {};
-      obj.right = this.calculatedSpacing;
-      return obj;
-    }
-  }
 });
 </script>
 
-<style>
-.carousel {
-  padding-top: 50px;
-  /* adjust the value as needed */
-  padding-left: 0px !important;
-  padding-right: 0px;
-}
-
-.arrow-left,
-.arrow-right {
-  position: absolute;
-  transform: translateY(-50%);
-  pointer-events: auto;
-  text-shadow: purple 1px 1px 3px;
-}
-
-.arrow-right {
-  left: auto;
-
-}
-
-.q-carousel__navigation-icon,
-.q-carousel__navigation-icon--active {
-  pointer-events: auto;
-}
-</style>
