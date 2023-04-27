@@ -108,12 +108,17 @@
     }" />
     <q-header style="background-color: transparent">
       <q-toolbar class="bg-transparent" style="height: 50px">
-        <q-tabs no-caps v-model="currentTab" class="text-white absolute-center"
-          style="text-shadow: darkblue 1px 1px 3px;">
-          <q-tab v-for="tab in firstTabs" :key="tab.label" :name="tab.route" :label="tab.label" @click="navigateTo" />
-          <img src="../assets/eye4.png" style="max-width: 40px; opacity: 40%" />
-          <q-tab v-for="tab in secondTabs" :key="tab.label" :name="tab.route" :label="tab.label" @click="navigateTo" />
-        </q-tabs>
+        <!-- Home -->
+        <img src="../assets/eye4.png" class="glow-on-hover" style="max-width: 38px; opacity: 40%; flex: 0;"
+          @click="goToHome" />
+        <div class="flex-grow absolute-center" style="text-align: center;">
+          <q-tabs v-model="currentTab" class="text-white" dense no-caps style="text-shadow: darkblue 1px 1px 3px">
+            <q-tab name="/work" label="Work" @click="navigateTo" />
+            <q-tab name="/about" label="About" @click="navigateTo" />
+            <q-tab name="/contact" label="Contact" @click="navigateTo" />
+          </q-tabs>
+        </div>
+        <LanguageSwitcher style="flex: 0; margin-left: auto; margin-right: 0;"></LanguageSwitcher>
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -129,21 +134,18 @@
 <script>
 import { defineComponent, ref } from "vue";
 import { loadFull } from "tsparticles";
+import LanguageSwitcher from "src/components/LanguageSwitcher.vue";
 
 export default defineComponent({
   name: "MainLayout",
-
   setup() {
     const leftDrawerOpen = ref(false);
-
     const particlesInit = async (engine) => {
       await loadFull(engine);
     };
-
     const particlesLoaded = async (container) => {
       console.log("Particles container loaded", container);
     };
-
     return {
       currentTab: "home",
       particlesInit,
@@ -171,11 +173,27 @@ export default defineComponent({
     navigateTo() {
       this.$router.push(this.currentTab);
     },
+    goToHome() {
+      this.currentTab = "/";
+      this.navigateTo();
+    }
   },
+  components: { LanguageSwitcher }
 });
 </script>
 
 <style lang="scss">
+.glow-on-hover {
+  transition: all 0.3s ease-out;
+  opacity: 0.4;
+}
+
+.glow-on-hover:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  color: rgba(255, 255, 255, 1);
+}
+
 .particles-container {
   position: absolute;
   background-image: linear-gradient(to bottom, #a1a8e6, #0d0d0d);

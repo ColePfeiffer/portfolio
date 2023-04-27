@@ -2,7 +2,6 @@
   <div>
     <button @click="switchLocale('en-US')">EN</button>
     <button @click="switchLocale('de-DE')">DE</button>
-    <p>{{ $t('hello') }}</p>
   </div>
 </template>
 
