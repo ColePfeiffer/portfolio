@@ -9,6 +9,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require("quasar/wrappers");
+const path = require("path");
 
 module.exports = configure(function (/* ctx */) {
   return {
@@ -27,7 +28,7 @@ module.exports = configure(function (/* ctx */) {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli/boot-files
-    boot: ["axios", "Particles"],
+    boot: ["axios", "i18n", "Particles"],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
     css: ["app.scss"],
@@ -52,6 +53,22 @@ module.exports = configure(function (/* ctx */) {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16",
       },
+      chainWebpack: (chain) => {
+        chain.module
+          .rule("i18n-resource")
+          .test(/\.(json5?|ya?ml)$/)
+          .include.add(path.resolve(__dirname, "./src/i18n"))
+          .end()
+          .type("javascript/auto")
+          .use("i18n-resource")
+          .loader("@intlify/vue-i18n-loader");
+        chain.module
+          .rule("i18n")
+          .resourceQuery(/blockType=i18n/)
+          .type("javascript/auto")
+          .use("i18n")
+          .loader("@intlify/vue-i18n-loader");
+      },
 
       vueRouterMode: "hash", // available values: 'hash', 'history'
       // vueRouterBase,
@@ -62,7 +79,7 @@ module.exports = configure(function (/* ctx */) {
 
       publicPath: "/",
       // analyze: true,
-      // env: {},
+      env: { LANGUAGES: "en,de" },
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,

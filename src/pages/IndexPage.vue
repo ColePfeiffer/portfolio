@@ -7,25 +7,29 @@
         <transition name="fade" @after-leave="navigateToWork">
           <div v-if="isVisible" class="fade-container">
             <BaseContainer title="../Home/Welcome.txt" titlebarColor="#03aced" icon="mdi-home" width="600px">
+              <LanguageSwitcher></LanguageSwitcher>
               <WelcomeText></WelcomeText>
             </BaseContainer>
           </div>
         </transition>
         <div v-if="!isVisible">NAH IM NOT ANYMORE</div>
+
       </div>
+
     </div>
   </q-page>
 </template>
 
 <script>
 import BaseContainer from 'src/components/BaseContainer.vue';
+import LanguageSwitcher from 'src/components/LanguageSwitcher.vue';
 import WelcomeText from 'src/components/WelcomeText.vue';
 import { defineComponent, ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: "IndexPage",
-  components: { BaseContainer, WelcomeText },
+  components: { BaseContainer, WelcomeText, LanguageSwitcher },
   setup() {
     const isVisible = ref(true);
     const router = useRouter();

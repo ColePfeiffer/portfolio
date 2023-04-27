@@ -1,5 +1,6 @@
 <template>
   <BaseCarousel>
+
     <q-carousel-slide v-for="(project, index) in projects" :key="index" :name="project.slideName"
       class="column no-wrap flex-center carousel-slide">
       <CarouselSlide :slideName="project.slideName" :containerTitle="project.containerTitle"
@@ -15,25 +16,27 @@
 <script>
 import BaseCarousel from "src/components/BaseCarousel.vue";
 import CarouselSlide from "src/components/CarouselSlide.vue";
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { useI18n } from 'vue-i18n'
 
 export default defineComponent({
   name: "WorkPage",
   components: { BaseCarousel, CarouselSlide },
   setup() {
+    const { t } = useI18n(); // use as global scope
+    const { tm } = useI18n();
     const projects = [
       {
         slideName: 1,
-        containerTitle: "../work/projects/01/ToEGO",
+        containerTitle: t('projectPath', { msg: '/toEGO' }),
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#ed008c",
         date: "2022 - 2023",
         name: "ToEGO",
-        subtitle: "Diary App for Introspection",
+        subtitle: t('toEGO.subtitle'),
         images: [{ src: "images/project_toEGO.png", description: "Placeholder Image", isVideo: false },],
-        description:
-          "ToEGO is a diary app for introspection that I developed using Vue.js and Quasar as part of my bachelor's thesis. With ToEGO, users can create notes throughout the day to track their thoughts, emotions, and experiences. These notes can be looked through and reflected on before creating a diary entry. With customizable templates for notes and diary entries, users can easily format and save text for future use, and set default templates to be used automatically when creating a new entry or a new note. One of the app's unique features is its customizable interface, allowing users to style the app to their liking by creating themes, reminiscent of the customization options offered by platforms like MySpace and blog sites of the past.",
-        features: ["customizable ui", "mood tracking", "reuseable templates"],
+        description: t('toEGO.description'),
+        features: tm('toEGO.features'),
         languages: ["Vue.js", "Quasar", "Webpack", "HTML/CSS/JS", "Firebase"],
         gitHub: "https://github.com/ColePfeiffer/toEgo",
         live: "https://colepfeiffer.github.io/",
@@ -45,7 +48,7 @@ export default defineComponent({
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#ed008c",
         name: "RoomMe",
-        subtitle: "Managing tool for shared flats",
+        subtitle: t('roomMe.subtitle'),
         images: [
           { src: "images/RoomMe_02.png", description: "", isVideo: false },
           { src: "images/RoomMe_01.png", description: "", isVideo: false },
@@ -53,14 +56,8 @@ export default defineComponent({
           { src: "images/RoomMe_05.png", description: "", isVideo: false },
           { src: "images/RoomMe_06.png", description: "", isVideo: false },
         ],
-        description:
-          "RoomMe is a management tool designed specifically for individuals living in shared flats. This intuitive application enables users to create cleaning schedules, allocate tasks among roommates, and customize rules to fit their preferences. For example, roommates can assign specific tasks to particular individuals or rotate them between themselves. They can also set the frequency for each task, whether it be weekly, bi-weekly, or monthly. RoomMe offers a unique family tree feature that shows users who lived in each room and when. The chat function facilitates easy communication among roommates, while the expense tracking feature allows users to monitor costs and split them accordingly. Roommates can add items to a shared grocery list and log purchases in the app. They can specify which roommates the item will be shared with, and the app will provide a clear breakdown of who owes what to whom.",
-        features: [
-          "cleaning schedules",
-          "rotation of assigned tasks",
-          "expense tracking",
-          "family tree for rooms",
-        ],
+        description: t('roomMe.description'),
+        features: tm('roomMe.features'),
         languages: ["Vue.js", "Vuetify", "Webpack", "HTML/CSS/JS"],
         gitHub: "https://github.com/ColePfeiffer/room_me",
         live: "",
@@ -91,9 +88,10 @@ export default defineComponent({
       // Add more projects here...
     ];
     return {
-      projects,
+      projects, t, tm
     };
   },
-  methods: {},
+  methods: {
+  },
 });
 </script>
