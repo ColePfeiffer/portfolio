@@ -5,15 +5,13 @@
         <BaseContainer title="../About/Toni" icon="mdi-application" @close="$router.push('/')">
           TODO: <br />
           <br />
-          language switcher styling <br /><br />
-          make languages responsive, currently they dont show up when changed unless for the template part... probably
-          have them do it automatically via "projectname.description" for example<br /><br />
           texte anpassen <br /><br />
           startseite <br /><br />
           1-2 projekte einbinden <br /><br />
           baseDialog für Fotos <br /><br />
           ABOUT <br /><br />
           kontakt <br /><br />
+          puffer auf allen seiten außer work sodass alle gleich hoch sind <br /><br />
         </BaseContainer>
       </div>
     </div>

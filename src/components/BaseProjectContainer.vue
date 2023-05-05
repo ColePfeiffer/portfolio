@@ -25,7 +25,7 @@
         <div class="project-name text-h3">{{ name }}</div>
         <!-- Subtitle -->
         <div class="project-subtitle text-caption col-6 text-weight-bold q-mb-md">
-          {{ subtitle }}
+          {{ $t(`${projectName}.subtitle`) }}
         </div>
         <q-separator />
         <!-- Date -->
@@ -94,7 +94,7 @@
         <q-separator />
         <!-- Description -->
         <div class="project-description text-body-1 q-mt-md text-justify" style="white-space: pre-wrap">
-          {{ description }}
+          {{ $t(`${projectName}.description`) }}
         </div>
         <!-- DIALOG... TODO: auslagern! -->
         <q-dialog v-model="showImageModal" class="project-image-modal" style="
@@ -120,8 +120,17 @@
 
 <script>
 import { Screen } from "quasar";
+import { useI18n } from 'vue-i18n'
+
 export default {
   name: "BaseProjectContainer",
+  setup() {
+    const { t } = useI18n(); // use as global scope
+    const { tm } = useI18n();
+    return {
+      t, tm
+    };
+  },
   data() {
     return {
       showImageModal: false,
@@ -133,19 +142,11 @@ export default {
       type: String,
       required: true,
     },
+    path: {
+      type: String,
+      required: true,
+    },
     images: {
-      type: Array,
-      required: true,
-    },
-    subtitle: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      required: true,
-    },
-    features: {
       type: Array,
       required: true,
     },
@@ -167,6 +168,12 @@ export default {
     },
   },
   computed: {
+    features() {
+      return this.tm(this.projectName + '.features');
+    },
+    projectName() {
+      return this.path;
+    },
     isXS() {
       if (Screen.xs) {
         return true;

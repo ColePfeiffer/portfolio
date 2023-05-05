@@ -23,4 +23,13 @@ export default {
       "family tree for rooms",
     ],
   },
+  hueLight: {
+    subtitle: "On a Raspberry Pi",
+    description:
+      "This project created an app that manipulates a Philips Hue light strip based on sound input. Python and audio-processing libraries enabled the app to interact with the light strip via the deCONZ API and Postman requests. Challenges included the light strip's technical limitations, which were overcome by reducing the command rate and adjusting input sensitivity. The app created a visually appealing display that responds to sound input and provides creative lighting effects. Features included pitch recognition (Aubio), volume calculation (Audioop) and microphone input (PyAudio). The project achieved its goal.",
+    features: [
+      "pitch and volume visualization",
+      "VNC-viewer for easier management",
+    ],
+  },
 };

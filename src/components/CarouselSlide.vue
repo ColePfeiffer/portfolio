@@ -7,9 +7,8 @@
           <div class="row justify-center items-center">
             <div class="col-0.5" style="width: 3%"></div>
             <div class="col-11" style="width: 94%">
-              <BaseProjectContainer :name="projectName" :subtitle="projectSubtitle" :images="projectImages"
-                :description="projectDescription" :features="projectFeatures" :languages="projectLanguages"
-                :date="projectDate" :gitHub="projectGitHub" :live="projectLive" />
+              <BaseProjectContainer :name="projectName" :path="projectPath" :images="projectImages"
+                :languages="projectLanguages" :date="projectDate" :gitHub="projectGitHub" :live="projectLive" />
             </div>
             <div class="col-0.5" style="width: 3%"></div>
           </div>
@@ -33,6 +32,7 @@ export default defineComponent({
     containerIcon: String,
     containerTitlebarColor: String,
     projectName: String,
+    projectPath: String,
     projectDate: String,
     projectSubtitle: String,
     projectImages: Array,
