@@ -106,19 +106,20 @@
       },
       retina_detect: true,
     }" />
-    <q-header style="background-color: transparent">
-      <q-toolbar class="bg-transparent" style="height: 50px">
+    <q-header style="background-color: transparent; pointer-events: none">
+      <q-toolbar class="bg-transparent" style="height: 50px;">
         <!-- Home -->
-        <img src="../assets/eye4.png" class="glow-on-hover" style="max-width: 38px; opacity: 40%; flex: 0;"
+        <img :src="eyeImage" class="glow-on-hover"
+          :style="isRouteSetToHome ? 'max-width: 31px; margin-top: -3px; opacity: 77%; flex: 0; pointer-events: auto' : 'max-width: 31px; margin-top: -3px; opacity: 40%; flex: 0; pointer-events: auto'"
           @click="goToHome" />
-        <div class="flex-grow absolute-center" style="text-align: center;">
-          <q-tabs v-model="currentTab" class="text-white" dense no-caps style="text-shadow: darkblue 1px 1px 3px">
-            <q-tab name="/work" label="Work" @click="navigateTo" />
-            <q-tab name="/about" label="About" @click="navigateTo" />
-            <q-tab name="/contact" label="Contact" @click="navigateTo" />
+        <div class="flex-grow absolute-center tabs-container">
+          <q-tabs v-model="currentTab" dense all-caps active-class="q-tabs__item--active" indicator-color="transparent">
+            <q-tab class="q-tabs__items" name="/work" label="Work" @click="navigateTo" />
+            <q-tab class="q-tabs__items" name="/about" label="About" @click="navigateTo" />
+            <q-tab class="q-tabs__items" name="/contact" label="Contact" @click="navigateTo" />
           </q-tabs>
         </div>
-        <LanguageSwitcher style="flex: 0; margin-left: auto; margin-right: 0;"></LanguageSwitcher>
+        <LanguageSwitcher style="flex: 0; margin-left: auto; margin-right: 0; pointer-events: auto"></LanguageSwitcher>
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -138,6 +139,7 @@ import LanguageSwitcher from "src/components/LanguageSwitcher.vue";
 
 export default defineComponent({
   name: "MainLayout",
+  components: { LanguageSwitcher },
   setup() {
     const leftDrawerOpen = ref(false);
     const particlesInit = async (engine) => {
@@ -147,7 +149,7 @@ export default defineComponent({
       console.log("Particles container loaded", container);
     };
     return {
-      currentTab: "home",
+      currentTab: ref("/"),
       particlesInit,
       particlesLoaded,
       toggleLeftDrawer() {
@@ -155,32 +157,48 @@ export default defineComponent({
       },
     };
   },
+  mounted() {
+    this.currentTab = this.$route.path;
+  },
   computed: {
-    firstTabs() {
-      return [
-        { label: "Home", route: "/" },
-        { label: "Work", route: "/work" },
-      ];
+    currentRoute() {
+      return this.$route.path;
     },
-    secondTabs() {
-      return [
-        { label: "About", route: "/about" },
-        { label: "Contact", route: "/contact" },
-      ];
+    isRouteSetToHome() {
+      if (this.currentRoute === "/") {
+        return true;
+      } else {
+        return false;
+      }
     },
+    eyeImage() {
+      if (this.isRouteSetToHome) {
+        return "images/eye-w2.png";
+      } else {
+        return "images/eye4.png";
+      }
+    }
   },
   methods: {
     navigateTo() {
-      this.$router.push(this.currentTab);
+      this.$router.push({ path: this.currentTab })
     },
     goToHome() {
       this.currentTab = "/";
       this.navigateTo();
     }
   },
-  components: { LanguageSwitcher }
+  watch: {
+    currentRoute(newRoute, oldRoute) {
+      console.log(oldRoute);
+      console.log(newRoute);
+    },
+  },
+
 });
 </script>
+
+
 
 <style lang="scss">
 .glow-on-hover {
@@ -199,11 +217,34 @@ export default defineComponent({
   background-image: linear-gradient(to bottom, #a1a8e6, #0d0d0d);
 }
 
+.tabs-container {
+  text-align: center;
+  pointer-events: auto;
+  font-size: 10px !important;
+}
+
+.q-tab__label {
+  font-size: 0.77rem;
+}
+
 .text {
   color: $textColor;
 }
 
-.q-carousel__navigation-inner {
-  height: 20px;
+.q-tabs__items {
+  color: rgba(245, 245, 245, 0.829);
+  color: #7573db;
+  text-shadow: #7776d0 0px 0px 1px;
+}
+
+.q-tabs__items:hover {
+  text-shadow: rgba(130, 126, 180, 0.507) 1px 1px 5px;
+  color: rgba(247, 228, 255, 0.952);
+  transition: all 0.4s ease-in-out;
+}
+
+.q-tabs__item--active {
+  color: white;
+  text-shadow: rgba(17, 0, 255, 0.507) 1px 1px 5px;
 }
 </style>
