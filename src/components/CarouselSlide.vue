@@ -3,7 +3,7 @@
     <div class="row justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
         <BaseContainer :title="containerTitle" :icon="containerIcon" :titlebarColor="containerTitlebarColor"
-          style="background-color: whitesmoke;">
+          style="background-color: whitesmoke;" :hasExpandButton="false">
           <div class="row justify-center items-center">
             <div class="col-0.5" style="width: 3%"></div>
             <div class="col-11" style="width: 94%">
@@ -47,8 +47,8 @@ export default defineComponent({
 
 <style>
 .carousel-slide {
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
   padding-top: 0px;
   padding-bottom: 40px;
 }

@@ -1,23 +1,9 @@
 <template>
   <q-page style="pointer-events: none">
-    <div class="row justify-center fit">
+    <div class="row q-mt-lg q-pt-sm justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
-        <BaseContainer title="../Contact/WriteMe.txt" icon="mdi-application">
-          Cyan: <br />
-          Text color: #009999 <br />
-          Background color: #e6ffff <br />
-          <br /> <br />
-          Magenta: <br />
-          Text color: #990099 <br />
-          Background color: #ffe6ff <br />
-          <br /> <br />
-          Yellow: <br />
-          Text color: #999900 <br />
-          Background color: #ffffe6 <br />
-          <br /> <br />
-          Black: <br />
-          Text color: #1a1a1a <br />
-          Background color: #f2f2f2 <br />
+        <BaseContainer title="../Contact/WriteMe.txt" icon="mdi-application" titlebarColor="#04B2D9"
+          style="background-color: whitesmoke;">
         </BaseContainer>
       </div>
     </div>

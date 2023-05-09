@@ -1,6 +1,5 @@
 <template>
   <BaseCarousel>
-
     <q-carousel-slide v-for="(project, index) in projects" :key="index" :name="project.slideName"
       class="column no-wrap flex-center carousel-slide">
       <CarouselSlide :slideName="project.slideName" :containerTitle="project.containerTitle"
@@ -29,7 +28,7 @@ export default defineComponent({
         slideName: 1,
         containerTitle: t('projectPath', { msg: '/toEGO' }),
         containerIcon: "fab fa-vuejs",
-        containerTitlebarColor: "#ed008c",
+        containerTitlebarColor: "#FEF501",
         date: "2022 - 2023",
         name: "ToEGO",
         path: "toEGO",
@@ -43,7 +42,7 @@ export default defineComponent({
         containerTitle: "../work/projects/02/RoomMe",
         date: "2021",
         containerIcon: "fab fa-vuejs",
-        containerTitlebarColor: "#ed008c",
+        containerTitlebarColor: "#D90479",
         name: "RoomMe",
         path: "roomMe",
         images: [
@@ -62,7 +61,7 @@ export default defineComponent({
         containerTitle: "../work/projects/02/RoomMe",
         date: "2019",
         containerIcon: "fab fa-vuejs",
-        containerTitlebarColor: "#ed008c",
+        containerTitlebarColor: "#04B2D9",
         name: "Philips HUE-Light Controller ",
         path: "hueLight",
         images: [
