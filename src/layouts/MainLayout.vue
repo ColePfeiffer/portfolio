@@ -1,125 +1,160 @@
 <template>
   <q-layout view="lhh Lpr lFf" class="particles-container">
-    <Particles id="tsparticles" :particlesInit="particlesInit" :particlesLoaded="particlesLoaded" :options="{
-      fpsLimit: 60,
-      interactivity: {
-        detect_on: 'canvas',
-        events: {
-          onhover: {
-            enable: true,
-            mode: 'bubble',
-            distance: 150,
-            size: 3,
-            color: '#ffffff',
+    <Particles
+      id="tsparticles"
+      :particlesInit="particlesInit"
+      :particlesLoaded="particlesLoaded"
+      :options="{
+        fpsLimit: 60,
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: {
+              enable: true,
+              mode: 'bubble',
+              distance: 150,
+              size: 3,
+              color: '#ffffff',
+            },
+            onclick: {
+              enable: true,
+              mode: 'push',
+            },
+            resize: true,
           },
-          onclick: {
-            enable: true,
-            mode: 'push',
-          },
-          resize: true,
-        },
-        modes: {
-          grab: {
-            distance: 400,
-            line_linked: {
-              opacity: 1,
+          modes: {
+            grab: {
+              distance: 400,
+              line_linked: {
+                opacity: 1,
+              },
+            },
+            bubble: {
+              distance: 150,
+              size: 6,
+              duration: 2,
+              opacity: 0.8,
+              speed: 3,
+            },
+            repulse: {
+              distance: 200,
+              duration: 0.4,
+            },
+            push: {
+              particles_nb: 4,
+            },
+            remove: {
+              particles_nb: 2,
             },
           },
-          bubble: {
+        },
+        particles: {
+          number: {
+            value: 250,
+            density: {
+              enable: true,
+              value_area: 1500,
+            },
+          },
+          color: {
+            value: '#ffffff',
+          },
+          shape: {
+            type: 'circle',
+            stroke: {
+              width: 0,
+              color: '#000000',
+            },
+          },
+          opacity: {
+            value: 0.5,
+            random: false,
+            anim: {
+              enable: true,
+              speed: 0.2,
+              opacity_min: 0,
+              sync: false,
+            },
+          },
+          size: {
+            value: 2,
+            random: true,
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0,
+              sync: false,
+            },
+          },
+          line_linked: {
+            enable: false,
             distance: 150,
-            size: 6,
-            duration: 2,
-            opacity: 0.8,
-            speed: 3,
+            color: '#ffffff',
+            opacity: 0.4,
+            width: 1,
           },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
-          },
-        },
-      },
-      particles: {
-        number: {
-          value: 250,
-          density: {
-            enable: true,
-            value_area: 1500,
-          },
-        },
-        color: {
-          value: '#ffffff',
-        },
-        shape: {
-          type: 'circle',
-          stroke: {
-            width: 0,
-            color: '#000000',
-          },
-        },
-        opacity: {
-          value: 0.5,
-          random: false,
-          anim: {
+          move: {
             enable: true,
             speed: 0.2,
-            opacity_min: 0,
-            sync: false,
+            direction: 'none',
+            random: true,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+            attract: {
+              enable: false,
+              rotateX: 600,
+              rotateY: 1200,
+            },
           },
         },
-        size: {
-          value: 2,
-          random: true,
-          anim: {
-            enable: true,
-            speed: 2,
-            size_min: 0,
-            sync: false,
-          },
-        },
-        line_linked: {
-          enable: false,
-          distance: 150,
-          color: '#ffffff',
-          opacity: 0.4,
-          width: 1,
-        },
-        move: {
-          enable: true,
-          speed: 0.2,
-          direction: 'none',
-          random: true,
-          straight: false,
-          out_mode: 'out',
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200,
-          },
-        },
-      },
-      retina_detect: true,
-    }" />
+        retina_detect: true,
+      }"
+    />
     <q-header style="background-color: transparent; pointer-events: none">
-      <q-toolbar class="bg-transparent" style="height: 50px;">
+      <q-toolbar class="bg-transparent" style="height: 50px">
         <!-- Home -->
-        <img :src="eyeImage" class="glow-on-hover"
-          :style="isRouteSetToHome ? 'max-width: 31px; margin-top: -3px; opacity: 77%; flex: 0; pointer-events: auto' : 'max-width: 31px; margin-top: -3px; opacity: 40%; flex: 0; pointer-events: auto'"
-          @click="goToHome" />
+        <img
+          :src="eyeImage"
+          class="glow-on-hover"
+          :style="
+            isRouteSetToHome
+              ? 'max-width: 31px; margin-top: -3px; opacity: 77%; flex: 0; pointer-events: auto'
+              : 'max-width: 31px; margin-top: -3px; opacity: 40%; flex: 0; pointer-events: auto'
+          "
+          @click="goToHome"
+        />
         <div class="flex-grow absolute-center tabs-container">
-          <q-tabs v-model="currentTab" dense all-caps active-class="q-tabs__item--active" indicator-color="transparent">
-            <q-tab class="q-tabs__items" name="/work" label="Work" @click="navigateTo" />
-            <q-tab class="q-tabs__items" name="/about" label="About" @click="navigateTo" />
-            <q-tab class="q-tabs__items" name="/contact" label="Contact" @click="navigateTo" />
+          <q-tabs
+            v-model="currentTab"
+            dense
+            all-caps
+            active-class="q-tabs__item--active"
+            indicator-color="transparent"
+          >
+            <q-tab
+              style="font-size: 15px !important"
+              class="q-tabs__items"
+              name="/work"
+              label="Work"
+              @click="navigateTo"
+            />
+            <q-tab
+              class="q-tabs__items"
+              name="/about"
+              label="About"
+              @click="navigateTo"
+            />
           </q-tabs>
         </div>
-        <LanguageSwitcher style="flex: 0; margin-left: auto; margin-right: 0; pointer-events: auto"></LanguageSwitcher>
+        <LanguageSwitcher
+          style="
+            flex: 0;
+            margin-left: auto;
+            margin-right: 0;
+            pointer-events: auto;
+          "
+        ></LanguageSwitcher>
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -177,16 +212,16 @@ export default defineComponent({
       } else {
         return "images/eye4.png";
       }
-    }
+    },
   },
   methods: {
     navigateTo() {
-      this.$router.push({ path: this.currentTab })
+      this.$router.push({ path: this.currentTab });
     },
     goToHome() {
       this.currentTab = "/";
       this.navigateTo();
-    }
+    },
   },
   watch: {
     currentRoute(newRoute, oldRoute) {
@@ -194,11 +229,8 @@ export default defineComponent({
       console.log(newRoute);
     },
   },
-
 });
 </script>
-
-
 
 <style lang="scss">
 .glow-on-hover {
@@ -224,7 +256,7 @@ export default defineComponent({
 }
 
 .q-tab__label {
-  font-size: 0.77rem;
+  font-size: 0.85rem;
 }
 
 .text {
