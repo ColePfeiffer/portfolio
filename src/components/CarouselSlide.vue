@@ -1,14 +1,29 @@
 <template>
   <q-page style="pointer-events: none">
     <div class="row justify-center fit">
-      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6" style="pointer-events:auto">
-        <BaseContainer :title="containerTitle" :icon="containerIcon" :titlebarColor="containerTitlebarColor"
-          style="background-color: whitesmoke;" :hasExpandButton="false">
+      <div
+        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-7 col-xl-6"
+        style="pointer-events: auto"
+      >
+        <BaseContainer
+          :title="containerTitle"
+          :icon="containerIcon"
+          :titlebarColor="containerTitlebarColor"
+          style="background-color: whitesmoke"
+          :hasExpandButton="false"
+        >
           <div class="row justify-center items-center">
             <div class="col-0.5" style="width: 3%"></div>
             <div class="col-11" style="width: 94%">
-              <BaseProjectContainer :name="projectName" :path="projectPath" :images="projectImages"
-                :languages="projectLanguages" :date="projectDate" :gitHub="projectGitHub" :live="projectLive" />
+              <BaseProjectContainer
+                :name="projectName"
+                :path="projectPath"
+                :images="projectImages"
+                :languages="projectLanguages"
+                :date="projectDate"
+                :gitHub="projectGitHub"
+                :live="projectLive"
+              />
             </div>
             <div class="col-0.5" style="width: 3%"></div>
           </div>

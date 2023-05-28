@@ -8,10 +8,19 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
+        <button
+          v-if="hasExpandButton"
+          class="expand"
+          @click="toggleExpand"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon :name="expandIcon" size="16px" class="text-black" />
         </button>
-        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
+        <button
+          class="close"
+          @click="$emit('close')"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon name="mdi-close" size="16px" class="text-black" />
         </button>
       </div>
@@ -41,7 +50,7 @@ export default {
     hasExpandButton: {
       type: Boolean,
       default: true,
-    }
+    },
   },
   data() {
     return {
