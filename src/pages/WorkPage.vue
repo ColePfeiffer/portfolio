@@ -1,12 +1,36 @@
 <template>
   <BaseCarousel>
-    <q-carousel-slide v-for="(project, index) in projects" :key="index" :name="project.slideName"
-      class="column no-wrap flex-center carousel-slide">
-      <CarouselSlide :slideName="project.slideName" :containerTitle="project.containerTitle"
-        :containerIcon="project.containerIcon" :containerTitlebarColor="project.containerTitlebarColor"
-        :projectName="project.name" :projectPath="project.path" :projectImages="project.images"
-        :projectLanguages="project.languages" :projectDate="project.date" :projectGitHub="project.gitHub"
-        :projectLive="project.live" />
+    <q-carousel-slide
+      v-for="(project, index) in projects"
+      :key="index"
+      :name="project.slideName"
+      class="column no-wrap flex-center carousel-slide"
+    >
+      <CarouselSlide>
+        <BaseContainer
+          :title="project.containerTitle"
+          :icon="project.containerIcon"
+          :titlebarColor="project.containerTitlebarColor"
+          style="background-color: whitesmoke"
+          :hasExpandButton="false"
+        >
+          <div class="row justify-center items-center q-pa-sm">
+            <div class="col-0.5" style="width: 3%"></div>
+            <div class="col-11" style="width: 94%">
+              <BaseProjectContainer
+                :name="project.name"
+                :path="project.path"
+                :images="project.images"
+                :languages="project.languages"
+                :date="project.date"
+                :gitHub="project.gitHub"
+                :live="project.live"
+              />
+            </div>
+            <div class="col-0.5" style="width: 3%"></div>
+          </div>
+        </BaseContainer>
+      </CarouselSlide>
     </q-carousel-slide>
   </BaseCarousel>
 </template>
@@ -14,25 +38,39 @@
 <script>
 import BaseCarousel from "src/components/BaseCarousel.vue";
 import CarouselSlide from "src/components/CarouselSlide.vue";
+import BaseContainer from "src/components/BaseContainer.vue";
+import BaseProjectContainer from "src/components/BaseProjectContainer.vue";
+
 import { defineComponent, ref } from "vue";
-import { useI18n } from 'vue-i18n'
+import { useI18n } from "vue-i18n";
 
 export default defineComponent({
   name: "WorkPage",
-  components: { BaseCarousel, CarouselSlide },
+  components: {
+    BaseCarousel,
+    CarouselSlide,
+    BaseContainer,
+    BaseProjectContainer,
+  },
   setup() {
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();
     const projects = [
       {
         slideName: 1,
-        containerTitle: t('projectPath', { msg: '/toEGO' }),
+        containerTitle: t("projectPath", { msg: "/toEGO" }),
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#FEF501",
         date: "2022 - 2023",
         name: "ToEGO",
         path: "toEGO",
-        images: [{ src: "images/project_toEGO.png", description: "Placeholder Image", isVideo: false },],
+        images: [
+          {
+            src: "images/project_toEGO.png",
+            description: "Placeholder Image",
+            isVideo: false,
+          },
+        ],
         languages: ["Vue.js", "Quasar", "Webpack", "HTML/CSS/JS", "Firebase"],
         gitHub: "https://github.com/ColePfeiffer/toEgo",
         live: "https://colepfeiffer.github.io/",
@@ -65,9 +103,21 @@ export default defineComponent({
         name: "Philips HUE-Light Controller ",
         path: "hueLight",
         images: [
-          { src: "https://drive.google.com/file/d/1S4EIoc8cpTn7_1LdPCVabsm04QEgg3ZT/preview", description: "Volume visualization without pitch", isVideo: true },
-          { src: "https://drive.google.com/file/d/1LyIvTr2KlXp_DugBcDdtJzSCibOJZbU3/preview", description: "Volume and Pitch visualization, #1", isVideo: true },
-          { src: "https://drive.google.com/file/d/1XmRqcPlei6PV44awwpp_RJS4vceNQbwY/preview", description: "Volume and Pitch visualization, #2", isVideo: true },
+          {
+            src: "https://drive.google.com/file/d/1S4EIoc8cpTn7_1LdPCVabsm04QEgg3ZT/preview",
+            description: "Volume visualization without pitch",
+            isVideo: true,
+          },
+          {
+            src: "https://drive.google.com/file/d/1LyIvTr2KlXp_DugBcDdtJzSCibOJZbU3/preview",
+            description: "Volume and Pitch visualization, #1",
+            isVideo: true,
+          },
+          {
+            src: "https://drive.google.com/file/d/1XmRqcPlei6PV44awwpp_RJS4vceNQbwY/preview",
+            description: "Volume and Pitch visualization, #2",
+            isVideo: true,
+          },
         ],
         languages: ["Python", "REST API"],
         gitHub: "https://github.com/ColePfeiffer/Farbmetrik-WS18",
@@ -76,10 +126,11 @@ export default defineComponent({
       // Add more projects here...
     ];
     return {
-      projects, t, tm
+      projects,
+      t,
+      tm,
     };
   },
-  methods: {
-  },
+  methods: {},
 });
 </script>

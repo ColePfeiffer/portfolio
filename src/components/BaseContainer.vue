@@ -149,7 +149,6 @@ export default {
 }
 
 .window-body {
-  padding: 10px;
   font-size: 14px;
 }
 </style>
