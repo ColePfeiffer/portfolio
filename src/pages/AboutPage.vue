@@ -43,8 +43,8 @@
                 </div>
                 <div class="col-6 text-center q-pa-xs q-pt-lg">
                   <div class="name">Toni Dreger</div>
-                  <div class="subtitle">Web App Developer</div>
-                  <div class="subtitle">@ Hamburg, Germany</div>
+                  <div class="subtitle monospace">Web / App Developer</div>
+                  <div class="subtitle monospace">@ Hamburg, Germany</div>
                   <q-separator />
                 </div>
                 <div class="col-12 text-justify q-pa-md">
@@ -79,8 +79,44 @@
               </q-tab-panel>
 
               <q-tab-panel name="alarms">
-                CONTACTME.txt
                 <!-- LinkedIn, GitHub, E-Mail -->
+                <div class="row justify-between items-center monospace q-pt-md">
+                  <div class="col-auto">
+                    <div class="project-subitem-title">Mail</div>
+                  </div>
+                  <div class="col">
+                    <div class="text-body-1 text-right">
+                      <a
+                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m"
+                        >&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a
+                      >
+                    </div>
+                  </div>
+                </div>
+                <q-separator />
+                <!-- Languages  -->
+                <div class="row justify-between q-mt-xs monospace">
+                  <div class="col-auto">
+                    <div class="project-subitem-title">LinkedIn</div>
+                  </div>
+                  <div class="col text-right">
+                    <div class="text-body-1" style="white-space: pre-wrap">
+                      Toni Dreger
+                    </div>
+                  </div>
+                </div>
+                <q-separator />
+                <!-- Languages  -->
+                <div class="row justify-between q-mt-xs monospace">
+                  <div class="col-auto">
+                    <div class="bold">GitHub</div>
+                  </div>
+                  <div class="col text-right">
+                    <div class="text-body-1" style="white-space: pre-wrap">
+                      ColePfeiffer
+                    </div>
+                  </div>
+                </div>
               </q-tab-panel>
             </q-tab-panels>
           </q-card>
@@ -120,5 +156,13 @@ export default defineComponent({
 
 .bold {
   font-weight: 500;
+}
+
+.paragraph {
+  font-size: 0.89rem;
+}
+
+.monospace {
+  font-family: monospace;
 }
 </style>

@@ -1,31 +1,20 @@
 <template>
-  <div class="welcome-message q-pa-md">
-    <span class="decorative-font">Hello</span>, and
-    <span class="highlight">welcome</span> to my
-    <span class="decorative-font">portfolio</span>.
-  </div>
-  <div class="row justify-between q-pa-md">
-    <div class="col-7">
-      Thanks for stopping by! Here you'll find information about my work and
-      experience as a developer. Feel free to browse around and get in touch if
-      you have any questions or would like to work together.
+  <div class="row justify-center q-pa-md">
+    <div class="welcome-message q-pa-sm col-12">
+      <span class="decorative-font">Hello, thanks for stopping by!</span>
+      <q-icon
+        name="code"
+        size="1.7em"
+        color="secondary"
+        class="q-ml-sm q-mr-sm"
+      ></q-icon>
+      <q-icon name="fab fa-vuejs" size="1.7em" color="dark"></q-icon>
     </div>
-    <div class="col-3">
-      <div class="d-flex justify-center align-center">
-        <q-icon
-          name="fas fa-keyboard"
-          size="1.7em"
-          color="warning"
-          class="q-mr-sm animate__animated animate__pulse animate__infinite"
-        ></q-icon>
-        <q-icon
-          name="code"
-          size="3em"
-          color="secondary"
-          class="q-mr-sm"
-        ></q-icon>
-        <q-icon name="fab fa-vuejs" size="3em" color="positive"></q-icon>
-      </div>
+
+    <div class="col-12 q-pa-sm q-mt-sm text-justify">
+      This portfolio is a collection of some of my work and was made with Vue.js
+      3, Quasar 2 and Vite. Feel free to browse around and get in touch if you
+      have any questions or would like to work together.
     </div>
   </div>
 </template>
@@ -55,7 +44,7 @@ $warning: #0000ff;
 
 .welcome-message {
   font-size: 1.5rem;
-  text-align: center;
+  text-align: left;
 }
 
 .highlight {
