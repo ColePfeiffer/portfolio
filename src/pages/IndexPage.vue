@@ -1,14 +1,15 @@
 <template>
-  <q-page style="pointer-events: none">
+  <q-page>
     <div class="row items-center justify-center fit">
       <div
         class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md"
-        style="pointer-events: none"
       >
         <div class="text-center q-pb-lg q-mb-lg">
           <div class="name text-left">
-            <div>TONI</div>
-            <div class="q-pb-md">DREGER</div>
+            <div class="animated-text">
+              <div class="typing-text">TONI</div>
+              <div class="typing-text q-pb-md">DREGER</div>
+            </div>
             <q-separator color="white" class="q-mr-xl" />
             <q-separator color="white" class="q-ml-xl q-mt-md" />
             <div class="text-center q-pt-md subtitle">web developer</div>
@@ -25,7 +26,7 @@
           <div v-if="isVisible" class="fade-container">
             <BaseContainer
               title="../Home/Welcome.txt"
-              titlebarColor="#ff7f50"
+              titlebarColor="#fa8072"
               icon="mdi-home"
               width="600px"
             >

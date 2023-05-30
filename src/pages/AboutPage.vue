@@ -8,7 +8,7 @@
         <BaseContainer
           title="../About/ReadMe.txt"
           icon="mdi-application"
-          titlebarColor="#04B2D9"
+          titlebarColor="#FF007F     "
           style="background-color: whitesmoke"
           :hasExpandButton="false"
         >
