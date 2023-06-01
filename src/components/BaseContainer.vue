@@ -1,6 +1,7 @@
 <template>
   <div
     class="window"
+    ref="fullBaseContainer"
     :class="{ expanded: isExpanded }"
     v-drag="{ axis: 'all', handle: '#title-bar-handler' }"
   >
@@ -63,6 +64,8 @@ export default {
   data() {
     return {
       isExpanded: false,
+      alteredPosition: null,
+      expandingPosition: null,
     };
   },
   computed: {
@@ -71,7 +74,33 @@ export default {
     },
   },
   methods: {
+    getPosition() {
+      fullBaseContainer;
+    },
     toggleExpand() {
+      if (this.isExpanded) {
+        // Restoring window from full screen
+        const { top, left, width, height } = this.alteredPosition;
+        this.$el.style.top = `${top}px`;
+        this.$el.style.left = `${left}px`;
+        this.$el.style.width = `${width}px`;
+        this.$el.style.height = `${height}px`;
+      } else {
+        // Expanding window to full screen
+        // saving the altered position
+
+        this.alteredPosition = {
+          top: this.$refs.fullBaseContainer.getBoundingClientRect().left,
+          left: this.$refs.fullBaseContainer.getBoundingClientRect().left,
+          width: this.$el.offsetWidth,
+          height: this.$el.offsetHeight,
+        };
+
+        this.$el.style.top = "0";
+        this.$el.style.left = "0";
+        this.$el.style.width = "100%";
+        this.$el.style.height = "100%";
+      }
       this.isExpanded = !this.isExpanded;
     },
   },
