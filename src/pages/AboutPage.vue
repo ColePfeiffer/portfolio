@@ -1,26 +1,12 @@
 <template>
   <q-page style="pointer-events: none">
     <div class="row q-mt-lg q-pt-sm justify-center fit">
-      <div
-        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6"
-        style="pointer-events: auto"
-      >
-        <BaseContainer
-          title="../About/ReadMe.txt"
-          icon="mdi-application"
-          titlebarColor="#FF007F     "
-          style="background-color: whitesmoke"
-          :hasExpandButton="false"
-        >
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6" style="pointer-events: auto">
+        <BaseContainer title="../About/ReadMe.txt" icon="mdi-application" titlebarColor="#FF007F     "
+          style="background-color: whitesmoke" :hasExpandButton="false">
           <q-card>
-            <q-tabs
-              v-model="tab"
-              dense
-              class="text-grey"
-              active-color="primary"
-              indicator-color="transparent"
-              align="justify"
-            >
+            <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="transparent"
+              align="justify">
               <q-tab name="mails" label="Profile" />
               <q-tab name="alarms" label="Contact" />
             </q-tabs>
@@ -28,16 +14,9 @@
             <q-separator />
 
             <q-tab-panels v-model="tab" animated>
-              <q-tab-panel
-                name="mails"
-                class="row justify-center items-start q-pa-none q-pa-md"
-              >
+              <q-tab-panel name="mails" class="row justify-center items-start q-pa-none q-pa-md">
                 <div class="col-6 q-pa-sm q-pl-md q-gutter-xs">
-                  <q-avatar
-                    size="150px"
-                    class="fit"
-                    style="max-height: 150px; max-width: 150px"
-                  >
+                  <q-avatar size="150px" class="fit" style="max-height: 150px; max-width: 150px">
                     <img src="images/toni.png" />
                   </q-avatar>
                 </div>
@@ -87,9 +66,7 @@
                   <div class="col">
                     <div class="text-body-1 text-right">
                       <a
-                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m"
-                        >&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a
-                      >
+                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m">&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a>
                     </div>
                   </div>
                 </div>
