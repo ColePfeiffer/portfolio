@@ -1,6 +1,14 @@
 <template>
-  <div class="window" :class="{ expanded: isExpanded }">
-    <div class="title-bar" :style="{ backgroundColor: titlebarColor }">
+  <div
+    class="window"
+    :class="{ expanded: isExpanded }"
+    v-drag="{ axis: 'all', handle: '#title-bar-handler' }"
+  >
+    <div
+      id="title-bar-handler"
+      class="title-bar"
+      :style="{ backgroundColor: titlebarColor }"
+    >
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -76,7 +84,6 @@ export default {
   border: 2px solid #000;
   box-shadow: 3px 3px #000;
   margin: 5px auto;
-  transition: all 0.5s ease-in-out;
 }
 
 .window.expanded {
