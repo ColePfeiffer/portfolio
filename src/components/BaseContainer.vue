@@ -1,6 +1,6 @@
 <template>
   <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }">
-    <div id="title-bar-handler" class="title-bar" :style="{ backgroundColor: titlebarColor }">
+    <div id="title-bar-handler" class="title-bar" :style="{ backgroundColor: titlebarColor }" ref="titleBarHandler">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import DragSelect from 'dragselect';
+import interact from 'interactjs';
 
 export default {
   name: "baseContainer",
@@ -46,13 +46,45 @@ export default {
     },
   },
   mounted() {
-    const ds = new DragSelect({
-      selectables: [this.$refs.fullBaseContainer],
-    });
+    const baseContainer = this.$refs.fullBaseContainer;
+    const titleBarHandler = this.$refs.titleBarHandler;
 
-    ds.subscribe('callback', (e) => {
-      console.log(e);
-    });
+    interact(baseContainer)
+      .allowFrom(titleBarHandler)
+      .draggable({
+        // Set the drag options
+        modifiers: [
+          interact.modifiers.restrict({
+            restriction: '#megaTest',
+          })
+        ],
+        listeners: {
+          start: (event) => {
+            // Called when dragging starts
+            // You can add any necessary logic here
+          },
+          move: (event) => {
+            // Called when the element is being dragged
+
+            console.log(event);
+            console.log(event.target);
+
+            const target = event.target;
+
+            const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
+            const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+            target.style.transform = `translate(${x}px, ${y}px)`;
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+          },
+          end: (event) => {
+            // Called when dragging ends
+            // You can add any necessary logic here
+          }
+        }
+      });
   },
   data() {
     return {
@@ -70,95 +102,6 @@ export default {
     },
   },
   methods: {
-    handleDragMovingA(event) {
-      const container = this.$refs.fullBaseContainer;
-      const containerRect = container.getBoundingClientRect();
-      // targetRect.left  works!!
-      const targetRect = event.target.getBoundingClientRect();
-      const x = targetRect.left - containerRect.left;
-      const y = targetRect.top - containerRect.top;
-      console.log(x, y, targetRect.left, containerRect.left)
-
-      const parentWidth = container.parentElement.offsetWidth;
-      const parentHeight = container.parentElement.offsetHeight;
-
-      // Calculate the maximum allowable coordinates
-      const maxX = parentWidth - containerRect.width;
-      const maxY = parentHeight - containerRect.height;
-
-      // Adjust the position if it exceeds the boundaries
-      const adjustedX = Math.max(0, Math.min(x, maxX));
-      const adjustedY = Math.max(0, Math.min(y, maxY));
-
-      // Apply the adjusted position to the element
-      container.style.left = `${adjustedX}px`;
-      container.style.top = `${adjustedY}px`;
-    },
-
-    handleDragStart(event) {
-      this.isDragging = true;
-
-      const parentElement = event.target.closest('#megaTest');
-      if (parentElement) {
-        const parentRect = parentElement.getBoundingClientRect();
-        this.screenHeight = parentRect.width;
-        this.screenWidth = parentRect.height;
-      }
-    },
-    handleDragMoving(event) {
-      if (this.isDragging) {
-        const container = this.$refs.fullBaseContainer;
-        const containerRect = container.getBoundingClientRect();
-
-        let x = containerRect.x;
-        let y = containerRect.y;
-
-        console.log("xy", x, y)
-
-        // Adjust the coordinates to restrict the movement within the bounds
-        if (x < 0) {
-          x = 0;
-        } else if (containerRect.right > this.screenWidth) {
-          console.log("right ", containerRect.right);
-          x = this.screenWidth - containerRect.width;
-        }
-
-        /*
-         if (y < 0) {
-          y = 0;
-        } else if (y > this.parentHeight - containerRect.height) {
-          y = this.parentHeight - containerRect.height;
-        }
-        */
-
-        // Apply the adjusted position to the element
-        container.style.left = `${x}px`;
-        // container.style.top = `${y}px`;
-      }
-    },
-
-    handleDragMovingdasad(event) {
-      if (this.isDragging) {
-        console.log(this.screenHeight, this.screenWidth, "px");
-        const container = this.$refs.fullBaseContainer;
-        const containerRect = container.getBoundingClientRect();
-
-        let x = containerRect.x;
-        let y = containerRect.y;
-
-        console.log("x, y", x, y);
-        if (x < 0) {
-          console.log("ALARM!");
-          let adjustedX = 10;
-          container.style.left = `${adjustedX}px`;
-          this.draggableX = adjustedX;
-        }
-
-
-
-      }
-    },
-
     getPosition() {
       fullBaseContainer;
     },
@@ -166,25 +109,24 @@ export default {
       if (this.isExpanded) {
         // Restoring window from full screen
         const { top, left, width, height } = this.alteredPosition;
-        this.$el.style.top = `${top}px`;
-        this.$el.style.left = `${left}px`;
+        this.$el.style.transform = `translate(${left}px, ${top}px)`;
         this.$el.style.width = `${width}px`;
         this.$el.style.height = `${height}px`;
       } else {
         // Expanding window to full screen
-        // saving the altered position
+        // Saving the altered position
         this.alteredPosition = {
-          top: this.$refs.fullBaseContainer.getBoundingClientRect().top,
-          left: this.$refs.fullBaseContainer.getBoundingClientRect().left,
+          top: this.$el.offsetTop,
+          left: this.$el.offsetLeft,
           width: this.$el.offsetWidth,
           height: this.$el.offsetHeight,
         };
 
-        this.$el.style.top = "0";
-        this.$el.style.left = "0";
-        this.$el.style.width = "100%";
-        this.$el.style.height = "100%";
+        this.$el.style.transform = 'translate(0, 0)';
+        this.$el.style.width = '100%';
+        this.$el.style.height = '100%';
       }
+
       this.isExpanded = !this.isExpanded;
     },
   },
@@ -198,6 +140,7 @@ export default {
   box-shadow: 3px 3px #000;
   margin: 5px auto;
   position: relative;
+  touch-action: none;
 }
 
 .window.expanded {

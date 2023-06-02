@@ -16,7 +16,7 @@
     "@quasar/extras": "^1.0.0",
     "@vueuse/core": "^9.13.0",
     "axios": "^1.2.1",
-    "dragselect": "^2.7.4",
+    "interactjs": "^1.10.17",
     "pinia": "^2.0.11",
     "quasar": "^2.6.0",
     "tsparticles": "^2.9.3",
