@@ -1,7 +1,5 @@
 <template>
-  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }"
-    v-drag="{ axis: 'all', handle: '#title-bar-handler' }" @v-drag-start="handleDragStart" @v-drag-end="handleDragEnd"
-    @v-drag-moving='handleDragMoving'>
+  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }">
     <div id="title-bar-handler" class="title-bar" :style="{ backgroundColor: titlebarColor }">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
@@ -25,6 +23,8 @@
 </template>
 
 <script>
+import DragSelect from 'dragselect';
+
 export default {
   name: "baseContainer",
   props: {
@@ -45,14 +45,21 @@ export default {
       default: true,
     },
   },
+  mounted() {
+    const ds = new DragSelect({
+      selectables: [this.$refs.fullBaseContainer],
+    });
+
+    ds.subscribe('callback', (e) => {
+      console.log(e);
+    });
+  },
   data() {
     return {
       isExpanded: false,
       alteredPosition: null,
       expandingPosition: null,
       isDragging: false,
-      offsetX: 0,
-      offsetY: 0,
       screenHeight: 0,
       screenWidth: 0,
     };
@@ -152,9 +159,6 @@ export default {
       }
     },
 
-    handleDragEnd(event) {
-      this.isDragging = false;
-    },
     getPosition() {
       fullBaseContainer;
     },

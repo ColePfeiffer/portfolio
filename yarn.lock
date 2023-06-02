@@ -988,6 +988,11 @@ dot-prop@6.0.1:
   dependencies:
     is-obj "^2.0.0"
 
+dragselect@^2.7.4:
+  version "2.7.4"
+  resolved "https://registry.yarnpkg.com/dragselect/-/dragselect-2.7.4.tgz#54838390212d2d954909bf42aa2213df29317b4a"
+  integrity sha512-j0qFl4xvsyImlSTn9erDCCT4SSPUMssgKAYuKqhsPr8WPphLghHfjDd4WR2jLjL91fTQQlbbIJ/7T2qwD2hghQ==
+
 ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
@@ -3246,11 +3251,6 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==
-
-v-drag@^3.0.9:
-  version "3.0.9"
-  resolved "https://registry.yarnpkg.com/v-drag/-/v-drag-3.0.9.tgz#5b11a5c7c40e8b778a882e98602ef68c42830c07"
-  integrity sha512-R/2WfReSDPn0fbyGzsfzeLx39PMQn/wP1tnsdtc0sEGBqnKTZVB4j9hh1+qboZKZRaGQdiuml7uVMfdQKyehlg==
 
 vary@~1.1.2:
   version "1.1.2"

@@ -38,7 +38,6 @@ import BaseContainer from "src/components/BaseContainer.vue";
 import WelcomeText from "src/components/WelcomeText.vue";
 import { defineComponent, ref, watch } from "vue";
 import { useRouter } from "vue-router";
-import drag from "v-drag";
 
 export default defineComponent({
   name: "IndexPage",
