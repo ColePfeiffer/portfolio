@@ -31,17 +31,60 @@
                   <div class="q-pt-sm">
                     Hi! I'm Toni Dreger, a web app developer based in Hamburg,
                     Germany. I enjoy creating things, whether that be websites,
-                    applications, art or anything in between. My goal is to
+                    applications, art or anything in between.
+
+                    My goal is to
                     build products and tools that provide value to people,
                     either by making their lives easier or by bringing them joy,
                     and to learn and grow as a developer in the process. I enjoy
                     problem solving and working with new technologies.
                   </div>
                   <div class="q-pt-md q-pb-md">
-                    This portfolio is a collection of some of my work and was
-                    made with Vue.js 3, Quasar 2 and Vite. Feel free to browse
-                    around and get in touch if you have any questions or would
-                    like to work together.
+                    Hi! I'm T, a web app developer based in Hamburg, Germany. I have a passion for creating websites,
+                    applications, and digital experiences that seamlessly blend aesthetics and functionality. My goal is
+                    to build tools that empower users, making their lives easier and more enjoyable.
+
+                    I thrive on challenging projects that push the boundaries of what's possible, utilizing my
+                    problem-solving mindset and drive to explore new technologies.
+
+                    Beyond coding, I immerse myself in music, dancing, drawing, and literature, particularly science
+                    fiction and slice of life genres. These creative outlets fuel my imagination and provide a fresh
+                    perspective that enriches my development work.
+
+                    Teamwork is fundamental to me, and I strive to foster a positive and inclusive work environment where
+                    knowledge sharing and idea collaboration are highly valued. I believe in learning from others and
+                    contributing to a supportive team culture.
+
+                    I'm currently seeking exciting opportunities to contribute my skills to impactful projects. If you're
+                    interested in working together, please don't hesitate to reach out. I'm eager to connect with
+                    like-minded professionals who share my passion for creating exceptional digital experiences."
+
+                    Feel free to make any further adjustments or additions to align the text with your personal style and
+                    preferences. Good luck with your portfolio and job applications!
+
+
+
+                    Hi! I'm Toni Dreger, a web app developer based in Hamburg,
+                    Germany. I enjoy creating things, whether that be websites, applications or digital experiences that
+                    blend aesthetics and functionality, aiming to build tools that empower users, making their lives
+                    easier and more enjoyable.
+
+                    With a problem-solving mindset and a passion for exploring new technologies, I thrive on challenging
+                    projects that push the boundaries of what's possible.
+
+                    Beyond coding, I immerse myself in music, dancing, drawing, and literature. These creative outlets
+                    fuel my imagination and provide a fresh
+                    perspective that enriches my development work.
+
+                    I value teamwork and strive to create a positive and
+                    inclusive work environment where knowledge is shared and ideas are valued. Learning from others and
+                    contributing to a
+                    supportive team culture are essential to me.
+
+                    I'm currently seeking exciting opportunities to contribute my skills to impactful projects. If you're
+                    interested in working together, please feel free to reach out. I'm
+                    eager to connect with like-minded professionals who share a passion for creating exceptional digital
+                    experiences.
                   </div>
                   <q-separator />
                 </div>
@@ -146,5 +189,4 @@ export default defineComponent({
 
 .monospace {
   font-family: monospace;
-}
-</style>
+}</style>

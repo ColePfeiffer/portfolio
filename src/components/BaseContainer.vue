@@ -65,16 +65,17 @@ export default {
   },
   mounted() {
     if (this.isDraggable) {
+      // Get a reference to the title bar handler element and baseContainer
       const titleBarHandler = this.$refs.titleBarHandler;
       const baseContainer = this.container;
-
+      // Enable dragging functionality using the interact.js library
       interact(baseContainer)
         .allowFrom(titleBarHandler)
         .draggable({
           // Set the drag options
           modifiers: [
             interact.modifiers.restrict({
-              restriction: "#megaTest",
+              restriction: "#megaTest", // Restrict dragging within the specified element
             }),
           ],
           listeners: {
@@ -88,11 +89,13 @@ export default {
                 const target = event.target;
                 // Updates baseComponentRect in order for me to use it's position information
                 this.baseComponentRect = event.target.getBoundingClientRect();
+
+                // Calculate the new x and y position based on the drag movement
                 const x =
                   (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
                 const y =
                   (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-
+                // Apply the translation to the target element
                 target.style.transform = `translate(${x}px, ${y}px)`;
                 target.setAttribute("data-x", x);
                 target.setAttribute("data-y", y);
@@ -116,13 +119,14 @@ export default {
     titleBarStyle() {
       return {
         backgroundColor: this.titlebarColor,
-        cursor: this.isExpanded
+        // Set the cursor style based on different conditions
+        cursor: this.isExpanded // If the component is expanded, use the default cursor
           ? "default"
           : this.isDraggable && this.isDragging
-            ? "grabbing"
+            ? "grabbing" // If the component is draggable and currently being dragged, use the grabbing cursor
             : this.isDraggable
-              ? "grab"
-              : "default",
+              ? "grab" // If the component is draggable but not being dragged, use the grab cursor
+              : "default", // If the component is not draggable, use the default cursor
       };
     },
   },
