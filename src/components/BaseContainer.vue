@@ -1,6 +1,16 @@
 <template>
-  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }">
-    <div id="title-bar-handler" class="title-bar" :style="{ backgroundColor: titlebarColor }" ref="titleBarHandler">
+  <div
+    class="window"
+    ref="fullBaseContainer"
+    :class="{ expanded: isExpanded }"
+    :style="positionStyle"
+  >
+    <div
+      id="title-bar-handler"
+      class="title-bar"
+      :style="{ backgroundColor: titlebarColor }"
+      ref="titleBarHandler"
+    >
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -8,10 +18,19 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
+        <button
+          v-if="hasExpandButton"
+          class="expand"
+          @click="toggleExpand"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon :name="expandIcon" size="16px" class="text-black" />
         </button>
-        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
+        <button
+          class="close"
+          @click="$emit('close')"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon name="mdi-close" size="16px" class="text-black" />
         </button>
       </div>
@@ -23,7 +42,7 @@
 </template>
 
 <script>
-import interact from 'interactjs';
+import interact from "interactjs";
 
 export default {
   name: "baseContainer",
@@ -48,6 +67,14 @@ export default {
   mounted() {
     const baseContainer = this.$refs.fullBaseContainer;
     const titleBarHandler = this.$refs.titleBarHandler;
+    const baseContainerRect = baseContainer.getBoundingClientRect();
+
+    console.log("Setting width, height, left, top");
+    this.width = baseContainerRect.width;
+    this.height = baseContainerRect.height;
+    this.left = baseContainerRect.left;
+    this.top = baseContainerRect.top;
+    console.log(this.width, this.height, this.left, this.top);
 
     interact(baseContainer)
       .allowFrom(titleBarHandler)
@@ -55,8 +82,8 @@ export default {
         // Set the drag options
         modifiers: [
           interact.modifiers.restrict({
-            restriction: '#megaTest',
-          })
+            restriction: "#megaTest",
+          }),
         ],
         listeners: {
           start: (event) => {
@@ -71,64 +98,69 @@ export default {
 
             const target = event.target;
 
-            const x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx;
-            const y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+            const x =
+              (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+            const y =
+              (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
 
             target.style.transform = `translate(${x}px, ${y}px)`;
 
-            target.setAttribute('data-x', x);
-            target.setAttribute('data-y', y);
+            target.setAttribute("data-x", x);
+            target.setAttribute("data-y", y);
           },
           end: (event) => {
             // Called when dragging ends
             // You can add any necessary logic here
-          }
-        }
+          },
+        },
       });
   },
   data() {
     return {
       isExpanded: false,
-      alteredPosition: null,
-      expandingPosition: null,
-      isDragging: false,
-      screenHeight: 0,
-      screenWidth: 0,
+      top: null,
+      left: null,
+      width: null,
+      height: null,
     };
   },
   computed: {
     expandIcon() {
       return this.isExpanded ? "mdi-window-restore" : "mdi-window-maximize";
     },
+    positionStyle() {
+      return {
+        top: `${this.top}px`,
+        left: `${this.left}px`,
+        width: `${this.width}px`,
+        height: `${this.height}px`,
+      };
+    },
   },
-  methods: {
-    getPosition() {
-      fullBaseContainer;
-    },
-    toggleExpand() {
-      if (this.isExpanded) {
-        // Restoring window from full screen
-        const { top, left, width, height } = this.alteredPosition;
-        this.$el.style.transform = `translate(${left}px, ${top}px)`;
-        this.$el.style.width = `${width}px`;
-        this.$el.style.height = `${height}px`;
-      } else {
-        // Expanding window to full screen
-        // Saving the altered position
-        this.alteredPosition = {
-          top: this.$el.offsetTop,
-          left: this.$el.offsetLeft,
-          width: this.$el.offsetWidth,
-          height: this.$el.offsetHeight,
-        };
+  toggleExpand() {
+    if (this.isExpanded) {
+      // Restoring window size and position from before toggling full screen
+      this.left = this.position.left;
+      this.top = this.position.top;
+      this.width = this.position.width;
+      this.height = this.position.height;
+    } else {
+      // Saving the current position
+      this.position = {
+        top: this.$refs.fullBaseContainer.getBoundingClientRect().top,
+        left: this.$refs.fullBaseContainer.getBoundingClientRect().left,
+        width: this.$refs.fullBaseContainer.getBoundingClientRect().width,
+        height: this.$refs.fullBaseContainer.getBoundingClientRect().height,
+      };
 
-        this.$el.style.transform = 'translate(0, 0)';
-        this.$el.style.width = '100%';
-        this.$el.style.height = '100%';
-      }
+      // Expanding window to full screen
+      this.left = 0;
+      this.top = 0;
+      this.width = window.innerWidth;
+      this.height = window.innerHeight;
+    }
 
-      this.isExpanded = !this.isExpanded;
-    },
+    this.isExpanded = !this.isExpanded;
   },
 };
 </script>
