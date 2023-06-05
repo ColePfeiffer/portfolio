@@ -1,31 +1,16 @@
 <template>
   <BaseCarousel>
-    <q-carousel-slide
-      v-for="(project, index) in projects"
-      :key="index"
-      :name="project.slideName"
-      class="column no-wrap flex-center carousel-slide"
-    >
+    <q-carousel-slide v-for="(project, index) in projects" :key="index" :name="project.slideName"
+      class="column no-wrap flex-center carousel-slide">
       <CarouselSlide>
-        <BaseContainer
-          :title="project.containerTitle"
-          :icon="project.containerIcon"
-          :titlebarColor="project.containerTitlebarColor"
-          style="background-color: whitesmoke"
-          :hasExpandButton="false"
-        >
+        <BaseContainer :title="project.containerTitle" :icon="project.containerIcon" :isDraggable="false"
+          :titlebarColor="project.containerTitlebarColor" style="background-color: whitesmoke" :hasExpandButton="false"
+          @close="redirectToIndex">
           <div class="row justify-center items-center q-pa-sm">
             <div class="col-0.5" style="width: 3%"></div>
             <div class="col-11" style="width: 94%">
-              <BaseProjectContainer
-                :name="project.name"
-                :path="project.path"
-                :images="project.images"
-                :languages="project.languages"
-                :date="project.date"
-                :gitHub="project.gitHub"
-                :live="project.live"
-              />
+              <BaseProjectContainer :name="project.name" :path="project.path" :images="project.images"
+                :languages="project.languages" :date="project.date" :gitHub="project.gitHub" :live="project.live" />
             </div>
             <div class="col-0.5" style="width: 3%"></div>
           </div>
@@ -131,6 +116,10 @@ export default defineComponent({
       tm,
     };
   },
-  methods: {},
+  methods: {
+    redirectToIndex() {
+      this.$router.push('/');
+    }
+  },
 });
 </script>

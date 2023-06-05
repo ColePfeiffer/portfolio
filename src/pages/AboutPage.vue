@@ -3,7 +3,7 @@
     <div class="row q-mt-lg q-pt-sm justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6" style="pointer-events: auto">
         <BaseContainer title="../About/ReadMe.txt" icon="mdi-application" titlebarColor="#FF007F     "
-          style="background-color: whitesmoke" :hasExpandButton="false">
+          style="background-color: whitesmoke" :hasExpandButton="false" @close="redirectToIndex">
           <q-card>
             <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="transparent"
               align="justify">
@@ -115,6 +115,11 @@ export default defineComponent({
       innerTab: ref("innerMails"),
       splitterModel: ref(20),
     };
+  },
+  methods: {
+    redirectToIndex() {
+      this.$router.push('/');
+    }
   },
   name: "WorkPage",
   components: { BaseContainer },

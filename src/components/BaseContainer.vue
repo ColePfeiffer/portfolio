@@ -1,6 +1,6 @@
 <template>
-  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }" :style="positionStyle">
-    <div id="title-bar-handler" class="title-bar" :style="{ backgroundColor: titlebarColor }" ref="titleBarHandler">
+  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }">
+    <div id="title-bar-handler" class="title-bar" :style="titleBarStyle" ref="titleBarHandler">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -24,7 +24,7 @@
 
 <script>
 import interact from "interactjs";
-import { ref, reactive, onMounted, watch } from 'vue';
+import { ref, reactive } from 'vue';
 
 export default {
   name: "baseContainer",
@@ -45,140 +45,122 @@ export default {
       type: Boolean,
       default: true,
     },
+    isDraggable: {
+      type: Boolean,
+      default: true,
+    },
   },
   data() {
     return {
       isExpanded: false,
-      currentPosition: {
-        top: null,
-        left: null,
-        width: null,
-        height: null,
-      },
+      isDragging: false,
       positionBeforeExpanding: {
-        top: null,
-        left: null,
-        width: null,
-        height: null,
-      }
+        top: 0,
+        left: 0,
+        width: 0,
+        height: 0,
+      },
+      baseComponentRect: ref(null),
     };
   },
-  watch: {
-    question: {
-      container(newContainer, oldContainer) {
-        console.log("updating container....", newContainer, oldContainer)
-        this.updateContainerPosition();
-      },
-      // force eager callback execution
-      immediate: true
-    },
-  },
   mounted() {
-    const titleBarHandler = this.$refs.titleBarHandler;
-    const baseContainer = this.container;
-    console.log("Container Position: ", this.containerPosition);
-    console.log("Position Style...", this.positionStyle)
-    interact(baseContainer)
-      .allowFrom(titleBarHandler)
-      .draggable({
-        // Set the drag options
-        modifiers: [
-          interact.modifiers.restrict({
-            restriction: "#megaTest",
-          }),
-        ],
-        listeners: {
-          start: (event) => {
-            // Called when dragging starts
-            // You can add any necessary logic here
-          },
-          move: (event) => {
-            // Called when the element is being dragged
-            console.log("Container Position: ", this.containerPosition);
-            console.log("Position Style...", this.positionStyle)
-            const target = event.target;
-            const x =
-              (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
-            const y =
-              (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+    if (this.isDraggable) {
+      const titleBarHandler = this.$refs.titleBarHandler;
+      const baseContainer = this.container;
 
-            target.style.transform = `translate(${x}px, ${y}px)`;
-            target.setAttribute("data-x", x);
-            target.setAttribute("data-y", y);
+      interact(baseContainer)
+        .allowFrom(titleBarHandler)
+        .draggable({
+          // Set the drag options
+          modifiers: [
+            interact.modifiers.restrict({
+              restriction: "#megaTest",
+            }),
+          ],
+          listeners: {
+            start: (event) => {
+              // Called when dragging starts
+              this.isDragging = true;
+            },
+            move: (event) => {
+              if (!this.isExpanded) {
+                // Called when the element is being dragged
+                const target = event.target;
+                // Updates baseComponentRect in order for me to use it's position information
+                this.baseComponentRect = event.target.getBoundingClientRect();
+                const x =
+                  (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+                const y =
+                  (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+                target.style.transform = `translate(${x}px, ${y}px)`;
+                target.setAttribute("data-x", x);
+                target.setAttribute("data-y", y);
+              }
+            },
+            end: (event) => {
+              // Called when dragging ends
+              this.isDragging = false;
+            },
           },
-          end: (event) => {
-            // Called when dragging ends
-            // You can add any necessary logic here
-          },
-        },
-      });
+        });
+    }
   },
   computed: {
     expandIcon() {
       return this.isExpanded ? "mdi-window-restore" : "mdi-window-maximize";
     },
-    // sets the style
-    positionStyle() {
-      return {
-        top: `${this.currentPosition.top}px`,
-        left: `${this.currentPosition.left}px`,
-        width: `${this.currentPosition.width}px`,
-        height: `${this.currentPosition.height}px`,
-      };
-    },
     container() {
       return this.$refs.fullBaseContainer;
     },
-    containerRect() {
-      return this.container.getBoundingClientRect();
-    },
-    // returns the position info on the current dom object
-    containerPosition() {
+    titleBarStyle() {
       return {
-        top: this.containerRect.top,
-        left: this.containerRect.left,
-        width: this.containerRect.width,
-        height: this.containerRect.height
+        backgroundColor: this.titlebarColor,
+        cursor: this.isExpanded
+          ? "default"
+          : this.isDraggable && this.isDragging
+            ? "grabbing"
+            : this.isDraggable
+              ? "grab"
+              : "default",
       };
-    }
+    },
   },
   methods: {
     toggleExpand() {
-      console.log(this.isExpanded)
       if (this.isExpanded) {
+        const { left, top, width, height } = this.positionBeforeExpanding;
         // Restoring window size and position from before toggling full screen
-        this.left = this.positionBeforeExpanding.left;
-        this.top = this.positionBeforeExpanding.top;
-        this.width = this.positionBeforeExpanding.width;
-        this.height = this.positionBeforeExpanding.height;
+        this.container.style.left = left;
+        this.container.style.top = top;
+        this.container.style.width = width;
+        this.container.style.height = height;
       } else {
         // Saving the current position
-        this.positionBeforeExpanding = {
-          top: this.containerPosition.top,
-          left: this.containerPosition.left,
-          width: this.containerPosition.width,
-          height: this.containerPosition.height,
-        };
-
-        // Expanding window to full screen
-        console.log("expanding!!!!")
-        this.currentPosition.left = 0;
-        this.currentPosition.top = 0;
-        this.currentPosition.width = "100%";
-        this.currentPosition.height = "100%";
+        if (this.baseComponentRect === null) {
+          // If the base component rect is null, calculate it using getBoundingClientRect() to get the initial values
+          const { left, top, width, height } = this.container.getBoundingClientRect();
+          this.positionBeforeExpanding = {
+            top: top,
+            left: left,
+            width: width,
+            height: height
+          };
+        } else {
+          // Use the already calculated base component rect
+          this.positionBeforeExpanding = {
+            top: this.baseComponentRect.top,
+            left: this.baseComponentRect.left,
+            width: this.baseComponentRect.width,
+            height: this.baseComponentRect.height,
+          };
+        }
       }
-
       this.isExpanded = !this.isExpanded;
     },
-    updateContainerPosition() {
-      this.currentPosition.top = this.containerRect.top;
-      this.currentPosition.left = this.containerRect.left;
-      this.currentPosition.width = this.containerRect.width;
-      this.currentPosition.height = this.containerRect.height;
-    }
-  }
 
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -192,13 +174,14 @@ export default {
 }
 
 .window.expanded {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  z-index: 2002;
+  position: fixed !important;
+  top: 0px !important;
+  left: 0px !important;
+  width: 100% !important;
+  transform: translate(0px, 0px) !important;
+  height: 100% !important;
+  margin: 0 !important;
+  z-index: 2002 !important;
 }
 
 .title-bar {
