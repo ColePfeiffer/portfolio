@@ -1,46 +1,58 @@
 <template>
   <q-page style="pointer-events: none">
     <div class="row q-mt-lg q-pt-sm justify-center fit">
-      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6" style="pointer-events: auto">
-        <BaseContainer title="../About/ReadMe.txt" icon="mdi-application" titlebarColor="#FF007F     "
-          style="background-color: whitesmoke" :hasExpandButton="false" @close="redirectToIndex">
+      <div
+        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6"
+        style="pointer-events: auto"
+      >
+        <BaseContainer
+          :title="$t('aboutPath')"
+          icon="mdi-application"
+          titlebarColor="#FF007F     "
+          style="background-color: whitesmoke"
+          :hasExpandButton="false"
+          @close="redirectToIndex"
+        >
           <q-card>
-            <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="transparent"
-              align="justify">
-              <q-tab name="mails" label="Profile" />
-              <q-tab name="alarms" label="Contact" />
+            <q-tabs
+              v-model="tab"
+              dense
+              class="text-grey"
+              active-color="primary"
+              indicator-color="transparent"
+              align="justify"
+            >
+              <q-tab name="mails" :label="aboutTabName" />
+              <q-tab name="alarms" :label="contactTabName" />
             </q-tabs>
 
             <q-separator />
 
             <q-tab-panels v-model="tab" animated>
-              <q-tab-panel name="mails" class="row justify-center items-start q-pa-none q-pa-md">
+              <q-tab-panel
+                name="mails"
+                class="row justify-center items-start q-pa-none q-pa-md"
+              >
                 <div class="col-6 q-pa-sm q-pl-md q-gutter-xs">
-                  <q-avatar size="150px" class="fit" style="max-height: 150px; max-width: 150px">
+                  <q-avatar
+                    size="150px"
+                    class="fit"
+                    style="max-height: 150px; max-width: 150px"
+                  >
                     <img src="images/toni.png" />
                   </q-avatar>
                 </div>
                 <div class="col-6 text-center q-pa-xs q-pt-lg">
                   <div class="name">Toni Dreger</div>
-                  <div class="subtitle monospace">Web / App Developer</div>
-                  <div class="subtitle monospace">@ Hamburg, Germany</div>
+                  <div class="subtitle monospace">{{ $t("jobPosition") }}</div>
+                  <div class="subtitle monospace">{{ $t("location") }}</div>
                   <q-separator />
                 </div>
                 <div class="col-12 text-justify q-pa-md">
                   <q-separator />
-                  <div class="q-pt-sm">
-                    Hi! I'm Toni Dreger, a web app developer based in Hamburg,
-                    Germany. I enjoy creating things, whether that be websites,
-                    applications, art or anything in between.
-
-                    My goal is to
-                    build products and tools that provide value to people,
-                    either by making their lives easier or by bringing them joy,
-                    and to learn and grow as a developer in the process. I enjoy
-                    problem solving and working with new technologies.
-                  </div>
+                  <div class="q-pt-sm">{{ $t("readMePart1") }}</div>
                   <div class="q-pt-md q-pb-md">
-
+                    {{ $t("readMePart2") }}
                   </div>
                   <q-separator />
                 </div>
@@ -48,7 +60,7 @@
                 <div class="bold subtitle text-center">
                   Status:
                   <q-icon style="top: -1px" name="circle" color="green" />
-                  available
+                  {{ $t("status") }}
                 </div>
                 <div class="q-pa-md subtitle text-center">
                   <!-- JavaScript, HTML5, CSS3, Vue.js, Quasar, Vite, Node.js, PHP,
@@ -65,7 +77,9 @@
                   <div class="col">
                     <div class="text-body-1 text-right">
                       <a
-                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m">&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a>
+                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m"
+                        >&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a
+                      >
                     </div>
                   </div>
                 </div>
@@ -77,7 +91,10 @@
                   </div>
                   <div class="col text-right">
                     <div class="text-body-1" style="white-space: pre-wrap">
-                      Toni Dreger
+                      <a
+                        href="https://www.linkedin.com/in/toni-dreger-957463278/"
+                        >Toni Dreger</a
+                      >
                     </div>
                   </div>
                 </div>
@@ -89,7 +106,9 @@
                   </div>
                   <div class="col text-right">
                     <div class="text-body-1" style="white-space: pre-wrap">
-                      ColePfeiffer
+                      <a href="https://github.com/ColePfeiffer/"
+                        >ColePfeiffer</a
+                      >
                     </div>
                   </div>
                 </div>
@@ -117,8 +136,16 @@ export default defineComponent({
   },
   methods: {
     redirectToIndex() {
-      this.$router.push('/');
-    }
+      this.$router.push("/");
+    },
+  },
+  computed: {
+    aboutTabName() {
+      return this.$t("aboutTab");
+    },
+    contactTabName() {
+      return this.$t("contactTab");
+    },
   },
   name: "WorkPage",
   components: { BaseContainer },
