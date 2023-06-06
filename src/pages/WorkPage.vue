@@ -57,8 +57,8 @@ export default defineComponent({
           },
         ],
         languages: ["Vue.js", "Quasar", "Webpack", "HTML/CSS/JS", "Firebase"],
-        gitHub: "https://github.com/ColePfeiffer/toEgo",
-        live: "https://colepfeiffer.github.io/",
+        gitHub: "https://github.com/ToniTechBot/toEgo",
+        live: "https://ToniTechBot.github.io/",
       },
       {
         slideName: 2,
@@ -76,7 +76,7 @@ export default defineComponent({
           { src: "images/RoomMe_06.png", description: "", isVideo: false },
         ],
         languages: ["Vue.js", "Vuetify", "Webpack", "HTML/CSS/JS"],
-        gitHub: "https://github.com/ColePfeiffer/room_me",
+        gitHub: "https://github.com/ToniTechBot/room_me",
         live: "",
       },
       {
@@ -105,7 +105,7 @@ export default defineComponent({
           },
         ],
         languages: ["Python", "REST API"],
-        gitHub: "https://github.com/ColePfeiffer/Farbmetrik-WS18",
+        gitHub: "https://github.com/ToniTechBot/Farbmetrik-WS18",
         live: "",
       },
       // Add more projects here...
