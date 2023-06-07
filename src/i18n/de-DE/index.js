@@ -7,7 +7,7 @@ export default {
   status: "verfügbar",
   aboutPath: "../Toni/LiesMich.txt",
   jobPosition: "Webeentwicklerin",
-  location: "@ Hamburg, DE",
+  location: "Hamburg, DE",
   readMePart1:
     "Hi! Ich bin Toni Dreger und eine Entwicklerin aus Hamburg. Ich liebe es Webseiten und Awendungen zu erschaffen, die Ästhetik und Funktionalität nahtlos miteinander vereinen. Mein Ziel ist es, Produkte und Tools zu entwickeln, die dem Menschen nützlich sind und ihren Alltag vereinfachen. Dabei möchte ich mich als Entwicklerin weiterentwickeln und an meinen Aufgaben wachsen. Abseits vom Programmieren tauche ich gerne in Musik, Tanzen, Zeichnen und Literatur ein und bin allgemein eine kreative und zugewandte Person.",
   readMePart2:
