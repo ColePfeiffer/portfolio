@@ -2,29 +2,48 @@
   <div>
     <q-card class="q-mb-md q-card" style="background-color: whitesmoke">
       <!-- Image and video -->
-      <q-img v-if="!images[currentImageIndex].isVideo" :src="images[currentImageIndex].src" class="project-image"
-        @click="showImageModal = true" :options="{
+      <q-img
+        v-if="!images[currentImageIndex].isVideo"
+        :src="images[currentImageIndex].src"
+        class="project-image"
+        @click="showImageModal = true"
+        :options="{
           imgClass: 'my-image-class',
           imgStyle: 'object-fit: contain;',
-        }" />
+        }"
+      />
       <div v-else>
         <q-video :src="images[currentImageIndex].src" @click.prevent />
       </div>
       <!-- Navigation buttons for when there is at least one video to display -->
       <div v-if="hasAtLeastOneVideo" class="justify-center items-center row">
-        <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="prevImage"
-          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
+        <q-btn
+          icon="mdi-chevron-left"
+          flat
+          dense
+          class="nav-button-for-video col-1 text-left"
+          @click="prevImage"
+          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'"
+        />
         <div class="col-10 text-center image-description">
           {{ images[currentImageIndex].description }}
         </div>
-        <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="nextImage"
-          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
+        <q-btn
+          icon="mdi-chevron-right"
+          flat
+          dense
+          class="nav-button-for-video col-1 text-right"
+          @click="nextImage"
+          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'"
+        />
       </div>
       <q-card-section>
         <!-- Name -->
         <div class="project-name text-h3">{{ name }}</div>
         <!-- Subtitle -->
-        <div class="project-subtitle text-caption col-6 text-weight-bold q-mb-md">
+        <div
+          class="project-subtitle text-caption col-6 text-weight-bold q-mb-md"
+        >
           {{ $t(`${projectName}.subtitle`) }}
         </div>
         <q-separator />
@@ -43,7 +62,7 @@
         </div>
         <q-separator />
         <!-- Languages  -->
-        <div class="row quart-3 justify-between q-mt-xs ">
+        <div class="row quart-3 justify-between q-mt-xs">
           <div class="col-auto">
             <div class="project-subitem-title">
               {{ $t("projectData.languages") }}
@@ -57,11 +76,9 @@
         </div>
         <q-separator />
         <!-- Features -->
-        <div class="row quart-3 justify-between q-mt-xs ">
+        <div class="row quart-3 justify-between q-mt-xs">
           <div class="col-auto">
-            <div class="project-subitem-title">
-              Features
-            </div>
+            <div class="project-subitem-title">Features</div>
           </div>
           <div class="col text-right">
             <div class="text-body-1" style="white-space: pre-wrap">
@@ -93,24 +110,54 @@
         </div>
         <q-separator />
         <!-- Description -->
-        <div class="project-description text-body-1 q-mt-md text-justify" style="white-space: pre-wrap">
+        <div
+          class="project-description text-body-1 q-mt-md text-justify"
+          style="white-space: pre-wrap"
+        >
           {{ $t(`${projectName}.description`) }}
         </div>
         <!-- DIALOG... TODO: auslagern! -->
-        <q-dialog v-model="showImageModal" class="project-image-modal" style="
-                                                                  background-color: rgba(0, 0, 0, 0.5);
-                                                                  backdrop-filter: blur(5px);
-                                                                ">
-          <q-img v-if="!images[currentImageIndex].isVideo" :src="images[currentImageIndex].src" class="q-pa-md" />
-          <q-video v-else class="fit" src="https://drive.google.com/file/d/1S4EIoc8cpTn7_1LdPCVabsm04QEgg3ZT/preview" />
-          <q-card-actions class="justify-center q-mt-md col-12" style="
-                                                                    position: absolute;
-                                                                    bottom: 20px;
-                                                                    left: 50%;
-                                                                    transform: translateX(-50%);
-                                                                  ">
-            <q-btn label="Prev" color="primary" class="q-mr-md" @click="prevImage" v-if="hasPrevImage" />
-            <q-btn label="Next" color="primary" class="q-ml-md" @click="nextImage" v-if="hasNextImage" />
+        <q-dialog
+          v-model="showImageModal"
+          class="project-image-modal"
+          style="
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+          "
+        >
+          <q-img
+            v-if="!images[currentImageIndex].isVideo"
+            :src="images[currentImageIndex].src"
+            class="q-pa-md"
+          />
+          <q-video
+            v-else
+            class="fit"
+            src="https://drive.google.com/file/d/1S4EIoc8cpTn7_1LdPCVabsm04QEgg3ZT/preview"
+          />
+          <q-card-actions
+            class="justify-center q-mt-md col-12"
+            style="
+              position: absolute;
+              bottom: 20px;
+              left: 50%;
+              transform: translateX(-50%);
+            "
+          >
+            <q-btn
+              label="Prev"
+              color="primary"
+              class="q-mr-md"
+              @click="prevImage"
+              v-if="hasPrevImage"
+            />
+            <q-btn
+              label="Next"
+              color="primary"
+              class="q-ml-md"
+              @click="nextImage"
+              v-if="hasNextImage"
+            />
           </q-card-actions>
         </q-dialog>
       </q-card-section>
@@ -120,7 +167,7 @@
 
 <script>
 import { Screen } from "quasar";
-import { useI18n } from 'vue-i18n'
+import { useI18n } from "vue-i18n";
 
 export default {
   name: "BaseProjectContainer",
@@ -128,7 +175,8 @@ export default {
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();
     return {
-      t, tm
+      t,
+      tm,
     };
   },
   data() {
@@ -169,7 +217,7 @@ export default {
   },
   computed: {
     features() {
-      return this.tm(this.projectName + '.features');
+      return this.tm(this.projectName + ".features");
     },
     projectName() {
       return this.path;
@@ -185,11 +233,13 @@ export default {
       if (this.isXS) {
         return this.features.join("\n");
       } else {
-        return this.features
-          .slice(0, Math.ceil(this.features.length / 2))
-          .join(", ") +
+        return (
+          this.features
+            .slice(0, Math.ceil(this.features.length / 2))
+            .join(", ") +
           "\n" +
-          this.features.slice(Math.ceil(this.features.length / 2)).join(", ");
+          this.features.slice(Math.ceil(this.features.length / 2)).join(", ")
+        );
       }
     },
     formattedLanguages() {
@@ -292,11 +342,13 @@ a:visited {
 }
 
 .project-image {
-  max-height: 450px;
+  max-height: 100%;
+  max-width: 100%; /* Add this line to set a maximum width */
 }
 
 .project-image-modal {
   max-width: 90vw;
   max-height: 90vh;
+  overflow: auto; /* Update to allow overflow */
 }
 </style>
