@@ -11,7 +11,7 @@ export default {
   readMePart1:
     "Hi! Ich bin Toni Dreger und eine Entwicklerin aus Hamburg. Ich liebe es Webseiten und Awendungen zu erschaffen, die Ästhetik und Funktionalität nahtlos miteinander vereinen. Mein Ziel ist es, Produkte und Tools zu entwickeln, die dem Menschen nützlich sind und ihren Alltag vereinfachen. Dabei möchte ich mich als Entwicklerin weiterentwickeln und an meinen Aufgaben wachsen. Abseits vom Programmieren tauche ich gerne in Musik, Tanzen, Zeichnen und Literatur ein und bin allgemein eine kreative und zugewandte Person.",
   readMePart2:
-    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Im Moment bin ich auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Schreiben Sie mir doch gerne, falls Sie zusammenarbeiten möchten. Ich freue mich darauf!",
+    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Im Moment bin ich auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Ich freue mich über Nachrichten bezüglich möglicher Kooperationen oder Jobangebote in Bezug auf Vue.js.",
   // work
   projectPath: "../projekte{msg}",
   projectData: {
