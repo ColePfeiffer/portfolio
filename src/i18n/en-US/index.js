@@ -9,9 +9,9 @@ export default {
   jobPosition: "Web / App Developer",
   location: "Hamburg, Germany",
   readMePart1:
-    "Hi! I'm Toni Dreger, a web developer based in Hamburg, Germany. I have a passion for creating websites, applications, and digital experiences that seamlessly blend aesthetics and functionality. My goal is to build products and tools that provide value to people, either by making their lives easier or by bringing them joy, and to learn and grow as a developer in the process. Beyond coding, I immerse myself in music, dancing, drawing, and literature and am overall a rather creative person.",
+    "Hi! I'm Toni Dreger, a web developer based in Hamburg, Germany. I have a passion for creating websites, applications, and digital experiences that blend aesthetics and functionality. My goal is to build products and tools that provide value to people, either by making their lives easier or by bringing them joy, and to learn and grow as a developer in the process. Beyond coding, I immerse myself in music, dancing, drawing, and literature (mostly Sci-Fi) and am overall a rather creative and approachable person.",
   readMePart2:
-    "I value teamwork and strive to create a positive and inclusive work environment where knowledge is shared and ideas are valued. Learning from others and contributing to a supportive team culture are essential to me. I'm currently seeking exciting opportunities to contribute my skills to impactful projects. If you're interested in working together, please feel free to reach out. I'm eager to connect with you!",
+    "I value teamwork and strive to create a positive and inclusive work environment where knowledge is shared and ideas are valued. Learning from others and contributing to a supportive team culture are essential to me. After attaining a Bachelor degree of Science in Media Systems from the HAW Hamburg I'm currently seeking exciting opportunities to contribute my skills to impactful projects. If you're interested in working together, please feel free to reach out, especially if you want me to work with Vue.js. I'm eager to connect with you!",
   // work
   projectPath: "../work/projects{msg}",
   projectData: {

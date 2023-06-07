@@ -1,5 +1,5 @@
 <template>
-  <q-page>
+  <q-page style="pointer-events: none;">
     <div class="row items-center justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md">
         <div class="text-center q-pb-lg q-mb-lg">
@@ -15,12 +15,13 @@
         </div>
       </div>
       <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
-        style="pointer-events: auto; margin-top: 40px">
+        style="pointer-events: none; margin-top: 40px">
         <div v-intersection="onIntersection" style="height: 10px" />
         <!-- This should fade out and then reroute to /work -->
         <transition name="fade" @after-leave="navigateToWork">
           <div v-if="isVisible" class="fade-container">
-            <BaseContainer title="../Home/Welcome.txt" titlebarColor="#fa8072" icon="mdi-home" width="600px">
+            <BaseContainer title="../Home/Welcome.txt" titlebarColor="#fa8072" icon="mdi-home" width="600px"
+              style="pointer-events: auto;">
               <div class="q-pa-sm">
                 <WelcomeText></WelcomeText>
               </div>

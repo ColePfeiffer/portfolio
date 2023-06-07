@@ -129,7 +129,7 @@
       </q-toolbar>
     </q-header>
     <q-page-container>
-      <div class="row justify-center q-mt-md" id="megaTest">
+      <div class="row justify-center" id="megaTest">
         <div class="col-6 col-md-6 col-sm-10 col-xs-11 q-scroll-y">
           <router-view />
         </div>

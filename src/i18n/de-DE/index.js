@@ -6,12 +6,12 @@ export default {
   contactTab: "Kontakt",
   status: "verfügbar",
   aboutPath: "../Toni/LiesMich.txt",
-  jobPosition: "Webeentwicklerin",
+  jobPosition: "Web / App Entwicklerin",
   location: "Hamburg, DE",
   readMePart1:
-    "Hi! Ich bin Toni Dreger und eine Entwicklerin aus Hamburg. Ich liebe es Webseiten und Awendungen zu erschaffen, die Ästhetik und Funktionalität nahtlos miteinander vereinen. Mein Ziel ist es, Produkte und Tools zu entwickeln, die dem Menschen nützlich sind und ihren Alltag vereinfachen. Dabei möchte ich mich als Entwicklerin weiterentwickeln und an meinen Aufgaben wachsen. Abseits vom Programmieren tauche ich gerne in Musik, Tanzen, Zeichnen und Literatur ein und bin allgemein eine kreative und zugewandte Person.",
+    "Hi! Ich bin Toni Dreger und eine Entwicklerin aus Hamburg. Mein Ziel ist es, Webseiten und Anwendungen zu erschaffen, die Ästhetik und Funktionalität vereinen. Mich begeistert die Möglichkeit, Werkzeuge zu implementieren, die den Alltag vereinfachen. Ich habe Spaß daran, Probleme zu lösen und meine Fähigkeiten als Programmierin weiterzuentwickeln und neue Technologien kennenzulernen. Neben dem Programmieren interessiere ich mich für Musik, Tanzen, Zeichnen und Literatur (besonders gerne mag ich Sci-Fi). Allgemein bin ich eine kreative und zugewandte Person.",
   readMePart2:
-    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Im Moment bin ich auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Ich freue mich über Nachrichten bezüglich möglicher Kooperationen oder Jobangebote in Bezug auf Vue.js.",
+    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Nach Abschluss meines Studiums Media Systems an der HAW Hamburg mit dem Bachelor of Science bin ich momentan auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Wenn Sie mit mir zusammenarbeiten möchten, dann melden Sie sich gerne bei mir! Ich freue mich über Jobangebote rund um Vue.js oder allgemein mit Bezug auf die Software- und Appentwicklung.",
   // work
   projectPath: "../projekte{msg}",
   projectData: {
