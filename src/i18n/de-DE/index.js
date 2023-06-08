@@ -13,7 +13,7 @@ export default {
   readMePart2:
     "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Nach Abschluss meines Studiums Media Systems an der HAW Hamburg mit dem Bachelor of Science bin ich momentan auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Wenn Sie mit mir zusammenarbeiten möchten, dann melden Sie sich gerne bei mir! Ich freue mich über Jobangebote rund um Vue.js oder allgemein mit Bezug auf die Software- und Appentwicklung.",
   // work
-  projectPath: "../projekte{msg}",
+  projectPath: "../Projekte{msg}",
   projectData: {
     date: "Datum",
     languages: "Sprachen",
