@@ -1,7 +1,9 @@
 <template>
-  <q-page style="pointer-events: none;">
+  <q-page style="pointer-events: none">
     <div class="row items-center justify-center fit">
-      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md">
+      <div
+        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md"
+      >
         <div class="text-center q-pb-lg q-mb-lg">
           <div class="name text-left">
             <div class="animated-text">
@@ -10,18 +12,42 @@
             </div>
             <q-separator color="white" class="q-mr-xl" />
             <q-separator color="white" class="q-ml-xl q-mt-md" />
-            <div class="text-center q-pt-md subtitle">web developer</div>
+            <div class="text-center q-pt-md subtitle">
+              {{ $t("jobPosition") }}
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
-        style="pointer-events: none; margin-top: 40px">
+      <div
+        class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
+        style="pointer-events: none; margin-top: 40px"
+      >
         <div v-intersection="onIntersection" style="height: 10px" />
         <!-- This should fade out and then reroute to /work -->
         <transition name="fade" @after-leave="navigateToWork">
           <div v-if="isVisible" class="fade-container">
-            <BaseContainer title="../Home/Welcome.txt" titlebarColor="#fa8072" icon="mdi-home" width="600px"
-              style="pointer-events: auto;">
+            <BaseContainer
+              v-if="!isWelcomeMessageClosed"
+              :title="$t('indexPath')"
+              titlebarColor="#fa8072"
+              icon="mdi-home"
+              width="600px"
+              style="pointer-events: auto"
+              @close="closeWelcomeMessage"
+            >
+              <div class="q-pa-sm">
+                <WelcomeText></WelcomeText>
+              </div>
+            </BaseContainer>
+            <BaseContainer
+              v-else
+              :title="$t('indexPath')"
+              titlebarColor="#fa8072"
+              icon="mdi-home"
+              width="600px"
+              style="pointer-events: auto"
+              @close="closeWelcomeMessage"
+            >
               <div class="q-pa-sm">
                 <WelcomeText></WelcomeText>
               </div>
@@ -46,6 +72,7 @@ export default defineComponent({
   setup() {
     const isVisible = ref(true);
     const router = useRouter();
+    const isWelcomeMessageClosed = ref(false);
 
     function onIntersection(entry) {
       const options = {
@@ -72,6 +99,11 @@ export default defineComponent({
       observer.observe(entry.target);
     }
 
+    function closeWelcomeMessage() {
+      isWelcomeMessageClosed.value = true;
+      console.log("isWelcomeMessageClosed", isWelcomeMessageClosed.value);
+    }
+
     function navigateToWork() {
       router.push("/work");
     }
@@ -84,6 +116,8 @@ export default defineComponent({
       isVisible,
       onIntersection,
       navigateToWork,
+      isWelcomeMessageClosed,
+      closeWelcomeMessage,
     };
   },
   beforeRouteLeave(to, from, next) {
@@ -116,7 +150,7 @@ export default defineComponent({
 }
 
 .name {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   color: white;
   font-family: "Source Sans Pro", sans-serif;
   font-family: "Montserrat", sans-serif;

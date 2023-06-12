@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-center q-pa-md">
     <div class="welcome-message q-pa-sm col-12">
-      <span class="decorative-font">Hello, thanks for stopping by!</span>
+      <span class="decorative-font">{{ $t("welcomeTitle") }}</span>
       <q-icon
         name="code"
         size="1.7em"
@@ -12,15 +12,24 @@
     </div>
 
     <div class="col-12 q-pa-sm q-mt-sm text-justify">
-      This portfolio is a collection of some of my work and was made with Vue.js
-      3, Quasar 2 and Vite. Feel free to browse around and get in touch if you
-      have any questions or would like to work together.
+      {{ $t("welcomeText") }}
     </div>
   </div>
 </template>
 <script>
+import { useI18n } from "vue-i18n";
+
 export default {
   name: "WelcomeMessage",
+  components: {},
+  setup() {
+    const { t } = useI18n(); // use as global scope
+    const { tm } = useI18n();
+    return {
+      t,
+      tm,
+    };
+  },
 };
 </script>
 <style lang="scss" scoped>

@@ -1,6 +1,8 @@
 export default {
-  hello: "Hello",
-  welcome: "Welcome to my app",
+  indexPath: "../Home/welcome.txt",
+  welcomeTitle: "Hello!",
+  welcomeText:
+    "This portfolio is a collection of some of my work and was made with Vue.js 3, Quasar 2 and Vite. Feel free to browse around and get in touch if you have any questions or would like to work together.",
   // about
   aboutTab: "About",
   contactTab: "Contact",

@@ -1,6 +1,9 @@
 export default {
-  hello: "Hallo",
-  welcome: "Willkommen zur App",
+  // index
+  indexPath: "../Start/willkommen.txt",
+  welcomeTitle: "Hallo!",
+  welcomeText:
+    "Dieses Portfolio ist eine Sammlung einiger meiner Arbeiten und wurde mit Vue.js 3, Quasar 2 und Vite realisiert. Bei Fragen, Anregungen oder Interesse an einer Zusammenarbeit stehe ich dir gerne zur Verfügung. Ich freue mich darauf, von dir zu hören!",
   // about
   aboutTab: "Über mich",
   contactTab: "Kontakt",
@@ -9,9 +12,11 @@ export default {
   jobPosition: "Web / App Entwicklerin",
   location: "Hamburg, DE",
   readMePart1:
-    "Hi! Ich bin Toni Dreger und eine Entwicklerin aus Hamburg. Mein Ziel ist es, Webseiten und Anwendungen zu erschaffen, die Ästhetik und Funktionalität vereinen. Mich begeistert die Möglichkeit, Werkzeuge zu implementieren, die den Alltag vereinfachen. Ich habe Spaß daran, Probleme zu lösen und meine Fähigkeiten als Programmierin weiterzuentwickeln und neue Technologien kennenzulernen. Neben dem Programmieren interessiere ich mich für Musik, Tanzen, Zeichnen und Literatur (besonders gerne mag ich Sci-Fi). Allgemein bin ich eine kreative und zugewandte Person.",
+    "Hi! Ich bin Toni Dreger, eine Entwicklerin aus Hamburg. Mein Ziel ist es, Webseiten und Anwendungen zu erschaffen, die Ästhetik und Funktionalität vereinen. Mich begeistert die Möglichkeit, Werkzeuge zu implementieren, die den Alltag vereinfachen. Ich habe Spaß daran, Probleme zu lösen und neue Technologien kennenzulernen, um meine Fähigkeiten kontinuierlich zu verbessern und mich als Entwicklerin weiterzuentwickeln. Neben dem Programmieren interessiere ich mich für Musik, Tanzen, Zeichnen und Literatur (besonders gerne mag ich Sci-Fi). Allgemein bin ich eine kreative und zugewandte Person.",
   readMePart2:
-    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Nach Abschluss meines Studiums Media Systems an der HAW Hamburg mit dem Bachelor of Science bin ich momentan auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen. Wenn Sie mit mir zusammenarbeiten möchten, dann melden Sie sich gerne bei mir! Ich freue mich über Jobangebote rund um Vue.js oder allgemein mit Bezug auf die Software- und Appentwicklung.",
+    "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Nach Abschluss meines Studiums Media Systems an der HAW Hamburg mit dem Bachelor of Science bin ich momentan auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen.",
+  readMePart3:
+    "Wenn du gerne mit mir zusammenarbeiten möchtest, melde dich. Ich freue mich besonders über Jobangebote rund um Vue.js, aber bin auch allgemein an Projekten der Software- oder Appentwicklung interessiert.",
   // work
   projectPath: "../Projekte{msg}",
   projectData: {
