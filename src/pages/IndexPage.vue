@@ -1,6 +1,7 @@
 <template>
   <q-page style="pointer-events: none">
     <div class="row items-center justify-center fit">
+      <!-- full name + job position -->
       <div
         class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md"
       >
@@ -17,44 +18,87 @@
             </div>
           </div>
         </div>
+        <div
+          class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md"
+          style="pointer-events: none"
+        >
+          <div>
+            <WindowsButton
+              style="pointer-events: auto"
+              label="Work"
+              color="green"
+              icon="mdi-code-braces"
+              @click="navigateToWork"
+            />
+            <WindowsButton
+              style="pointer-events: auto"
+              color="blue"
+              label="About"
+              icon="mdi-account"
+            />
+            <WindowsButton
+              style="pointer-events: auto"
+              color="white"
+              label="welcome.txt"
+              icon="mdi-text-box"
+              @click="openWelcomeMessage"
+            />
+            <WindowsButton
+              style="pointer-events: auto"
+              color="red"
+              icon="mdi-palette"
+              label="Colors"
+              @click="openColorPicker"
+            />
+          </div>
+        </div>
       </div>
+      <!-- Dialogs -->
       <div
         class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
         style="pointer-events: none; margin-top: 40px"
       >
-        <div v-intersection="onIntersection" style="height: 10px" />
-        <!-- This should fade out and then reroute to /work -->
-        <transition name="fade" @after-leave="navigateToWork">
-          <div v-if="isVisible" class="fade-container">
-            <BaseContainer
-              v-if="!isWelcomeMessageClosed"
-              :title="$t('indexPath')"
-              titlebarColor="#fa8072"
-              icon="mdi-home"
-              width="600px"
-              style="pointer-events: auto"
-              @close="closeWelcomeMessage"
-            >
-              <div class="q-pa-sm">
-                <WelcomeText></WelcomeText>
-              </div>
-            </BaseContainer>
-            <BaseContainer
-              v-else
-              :title="$t('indexPath')"
-              titlebarColor="#fa8072"
-              icon="mdi-home"
-              width="600px"
-              style="pointer-events: auto"
-              @close="closeWelcomeMessage"
-            >
-              <div class="q-pa-sm">
-                <WelcomeText></WelcomeText>
-              </div>
-            </BaseContainer>
+        <!-- Welcome Message -->
+        <BaseContainer
+          v-if="!isWelcomeMessageClosed"
+          :title="$t('indexPath')"
+          titlebarColor="#fa8072"
+          icon="mdi-home"
+          width="600px"
+          style="pointer-events: auto; z-index: 1000"
+          @close="closeWelcomeMessage"
+        >
+          <div class="q-pa-sm">
+            <WelcomeText></WelcomeText>
           </div>
-        </transition>
-        <div v-if="!isVisible">NAH IM NOT ANYMORE</div>
+        </BaseContainer>
+      </div>
+      <div
+        class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
+        v-if="isColorPickerVisible"
+        style="
+          pointer-events: none;
+          margin-top: 40px;
+          position: absolute;
+          z-index: 1001;
+        "
+      >
+        <!-- Color Picker -->
+        <BaseContainer
+          v-if="isColorPickerVisible"
+          :title="$t('colorPickerPath')"
+          :hasExpandButton="false"
+          titlebarColor="lightgreen"
+          icon="mdi-palette"
+          width="450px"
+          style="pointer-events: auto; z-index: 1005"
+          @close="closeColorPicker"
+        >
+          <div class="q-pa-sm">
+            PICK A COLOR! PLEASE. RED PINK GREEN BLUE. IM A PLACEHOLDER RIGHT
+            NOW.
+          </div>
+        </BaseContainer>
       </div>
     </div>
   </q-page>
@@ -63,67 +107,47 @@
 <script>
 import BaseContainer from "src/components/BaseContainer.vue";
 import WelcomeText from "src/components/WelcomeText.vue";
+import WindowsButton from "src/components/WindowsButton.vue";
 import { defineComponent, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "IndexPage",
-  components: { BaseContainer, WelcomeText },
+  components: { BaseContainer, WelcomeText, WindowsButton },
   setup() {
-    const isVisible = ref(true);
     const router = useRouter();
     const isWelcomeMessageClosed = ref(false);
-
-    function onIntersection(entry) {
-      const options = {
-        rootMargin: "-50px",
-        threshold: 0.5,
-      };
-
-      const observer = new IntersectionObserver((entries, observer) => {
-        console.log(
-          "isVisible",
-          isVisible.value,
-          "entry: ",
-          entries[0].isIntersecting
-        );
-        isVisible.value = entries[0].isIntersecting;
-        console.log(
-          "isVisible",
-          isVisible.value,
-          "entry: ",
-          entries[0].isIntersecting
-        );
-      }, options);
-
-      observer.observe(entry.target);
-    }
+    const isColorPickerVisible = ref(false);
 
     function closeWelcomeMessage() {
       isWelcomeMessageClosed.value = true;
-      console.log("isWelcomeMessageClosed", isWelcomeMessageClosed.value);
+    }
+
+    function openWelcomeMessage() {
+      isWelcomeMessageClosed.value = false;
+    }
+
+    function openColorPicker() {
+      isColorPickerVisible.value = true;
+    }
+
+    function closeColorPicker() {
+      isColorPickerVisible.value = false;
     }
 
     function navigateToWork() {
       router.push("/work");
     }
 
-    watch(isVisible, (newValue, oldValue) => {
-      console.log("isVisible changed from", oldValue, "to", newValue);
-    });
-
     return {
-      isVisible,
-      onIntersection,
       navigateToWork,
       isWelcomeMessageClosed,
       closeWelcomeMessage,
+      openWelcomeMessage,
+      openColorPicker,
+      closeColorPicker,
+      isColorPickerVisible,
     };
-  },
-  beforeRouteLeave(to, from, next) {
-    // Set isVisible to true when leaving the page
-    this.isVisible = true;
-    next();
   },
 });
 </script>

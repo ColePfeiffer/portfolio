@@ -42,7 +42,7 @@
                 <div class="col-6 text-center q-pa-xs q-pt-lg">
                   <div class="name">Toni Dreger</div>
                   <div class="subtitle monospace">{{ $t("jobPosition") }}</div>
-                  <div class="subtitle monospace">@ {{ $t("location") }}</div>
+                  <div class="subtitle monospace">{{ $t("location") }}</div>
                   <q-separator />
                 </div>
                 <div class="col-12 text-justify q-pa-md">

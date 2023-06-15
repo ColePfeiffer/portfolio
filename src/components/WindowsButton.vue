@@ -9,7 +9,7 @@
     @mouseout="isHovered = false"
   >
     <div class="button-content">
-      <q-icon :name="icon" class="icon" color="red" size="2rem" />
+      <q-icon :name="icon" class="icon" :color="color" size="2rem" />
       <div class="text" v-if="label">{{ label }}</div>
     </div>
   </q-btn>
@@ -21,6 +21,10 @@ export default {
     icon: {
       type: String,
       default: "mdi-windows",
+    },
+    color: {
+      type: String,
+      default: "red",
     },
     label: {
       type: String,

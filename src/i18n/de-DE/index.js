@@ -1,14 +1,18 @@
 export default {
-  // index
-  indexPath: "../Start/willkommen.txt",
+  //navigation
+  work: "Projekte",
+  about: "Profil",
+  // index C:\Daten
+  indexPath: "C:\\Start\\willkommen.txt",
+  colorPickerPath: "C:\\Start\\Farben.exe",
   welcomeTitle: "Hallo!",
   welcomeText:
-    "Dieses Portfolio ist eine Sammlung einiger meiner Arbeiten und wurde mit Vue.js 3, Quasar 2 und Vite realisiert. Bei Fragen, Anregungen oder Interesse an einer Zusammenarbeit stehe ich dir gerne zur Verfügung. Ich freue mich darauf, von dir zu hören!",
+    "Dieses Portfolio ist eine Sammlung einiger meiner Arbeiten und wurde mit Vue.js 3, Quasar 2 und Vite realisiert.",
   // about
   aboutTab: "Über mich",
   contactTab: "Kontakt",
   status: "verfügbar",
-  aboutPath: "../Toni/LiesMich.txt",
+  aboutPath: "C:\\Profil\\LiesMich.txt",
   jobPosition: "Web / App Entwicklerin",
   location: "Hamburg, DE",
   readMePart1:
@@ -18,7 +22,7 @@ export default {
   readMePart3:
     "Wenn du gerne mit mir zusammenarbeiten möchtest, melde dich. Ich freue mich besonders über Jobangebote rund um Vue.js, aber bin auch allgemein an Projekten der Software- oder Appentwicklung interessiert.",
   // work
-  projectPath: "../Projekte{msg}",
+  projectPath: "C:\\Projekte\\{msg}",
   projectData: {
     date: "Datum",
     languages: "Sprachen",

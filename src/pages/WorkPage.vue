@@ -60,7 +60,7 @@ export default defineComponent({
     const projects = [
       {
         slideName: 0,
-        containerTitle: "/toEGO",
+        containerTitle: "Vue\\ToEGO",
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#FEF501",
         date: "2022 - 2023",
@@ -86,7 +86,7 @@ export default defineComponent({
       },
       {
         slideName: 1,
-        containerTitle: "/RoomMe",
+        containerTitle: "Vue\\RoomMe",
         date: "2021",
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#D90479",
@@ -124,7 +124,7 @@ export default defineComponent({
       },
       {
         slideName: 2,
-        containerTitle: "/hueLight",
+        containerTitle: "Python\\HueLight",
         date: "2019",
         containerIcon: "fab fa-vuejs",
         containerTitlebarColor: "#04B2D9",
