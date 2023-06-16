@@ -2,23 +2,11 @@
   <q-page style="pointer-events: none">
     <div class="row q-mt-sm q-pt-sm justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
-        <BaseContainer
-          :title="$t('aboutPath')"
-          icon="mdi-application"
-          titlebarColor="#FF007F     "
-          style="background-color: whitesmoke; pointer-events: auto"
-          :hasExpandButton="false"
-          @close="redirectToIndex"
-        >
+        <BaseContainer :title="$t('aboutPath')" icon="mdi-application" titlebarColor="#FF007F     "
+          style="background-color: whitesmoke; pointer-events: auto" :hasExpandButton="false" @close="redirectToIndex">
           <q-card>
-            <q-tabs
-              v-model="tab"
-              dense
-              class="text-grey"
-              active-color="primary"
-              indicator-color="transparent"
-              align="justify"
-            >
+            <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="transparent"
+              align="justify">
               <q-tab name="mails" :label="aboutTabName" />
               <q-tab name="alarms" :label="contactTabName" />
             </q-tabs>
@@ -26,16 +14,9 @@
             <q-separator />
 
             <q-tab-panels v-model="tab" animated>
-              <q-tab-panel
-                name="mails"
-                class="row justify-center items-start q-pa-none q-pa-md"
-              >
+              <q-tab-panel name="mails" class="row justify-center items-start q-pa-none q-pa-md">
                 <div class="col-6 q-pa-sm q-pl-md q-gutter-xs">
-                  <q-avatar
-                    size="150px"
-                    class="fit"
-                    style="max-height: 150px; max-width: 150px"
-                  >
+                  <q-avatar size="150px" class="fit" style="max-height: 150px; max-width: 150px">
                     <img src="images/toni.png" />
                   </q-avatar>
                 </div>
@@ -52,7 +33,9 @@
                     {{ $t("readMePart2") }}
                   </div>
                   <div class="q-pt-md q-pb-md">
-                    {{ $t("readMePart3") }}
+                    <p>{{ $t("readMePart3") }}
+                      <span class="highlight" @click="tab = 'alarms'">{{ contactMeText }}</span>{{ $t("readMePart4") }}
+                    </p>
                   </div>
                   <q-separator />
                 </div>
@@ -77,9 +60,7 @@
                   <div class="col">
                     <div class="text-body-1 text-right">
                       <a
-                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m"
-                        >&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a
-                      >
+                        href="&#109;&#97;&#105;lto&#58;t&#46;%&#54;4%72eg&#101;&#37;72&#46;&#37;&#55;0&#37;6&#70;r&#116;fo&#108;&#37;69o&#64;g&#109;&#37;61i%&#54;&#67;&#46;c%6&#70;m">&#116;&#46;&#100;re&#103;er&#46;po&#114;&#116;folio&#64;gma&#105;l&#46;com</a>
                     </div>
                   </div>
                 </div>
@@ -91,10 +72,7 @@
                   </div>
                   <div class="col text-right">
                     <div class="text-body-1" style="white-space: pre-wrap">
-                      <a
-                        href="https://www.linkedin.com/in/toni-dreger-957463278/"
-                        >Toni Dreger</a
-                      >
+                      <a href="https://www.linkedin.com/in/toni-dreger-957463278/">Toni Dreger</a>
                     </div>
                   </div>
                 </div>
@@ -128,8 +106,6 @@ export default defineComponent({
   setup() {
     return {
       tab: ref("mails"),
-      innerTab: ref("innerMails"),
-      splitterModel: ref(20),
     };
   },
   methods: {
@@ -144,6 +120,14 @@ export default defineComponent({
     contactTabName() {
       return this.$t("contactTab");
     },
+    contactMeText() {
+      console.log(this.aboutTabName);
+      if (this.aboutTabName === 'About') {
+        return "reach out"
+      } else {
+        return "melde dich";
+      }
+    },
   },
   name: "WorkPage",
   components: { BaseContainer },
@@ -154,6 +138,28 @@ export default defineComponent({
 .name {
   font-size: 1rem;
   font-weight: 500;
+}
+
+.highlight {
+  color: #ffb252;
+  text-decoration: none;
+
+  position: relative;
+  z-index: 1;
+  padding: 3px;
+  margin: -3px;
+
+  background: linear-gradient(to right, #ffe8a1, #ffe8a1) no-repeat right;
+  background-size: 0% auto;
+
+  transition: background-size 0.3s, background-position 0s;
+
+}
+
+.highlight:hover {
+  color: #ffa333;
+  background-size: 100% auto;
+  background-position: left;
 }
 
 .subtitle {

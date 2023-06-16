@@ -7,7 +7,7 @@ export default {
   colorPickerPath: "C:\\Start\\Farben.exe",
   welcomeTitle: "Hallo!",
   welcomeText:
-    "Dieses Portfolio ist eine Sammlung einiger meiner Arbeiten und wurde mit Vue.js 3, Quasar 2 und Vite realisiert.",
+    "Dieses Portfolio wurde mit Vue.js 3, Quasar 2 und Vite realisiert und stellt eine Sammlung einiger meiner Arbeiten dar. Viel Spaß beim Umsehen!",
   // about
   aboutTab: "Über mich",
   contactTab: "Kontakt",
@@ -19,8 +19,9 @@ export default {
     "Hi! Ich bin Toni Dreger, eine Entwicklerin aus Hamburg. Mein Ziel ist es, Webseiten und Anwendungen zu erschaffen, die Ästhetik und Funktionalität vereinen. Mich begeistert die Möglichkeit, Werkzeuge zu implementieren, die den Alltag vereinfachen. Ich habe Spaß daran, Probleme zu lösen und neue Technologien kennenzulernen, um meine Fähigkeiten kontinuierlich zu verbessern und mich als Entwicklerin weiterzuentwickeln. Neben dem Programmieren interessiere ich mich für Musik, Tanzen, Zeichnen und Literatur (besonders gerne mag ich Sci-Fi). Allgemein bin ich eine kreative und zugewandte Person.",
   readMePart2:
     "Teamarbeit ist mir wichtig und ich strebe danach, ein positives und inklusives Arbeitsumfeld zu schaffen, in dem Wissen und Ideen geteilt werden. Nach Abschluss meines Studiums Media Systems an der HAW Hamburg mit dem Bachelor of Science bin ich momentan auf der Suche nach spannenden Möglichkeiten, meine Fähigkeiten in interessante Projekte einzubringen.",
-  readMePart3:
-    "Wenn du gerne mit mir zusammenarbeiten möchtest, melde dich. Ich freue mich besonders über Jobangebote rund um Vue.js, aber bin auch allgemein an Projekten der Software- oder Appentwicklung interessiert.",
+  readMePart3: "Wenn du gerne mit mir zusammenarbeiten möchtest,",
+  readMePart4:
+    ". Ich freue mich besonders über Jobangebote rund um Vue.js, aber bin auch allgemein an Projekten der Software- oder Appentwicklung interessiert.",
   // work
   projectPath: "C:\\Projekte\\{msg}",
   projectData: {

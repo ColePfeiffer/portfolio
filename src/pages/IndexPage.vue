@@ -2,10 +2,8 @@
   <q-page style="pointer-events: none">
     <div class="row items-center justify-center fit">
       <!-- full name + job position -->
-      <div
-        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md"
-      >
-        <div class="text-center q-pb-lg q-mb-lg">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md">
+        <div class="text-center  q-mb-lg">
           <div class="name text-left">
             <div class="animated-text">
               <div class="typing-text">TONI</div>
@@ -18,82 +16,41 @@
             </div>
           </div>
         </div>
-        <div
-          class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md"
-          style="pointer-events: none"
-        >
+        <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-xs text-center"
+          style="pointer-events: none">
           <div>
-            <WindowsButton
-              style="pointer-events: auto"
-              label="Work"
-              color="green"
-              icon="mdi-code-braces"
-              @click="navigateToWork"
-            />
-            <WindowsButton
-              style="pointer-events: auto"
-              color="blue"
-              label="About"
-              icon="mdi-account"
-            />
-            <WindowsButton
-              style="pointer-events: auto"
-              color="white"
-              label="welcome.txt"
-              icon="mdi-text-box"
-              @click="openWelcomeMessage"
-            />
-            <WindowsButton
-              style="pointer-events: auto"
-              color="red"
-              icon="mdi-palette"
-              label="Colors"
-              @click="openColorPicker"
-            />
+            <WindowsButton style="pointer-events: auto" label="Work" color="green" icon="mdi-code-braces"
+              @click="navigateToWork" />
+            <WindowsButton style="pointer-events: auto" color="blue" label="About" icon="mdi-account"
+              @click="navigateToAbout" />
+            <WindowsButton style="pointer-events: auto" color="white" label="welcome.txt" icon="mdi-text-box"
+              @click="openWelcomeMessage" />
+            <WindowsButton style="pointer-events: auto" color="red" icon="mdi-palette" label="Colors"
+              @click="openColorPicker" />
           </div>
         </div>
       </div>
       <!-- Dialogs -->
-      <div
-        class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
-        style="pointer-events: none; margin-top: 40px"
-      >
+      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
+        style="pointer-events: none; margin-top: 40px">
         <!-- Welcome Message -->
-        <BaseContainer
-          v-if="!isWelcomeMessageClosed"
-          :title="$t('indexPath')"
-          titlebarColor="#fa8072"
-          icon="mdi-home"
-          width="600px"
-          style="pointer-events: auto; z-index: 1000"
-          @close="closeWelcomeMessage"
-        >
+        <BaseContainer v-if="!isWelcomeMessageClosed" :title="$t('indexPath')" titlebarColor="#fa8072" icon="mdi-home"
+          width="600px" style="pointer-events: auto; z-index: 1000" @close="closeWelcomeMessage">
           <div class="q-pa-sm">
             <WelcomeText></WelcomeText>
           </div>
         </BaseContainer>
       </div>
-      <div
-        class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md"
-        v-if="isColorPickerVisible"
-        style="
+      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md" v-if="isColorPickerVisible" style="
           pointer-events: none;
           margin-top: 40px;
           position: absolute;
           z-index: 1001;
-        "
-      >
+        ">
         <!-- Color Picker -->
-        <BaseContainer
-          v-if="isColorPickerVisible"
-          :title="$t('colorPickerPath')"
-          :hasExpandButton="false"
-          titlebarColor="lightgreen"
-          icon="mdi-palette"
-          width="450px"
-          style="pointer-events: auto; z-index: 1005"
-          @close="closeColorPicker"
-        >
+        <BaseContainer v-if="isColorPickerVisible" :title="$t('colorPickerPath')" :hasExpandButton="false"
+          titlebarColor="lightgreen" icon="mdi-palette" width="450px" style="pointer-events: auto; z-index: 1005"
+          @close="closeColorPicker">
           <div class="q-pa-sm">
             PICK A COLOR! PLEASE. RED PINK GREEN BLUE. IM A PLACEHOLDER RIGHT
             NOW.
@@ -139,6 +96,10 @@ export default defineComponent({
       router.push("/work");
     }
 
+    function navigateToAbout() {
+      router.push("/about");
+    }
+
     return {
       navigateToWork,
       isWelcomeMessageClosed,
@@ -147,6 +108,7 @@ export default defineComponent({
       openColorPicker,
       closeColorPicker,
       isColorPickerVisible,
+      navigateToAbout
     };
   },
 });

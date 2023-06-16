@@ -1,13 +1,6 @@
 <template>
-  <q-btn
-    square
-    no-caps
-    flat
-    class="windows-button"
-    @click="executeProgram"
-    @mouseover="isHovered = true"
-    @mouseout="isHovered = false"
-  >
+  <q-btn square no-caps flat class="windows-button" @click="executeProgram" @mouseover="isHovered = true"
+    @mouseout="isHovered = false">
     <div class="button-content">
       <q-icon :name="icon" class="icon" :color="color" size="2rem" />
       <div class="text" v-if="label">{{ label }}</div>
@@ -52,6 +45,7 @@ export default {
   cursor: pointer;
   transition: background-color 0.3s;
   border: 1px solid rgba(0, 0, 0, 0);
+  text-shadow: rgb(77, 73, 129) 1px 1px 2px;
 }
 
 .windows-button:hover {
@@ -69,6 +63,6 @@ export default {
   margin-top: 8px;
   font-size: 0.8rem;
   color: white;
-  text-shadow: rgb(77, 73, 125) 1px 1px 4px;
+  text-shadow: rgb(62, 58, 102) 1px 1px 3px;
 }
 </style>
