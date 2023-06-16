@@ -143,17 +143,13 @@ export default defineComponent({
 .highlight {
   color: #ffb252;
   text-decoration: none;
-
   position: relative;
   z-index: 1;
   padding: 3px;
   margin: -3px;
-
   background: linear-gradient(to right, #ffe8a1, #ffe8a1) no-repeat right;
   background-size: 0% auto;
-
   transition: background-size 0.3s, background-position 0s;
-
 }
 
 .highlight:hover {

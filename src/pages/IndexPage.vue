@@ -51,7 +51,7 @@
         <BaseContainer v-if="isColorPickerVisible" :title="$t('colorPickerPath')" :hasExpandButton="false"
           titlebarColor="lightgreen" icon="mdi-palette" width="450px" style="pointer-events: auto; z-index: 1005"
           @close="closeColorPicker">
-          <div class="q-pa-sm">
+          <div class="q-pa-md">
             PICK A COLOR! PLEASE. RED PINK GREEN BLUE. IM A PLACEHOLDER RIGHT
             NOW.
           </div>
@@ -65,7 +65,7 @@
 import BaseContainer from "src/components/BaseContainer.vue";
 import WelcomeText from "src/components/WelcomeText.vue";
 import WindowsButton from "src/components/WindowsButton.vue";
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
 
 export default defineComponent({
