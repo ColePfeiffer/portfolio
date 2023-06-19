@@ -167,19 +167,6 @@ export default {
     },
   },
   computed: {
-    calculatedSpacing() {
-      if (Screen.xs) {
-        return "-5%";
-      } else if (Screen.sm) {
-        return "0%";
-      } else if (Screen.lt.md) {
-        return "5%";
-      } else if (Screen.md) {
-        return "15%";
-      } else {
-        return "24%";
-      }
-    },
     features() {
       return this.tm(this.projectName + ".features");
     },
