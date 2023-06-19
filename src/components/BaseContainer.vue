@@ -1,6 +1,16 @@
 <template>
-  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }">
-    <div id="title-bar-handler" class="title-bar" :style="titleBarStyle" ref="titleBarHandler">
+  <div
+    class="window"
+    ref="fullBaseContainer"
+    :class="{ expanded: isExpanded }"
+    :style="{ zIndex: updatedZIndex }"
+  >
+    <div
+      id="title-bar-handler"
+      class="title-bar"
+      :style="titleBarStyle"
+      ref="titleBarHandler"
+    >
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -8,10 +18,19 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
+        <button
+          v-if="hasExpandButton"
+          class="expand"
+          @click="toggleExpand"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon :name="expandIcon" size="16px" class="text-black" />
         </button>
-        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
+        <button
+          class="close"
+          @click="$emit('close')"
+          :style="{ backgroundColor: titlebarColor }"
+        >
           <q-icon name="mdi-close" size="16px" class="text-black" />
         </button>
       </div>
@@ -24,11 +43,15 @@
 
 <script>
 import interact from "interactjs";
-import { ref, reactive } from 'vue';
+import { ref, reactive } from "vue";
 
 export default {
   name: "baseContainer",
   props: {
+    zIndex: {
+      type: Number,
+      default: 1,
+    },
     title: {
       type: String,
       default: "Window Title",
@@ -110,6 +133,9 @@ export default {
     }
   },
   computed: {
+    updatedZIndex() {
+      return this.isExpanded ? 2002 : this.zIndex;
+    },
     expandIcon() {
       return this.isExpanded ? "mdi-window-restore" : "mdi-window-maximize";
     },
@@ -123,10 +149,10 @@ export default {
         cursor: this.isExpanded // If the component is expanded, use the default cursor
           ? "default"
           : this.isDraggable && this.isDragging
-            ? "grabbing" // If the component is draggable and currently being dragged, use the grabbing cursor
-            : this.isDraggable
-              ? "grab" // If the component is draggable but not being dragged, use the grab cursor
-              : "default", // If the component is not draggable, use the default cursor
+          ? "grabbing" // If the component is draggable and currently being dragged, use the grabbing cursor
+          : this.isDraggable
+          ? "grab" // If the component is draggable but not being dragged, use the grab cursor
+          : "default", // If the component is not draggable, use the default cursor
       };
     },
   },
@@ -143,12 +169,13 @@ export default {
         // Saving the current position
         if (this.baseComponentRect === null) {
           // If the base component rect is null, calculate it using getBoundingClientRect() to get the initial values
-          const { left, top, width, height } = this.container.getBoundingClientRect();
+          const { left, top, width, height } =
+            this.container.getBoundingClientRect();
           this.positionBeforeExpanding = {
             top: top,
             left: left,
             width: width,
-            height: height
+            height: height,
           };
         } else {
           // Use the already calculated base component rect
@@ -162,9 +189,8 @@ export default {
       }
       this.isExpanded = !this.isExpanded;
     },
-
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
@@ -175,6 +201,7 @@ export default {
   margin: 5px auto;
   position: relative;
   touch-action: none;
+  pointer-events: auto;
 }
 
 .window.expanded {
