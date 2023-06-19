@@ -2,46 +2,26 @@
   <div>
     <q-card class="q-mb-md q-card" style="background-color: whitesmoke">
       <!-- Image and video -->
-      <q-img
-        v-if="!images[currentImageIndex].isVideo"
-        :ratio="4 / 3"
-        :fit="images[currentImageIndex].fit"
-        :src="images[currentImageIndex].src"
-        class="project-image"
-        @click="showImageModal = true"
-      />
+      <q-img v-if="!images[currentImageIndex].isVideo" :ratio="4 / 3" :fit="images[currentImageIndex].fit"
+        :src="images[currentImageIndex].src" class="project-image" @click="showImageModal = true" />
       <div v-else>
         <q-video :src="images[currentImageIndex].src" @click.prevent />
       </div>
       <!-- Navigation buttons for when there is at least one video to display -->
       <div class="justify-center items-center row">
-        <q-btn
-          icon="mdi-chevron-left"
-          flat
-          dense
-          class="nav-button-for-video col-1 text-left"
-          @click="prevImage"
-          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'"
-        />
+        <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="prevImage"
+          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
         <div class="col-10 text-center image-description">
           {{ images[currentImageIndex].description }}
         </div>
-        <q-btn
-          icon="mdi-chevron-right"
-          flat
-          dense
-          class="nav-button-for-video col-1 text-right"
-          @click="nextImage"
-          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'"
-        />
+        <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="nextImage"
+          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
       </div>
       <q-card-section>
         <!-- Name -->
         <div class="project-name text-h3">{{ name }}</div>
         <!-- Subtitle -->
-        <div
-          class="project-subtitle text-caption col-6 text-weight-bold q-mb-md"
-        >
+        <div class="project-subtitle text-caption col-6 text-weight-bold q-mb-md">
           {{ $t(`${projectName}.subtitle`) }}
         </div>
         <q-separator />
@@ -107,59 +87,28 @@
         </div>
         <q-separator />
         <!-- Description -->
-        <div
-          class="project-description text-body-1 q-mt-md text-justify"
-          style="white-space: pre-wrap"
-        >
+        <div class="project-description text-body-1 q-mt-md text-justify" style="white-space: pre-wrap">
           {{ $t(`${projectName}.description`) }}
         </div>
         <!-- DIALOG... TODO: auslagern! -->
-        <q-dialog
-          v-model="showImageModal"
-          class="project-image-modal fullscreen-dialog"
-          style="
+        <q-dialog v-model="showImageModal" class="project-image-modal fullscreen-dialog" style="
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(13px);
-          "
-        >
+          ">
           <q-page class="full-height full-width column justify-center">
-            <div
-              class="row absolute-top justify-between text-center items-center"
-              style="pointer-events: auto"
-            >
+            <div class="row absolute-top justify-between text-center items-center" style="pointer-events: auto">
               <div class="col-1">
-                <q-btn
-                  color="white"
-                  flat
-                  round
-                  dense
-                  :icon="leftButtonIcon"
-                  @click="prevImage"
-                />
+                <q-btn color="white" flat round dense :icon="leftButtonIcon" @click="prevImage" />
               </div>
-              <div
-                class="col-10 text-white text-shadow-3"
-                style="font-family: monospace"
-              >
+              <div class="col-10 text-white text-shadow-3" style="font-family: monospace">
                 {{ images[currentImageIndex].description }}
               </div>
               <div class="col-1">
-                <q-btn
-                  color="white"
-                  flat
-                  round
-                  dense
-                  :icon="rightButtonIcon"
-                  @click="nextImage"
-                />
+                <q-btn color="white" flat round dense :icon="rightButtonIcon" @click="nextImage" />
               </div>
             </div>
-            <q-img
-              :src="images[currentImageIndex].src"
-              fit="contain"
-              class="fullscreen-image absolute-center"
-              style="margin-top: 20px"
-            />
+            <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
+              style="margin-top: 20px" />
           </q-page>
         </q-dialog>
       </q-card-section>
@@ -219,7 +168,6 @@ export default {
   },
   computed: {
     calculatedSpacing() {
-      // lt less than, gt greater than
       if (Screen.xs) {
         return "-5%";
       } else if (Screen.sm) {
@@ -324,78 +272,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.image-description {
-  color: gray;
-  font-family: monospace;
-  font-size: 12px;
-}
-
-.nav-button-for-video {
-  color: gray;
-}
-
-a:visited {
-  color: #009999;
-}
-
-.quart-3 {
-  font-size: 12px;
-  font-family: monospace;
-}
-
-.fullscreen-dialog .q-dialog-content::-webkit-scrollbar {
-  display: none;
-  /* Hides the scrollbar in WebKit browsers */
-}
-
-.fullscreen-dialog .q-dialog-content::-moz-scrollbar {
-  display: none;
-  /* Hides the scrollbar in Firefox */
-}
-
-.fullscreen-image {
-  max-width: 100%;
-  max-height: 95%;
-}
-
-.q-card {
-  border: none;
-  box-shadow: none;
-  border-radius: 0px;
-}
-
-.project-name {
-  font-weight: 700;
-  margin-top: 10px;
-}
-
-.project-details {
-  margin-top: 16px;
-}
-
-.project-subtitle {
-  color: #607d8b;
-}
-
-.project-subitem-title {
-  font-weight: 700;
-}
-
-.project-description {
-  margin-top: 16px;
-}
-
-.project-image {
-  /* Add this line to set a maximum width */
-  width: 100%;
-}
-
-.project-image-modal {
-  max-width: 100vh;
-  max-height: 100vh;
-  height: 100vh;
-  overflow: hidden;
-  /* Update to allow overflow */
-}
+<style>
+@import "./styles/BaseProjectContainer.css";
 </style>

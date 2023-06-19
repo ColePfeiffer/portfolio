@@ -1,10 +1,10 @@
 <template>
   <q-carousel v-model="slide" transition-prev="slide-down" transition-next="slide-up" swipeable animated
     navigation-icon="radio_button_unchecked" navigation navigation-position="top"
-    class="bg-transparent full-height carousel" style="pointer-events: none;" ref="carousel">
+    class="bg-transparent full-height carousel" ref="carousel">
     <slot></slot>
     <template v-slot:control>
-      <q-carousel-control position="top" class="q-gutter-xs" style="position: absolute; margin-top: 12px">
+      <q-carousel-control position="top" class="q-gutter-xs carousel-control">
         <q-btn class="arrow-left" v-if="hasPrevProject" flat round dense icon="mdi-chevron-left"
           @click="$refs.carousel.previous()" :style="leftArrowSpacing" />
         <q-btn class="arrow-right" v-if="hasNextProject" flat round dense icon="mdi-chevron-right"
@@ -27,55 +27,59 @@ export default defineComponent({
     },
   },
   setup() {
-    var slide = ref(0);
+    const slide = ref(0);
     return {
       slide,
     };
   },
   methods: {
+    generateArrowSpacing(direction) {
+      const spacing = this.calculatedSpacing;
+      return { [direction]: spacing };
+    }
   },
   computed: {
     hasPrevProject() {
-      console.log("hasprevimage....", this.slide);
       return this.slide > 0;
     },
     hasNextProject() {
-      console.log("hasNextImage....", this.slide);
       return this.slide < this.projectCount - 1;
     },
     calculatedSpacing() {
-      // lt less than, gt greater than
-      if (Screen.xs) {
-        return "-5%";
-      } else if (Screen.sm) {
-        return "0%";
-      } else if (Screen.lt.md) {
-        return "5%";
-      } else if (Screen.md) {
-        return "15%";
-      } else {
-        return "24%";
+      switch (true) {
+        case Screen.xs:
+          return "-5%";
+        case Screen.sm:
+          return "0%";
+        case Screen.lt.md:
+          return "5%";
+        case Screen.md:
+          return "15%";
+        default:
+          return "24%";
       }
     },
     leftArrowSpacing() {
-      let obj = {};
-      obj.left = this.calculatedSpacing;
-      return obj;
+      return this.generateArrowSpacing('left');
     },
     rightArrowSpacing() {
-      let obj = {};
-      obj.right = this.calculatedSpacing;
-      return obj;
+      return this.generateArrowSpacing('right');
     }
   }
 });
 </script>
 
 <style>
+.carousel-control {
+  position: absolute;
+  margin-top: 12px;
+}
+
 .carousel {
   padding-top: 38px;
   padding-left: 0px !important;
   padding-right: 0px;
+  pointer-events: none;
 }
 
 .arrow-left,

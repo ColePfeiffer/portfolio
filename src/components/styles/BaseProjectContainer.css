@@ -1,0 +1,73 @@
+.image-description {
+  color: gray;
+  font-family: monospace;
+  font-size: 12px;
+}
+
+.nav-button-for-video {
+  color: gray;
+}
+
+a:visited {
+  color: #009999;
+}
+
+.quart-3 {
+  font-size: 12px;
+  font-family: monospace;
+}
+
+.fullscreen-dialog .q-dialog-content::-webkit-scrollbar {
+  display: none;
+  /* Hides the scrollbar in WebKit browsers */
+}
+
+.fullscreen-dialog .q-dialog-content::-moz-scrollbar {
+  display: none;
+  /* Hides the scrollbar in Firefox */
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 95%;
+}
+
+.q-card {
+  border: none;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.project-name {
+  font-weight: 700;
+  margin-top: 10px;
+}
+
+.project-details {
+  margin-top: 16px;
+}
+
+.project-subtitle {
+  color: #607d8b;
+}
+
+.project-subitem-title {
+  font-weight: 700;
+}
+
+.project-description {
+  margin-top: 16px;
+}
+
+.project-image {
+  /* Add this line to set a maximum width */
+  width: 100%;
+}
+
+.project-image-modal {
+  max-width: 100vh;
+  max-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  /* Update to allow overflow */
+}

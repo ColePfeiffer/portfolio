@@ -1,27 +1,41 @@
 <template>
-  <div class="row justify-center q-pa-md">
-    <div class="welcome-message q-pa-sm col-12">
-      <span class="decorative-font">{{ $t("welcomeTitle") }}</span>
-      <q-icon
-        name="code"
-        size="1.7em"
-        color="secondary"
-        class="q-ml-sm q-mr-sm"
-      ></q-icon>
-      <q-icon name="fab fa-vuejs" size="1.7em" color="dark"></q-icon>
+  <BaseContainer
+    :title="$t('colorPickerPath')"
+    :hasExpandButton="false"
+    titlebarColor="lightgreen"
+    icon="mdi-palette"
+    width="400px"
+    :zIndex="zIndex"
+    @close="closeDialog"
+  >
+    <div class="q-pa-sm">
+      <div class="row justify-center q-pa-md">
+        <div class="welcome-message q-pa-sm col-12">
+          PICK A COLOR! PLEASE. RED PINK GREEN BLUE. IM A PLACEHOLDER RIGHT NOW.
+        </div>
+      </div>
     </div>
-
-    <div class="col-12 q-pa-sm q-mt-sm text-justify">
-      {{ $t("welcomeText") }}
-    </div>
-  </div>
+  </BaseContainer>
 </template>
 <script>
 import { useI18n } from "vue-i18n";
+import BaseContainer from "src/components/BaseContainer.vue";
 
 export default {
-  name: "WelcomeMessage",
-  components: {},
+  name: "DialogColorPicker",
+  components: { BaseContainer },
+  emits: ["close"],
+  props: {
+    zIndex: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    closeDialog() {
+      this.$emit("close");
+    },
+  },
   setup() {
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();

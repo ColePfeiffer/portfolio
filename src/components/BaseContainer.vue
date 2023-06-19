@@ -1,16 +1,6 @@
 <template>
-  <div
-    class="window"
-    ref="fullBaseContainer"
-    :class="{ expanded: isExpanded }"
-    :style="{ zIndex: updatedZIndex }"
-  >
-    <div
-      id="title-bar-handler"
-      class="title-bar"
-      :style="titleBarStyle"
-      ref="titleBarHandler"
-    >
+  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }" :style="{ zIndex: updatedZIndex }">
+    <div id="title-bar-handler" class="title-bar" :style="titleBarStyle" ref="titleBarHandler">
       <!-- Icon and title of window -->
       <div class="title-bar-text">
         <q-icon :name="icon" class="icon" />
@@ -18,19 +8,10 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button
-          v-if="hasExpandButton"
-          class="expand"
-          @click="toggleExpand"
-          :style="{ backgroundColor: titlebarColor }"
-        >
+        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
           <q-icon :name="expandIcon" size="16px" class="text-black" />
         </button>
-        <button
-          class="close"
-          @click="$emit('close')"
-          :style="{ backgroundColor: titlebarColor }"
-        >
+        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
           <q-icon name="mdi-close" size="16px" class="text-black" />
         </button>
       </div>
@@ -43,10 +24,10 @@
 
 <script>
 import interact from "interactjs";
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 export default {
-  name: "baseContainer",
+  name: "BaseContainer",
   props: {
     zIndex: {
       type: Number,
@@ -102,30 +83,34 @@ export default {
             }),
           ],
           listeners: {
+            // Called when dragging starts
             start: (event) => {
-              // Called when dragging starts
               this.isDragging = true;
             },
+            // Called when the element is being dragged
             move: (event) => {
+              // checks if the component is expanded, if it is, don't allow dragging
               if (!this.isExpanded) {
-                // Called when the element is being dragged
                 const target = event.target;
                 // Updates baseComponentRect in order for me to use it's position information
+                // when restoring the window size and position from before toggling full screen
                 this.baseComponentRect = event.target.getBoundingClientRect();
-
-                // Calculate the new x and y position based on the drag movement
+                // The x and y position is stored in the data-x and data-y attributes
+                // of the target element respectively, so we need to get them and
+                // add the current drag distance to them to get the new position
                 const x =
                   (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
                 const y =
                   (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
-                // Apply the translation to the target element
+                // The translate() function takes the x and y position as parameters and applies them to the element
                 target.style.transform = `translate(${x}px, ${y}px)`;
+                // Update the data-x and data-y attributes with the new position values
                 target.setAttribute("data-x", x);
                 target.setAttribute("data-y", y);
               }
             },
+            // Called when dragging ends
             end: (event) => {
-              // Called when dragging ends
               this.isDragging = false;
             },
           },
@@ -133,15 +118,19 @@ export default {
     }
   },
   computed: {
+    // If the component is expanded, the z-index is set to 2002, otherwise it's set to the default value
     updatedZIndex() {
       return this.isExpanded ? 2002 : this.zIndex;
     },
+    // If the component is expanded, the expand icon is set to the restore icon, otherwise it's set to the maximize icon
     expandIcon() {
       return this.isExpanded ? "mdi-window-restore" : "mdi-window-maximize";
     },
+    // Get a reference to the base container element
     container() {
       return this.$refs.fullBaseContainer;
     },
+    // Set the style of the dialog container
     titleBarStyle() {
       return {
         backgroundColor: this.titlebarColor,
@@ -149,14 +138,15 @@ export default {
         cursor: this.isExpanded // If the component is expanded, use the default cursor
           ? "default"
           : this.isDraggable && this.isDragging
-          ? "grabbing" // If the component is draggable and currently being dragged, use the grabbing cursor
-          : this.isDraggable
-          ? "grab" // If the component is draggable but not being dragged, use the grab cursor
-          : "default", // If the component is not draggable, use the default cursor
+            ? "grabbing" // If the component is draggable and currently being dragged, use the grabbing cursor
+            : this.isDraggable
+              ? "grab" // If the component is draggable but not being dragged, use the grab cursor
+              : "default", // If the component is not draggable, use the default cursor
       };
     },
   },
   methods: {
+    // Toggles the expanded state of the component and saves the current position in order to restore it later
     toggleExpand() {
       if (this.isExpanded) {
         const { left, top, width, height } = this.positionBeforeExpanding;
@@ -193,88 +183,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.window {
-  background-color: #fff;
-  border: 2px solid #000;
-  box-shadow: 3px 3px #000;
-  margin: 5px auto;
-  position: relative;
-  touch-action: none;
-  pointer-events: auto;
-}
-
-.window.expanded {
-  position: fixed !important;
-  top: 0px !important;
-  left: 0px !important;
-  width: 100% !important;
-  transform: translate(0px, 0px) !important;
-  height: 100% !important;
-  margin: 0 !important;
-  z-index: 2002 !important;
-}
-
-.title-bar {
-  position: relative;
-  height: 22px;
-  border-bottom: 2px solid #000;
-  padding: 3px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.title-bar-text {
-  display: flex;
-  align-items: center;
-  font-family: "VT323", monospace;
-}
-
-.icon {
-  height: 16px;
-  margin-right: 5px;
-}
-
-.title-bar-controls {
-  display: flex;
-  align-items: center;
-}
-
-.close {
-  width: 16px;
-  height: 16px;
-  border: 1.7px solid #181818;
-  margin-left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.close:hover {
-  cursor: pointer;
-  background-color: magenta !important;
-}
-
-.expand:hover {
-  cursor: pointer;
-  background-color: yellow !important;
-}
-
-.expand {
-  width: 16px;
-  height: 16px;
-  border: 1.7px solid #181818;
-  margin-left: 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.window-body {
-  font-size: 14px;
-}
+<style>
+@import "./styles/BaseContainer.css";
 </style>
