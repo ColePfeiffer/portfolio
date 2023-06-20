@@ -1,7 +1,7 @@
 <template>
   <q-dialog class="project-image-modal fullscreen-dialog full-width"
-    style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(13px); width: 500px">
-    <q-page class="full-height full-width column justify-center">
+    style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(13px)">
+    <q-page class="full-height full-width column justify-center ">
       <div class="row image-viewer-navigation-bar absolute-top justify-between text-center items-center">
         <div class="col-1">
           <q-btn color="white" flat round dense :icon="leftButtonIcon" @click="goBack" />
@@ -15,9 +15,9 @@
       </div>
       <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
         style="margin-top: 20px; z-index: 100">
-        <div class="fit" style="'background-color': transparent">
-          <div class="overlay left" @click="goBack" :class="{ 'zoom-out': !hasPrevImage }"></div>
-          <div class="overlay right" @click="goForward" :class="{ 'zoom-out': !hasNextImage }"></div>
+        <div class="fit bg-transparent">
+          <div class="overlay left bg-transparent" @click="goBack" :class="{ 'zoom-out': !hasPrevImage }"></div>
+          <div class="overlay right bg-transparent" @click="goForward" :class="{ 'zoom-out': !hasNextImage }"></div>
         </div>
       </q-img>
 
