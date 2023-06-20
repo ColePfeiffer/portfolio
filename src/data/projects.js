@@ -12,8 +12,8 @@ export const projects = [
       {
         src: "images/toEgo_01.png",
         description: {
-          en: "Overview of all pages in light and dark mode",
-          de: "Übersicht über alle Seiten im hellen und dunklen Farbmodus",
+          en: "Overview of all views in light and dark mode",
+          de: "Übersicht über alle Ansichten im hellen und dunklen Farbmodus",
         },
         isVideo: false,
         fit: "contain",
@@ -22,8 +22,8 @@ export const projects = [
       {
         src: "images/toEgo_02.png",
         description: {
-          en: "On 'Today's notes' users can take notes and/or set and keep track of reminders, goals and tasks",
-          de: "Auf der Startseite 'Today's notes' können Nutzer Notizen verfassen und/oder persönliche Ziele, Erinnerungen oder Aufgaben festlegen und abspeichern ",
+          en: "On 'Today's notes' users can take notes and/or set and keep track of reminders, goals and tasks.",
+          de: "Auf der Startansicht 'Today's notes' können Nutzer Notizen verfassen und/oder persönliche Ziele, Erinnerungen oder Aufgaben festlegen und abspeichern.",
         },
         isVideo: false,
         fit: "contain",
@@ -34,6 +34,36 @@ export const projects = [
         description: {
           en: "Dialog for creating notes",
           de: "Dialog für die Erstellung von Notizen",
+        },
+        isVideo: false,
+        fit: "contain",
+        ratio: 4 / 3,
+      },
+      {
+        src: "images/toEgo_04.png",
+        description: {
+          en: "Dialog for template management and creation",
+          de: "Dialog für die Verwaltung und Erstellung von Vorlagen",
+        },
+        isVideo: false,
+        fit: "contain",
+        ratio: 4 / 3,
+      },
+      {
+        src: "images/toEgo_05.png",
+        description: {
+          en: "View: Diary Page",
+          de: "Ansicht: Tagebuch",
+        },
+        isVideo: false,
+        fit: "contain",
+        ratio: 4 / 3,
+      },
+      {
+        src: "images/toEgo_06.png",
+        description: {
+          en: "Left: settings page with customization options. Middle and right: two examples for customization",
+          de: "Links: Einstellungsseite mit vielen Anpassungsoptionen zur Individualisierung. Mitte u. rechts: Zwei Beispiele für unterschiedliche Designs.",
         },
         isVideo: false,
         fit: "contain",

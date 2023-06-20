@@ -6,6 +6,7 @@
   position: relative;
   touch-action: none;
   pointer-events: auto;
+  touch-action: pan-y;
 }
 
 .window.expanded {
