@@ -14,7 +14,13 @@
         </div>
       </div>
       <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
-        style="margin-top: 20px" />
+        style="margin-top: 20px; z-index: 100">
+        <div class="fit" style="'background-color': transparent">
+          <div class="overlay left" @click="goBack" :class="{ 'zoom-out': !hasPrevImage }"></div>
+          <div class="overlay right" @click="goForward" :class="{ 'zoom-out': !hasNextImage }"></div>
+        </div>
+      </q-img>
+
     </q-page>
   </q-dialog>
 </template>
@@ -83,5 +89,25 @@ export default {
 .project-image-modal {
   height: 100vh;
   overflow: hidden;
+}
+
+.overlay {
+  position: absolute;
+  width: 25%;
+  height: 100%;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.zoom-out {
+  cursor: zoom-out;
 }
 </style>
