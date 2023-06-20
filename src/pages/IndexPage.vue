@@ -132,6 +132,6 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
 @import "./styles/IndexPage.css";
 </style>

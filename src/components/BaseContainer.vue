@@ -183,6 +183,6 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import "./styles/BaseContainer.css";
 </style>

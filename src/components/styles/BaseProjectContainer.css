@@ -4,7 +4,11 @@
 .image-description {
   color: gray;
   font-family: monospace;
-  font-size: 12px;
+  font-size: 0.75rem;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-button-for-video {

@@ -6,16 +6,16 @@
         <div class="col-1">
           <q-btn color="white" flat round dense :icon="leftButtonIcon" @click="goBack" />
         </div>
-        <div class="col-10 text-white text-shadow-3 monospace">
-          {{ images[currentImageIndex].description }}
+        <div class="col-10 text-white text-shadow-3 monospace image-description">
+          {{ imageDescription }}
         </div>
         <div class="col-1">
           <q-btn color="white" flat round dense :icon="rightButtonIcon" @click="goForward" />
         </div>
       </div>
-      <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
+      <q-img :src="images[currentImageIndex].src" fit="scale-down" class="fullscreen-image absolute-center"
         style="margin-top: 20px; z-index: 100">
-        <div class="fit bg-transparent">
+        <div class="fit bg-transparent" style="pointer-events: none">
           <div class="overlay left bg-transparent" @click="goBack" :class="{ 'zoom-out': !hasPrevImage }"></div>
           <div class="overlay right bg-transparent" @click="goForward" :class="{ 'zoom-out': !hasNextImage }"></div>
         </div>
@@ -48,6 +48,13 @@ export default {
     },
   },
   computed: {
+    imageDescription() {
+      if (this.$i18n.locale === 'en-US') {
+        return this.images[this.currentImageIndex].description.en;
+      } else {
+        return this.images[this.currentImageIndex].description.de;
+      }
+    },
     leftButtonIcon() {
       if (this.hasPrevImage) {
         return "mdi-chevron-left";
@@ -72,7 +79,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.image-description {
+  font-family: monospace;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .fullscreen-image {
   max-width: 100%;
   max-height: 95%;
@@ -93,10 +108,11 @@ export default {
 
 .overlay {
   position: absolute;
-  width: 25%;
-  height: 100%;
+  width: 35%;
+  height: 80%;
   cursor: pointer;
   pointer-events: auto;
+  margin-top: 4%;
 }
 
 .left {

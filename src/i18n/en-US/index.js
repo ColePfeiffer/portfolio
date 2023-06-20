@@ -53,4 +53,23 @@ export default {
       "VNC-viewer for easier management",
     ],
   },
+  kreideWelt: {
+    subtitle: "An Interactive Augmented Reality Game",
+    description:
+      'Developed as part of the exhibition "The Digital Plays With The Analogue" during the annual HAW Hamburg Rundgang, KreideWelt aims to bridge the gap between the digital and real worlds through interactive experiences.\nPlayers engage directly with a virtual character and its environment by utilizing raycasts to draw in the real world. By leveraging a digital stylus, players navigate through levels, fostering creativity and problem-solving skills. KreideWelt showcases the potential of AR and VR technology, enhancing exhibitions and providing visitors with unique levels of interactivity.',
+    features: [
+      "Real-Time Raycast Implementation",
+      "Unity and Vuforia Integration",
+    ],
+  },
+  lab1999: {
+    subtitle: "An Immersive Point-and-Click Adventure",
+    description:
+      "In Lab. 1999, an immersive point-and-click adventure, you'll explore the enigmatic world of Louis De Poitiers, a scientist plagued by headaches and fragmented memories. Trapped within a mysterious laboratory, Louis must untangle the threads of his past and confront the unsettling truths lurking behind its walls. Lab. 1999 features a unique dual inventory system, combining physical and mental objects, empowering players to solve puzzles in multiple ways using a variety of items. Even though this is an old project, it was my initial venture into Unity and I wanted to include it here to showcase my first endeavor in game development.",
+    features: [
+      "Multiple solutions",
+      "Atmospheric Exploration",
+      "Unique Item Interactions",
+    ],
+  },
 };

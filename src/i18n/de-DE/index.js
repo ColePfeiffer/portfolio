@@ -58,4 +58,23 @@ export default {
       "VNC-viewer for easier management",
     ],
   },
+  kreideWelt: {
+    subtitle: "Ein interaktives Augmented-Reality-Spiel",
+    description:
+      'Im Rahmen der Ausstellung "The Digital Plays With The Analogue" während des jährlichen HAW Hamburg Rundgangs entwickelt, zielt KreideWelt darauf ab, die Kluft zwischen der digitalen und realen Welt durch interaktive Erfahrungen zu überbrücken.\nSpieler interagieren direkt mit einer virtuellen Figur und ihrer Umgebung, indem sie Raycasts nutzen, um in der realen Welt zu zeichnen. Durch den Einsatz eines digitalen Stiftes navigieren die Spieler durch verschiedene Level und fördern dabei ihre Kreativität und Problemlösungsfähigkeiten. KreideWelt präsentiert das Potenzial von AR- und VR-Technologie, indem es Ausstellungen bereichert und den Besuchern ein einzigartiges Maß an Interaktivität bietet.',
+    features: [
+      "Echtzeit-Raycast-Implementierung",
+      "Unity und Vuforia Integration",
+    ],
+  },
+  lab1999: {
+    subtitle: "Ein immersives Point-and-Click-Abenteuer",
+    description:
+      "In Lab. 1999 taucht die spielende Person in eine fesselnde Welt ein und erkundet das enigmatische Universum von Louis De Poitiers, einem Wissenschaftler, der von Kopfschmerzen und fragmentierten Erinnerungen geplagt wird. Gefangen in einem mysteriösen Laboratorium können die Fäden von Louis' Vergangenheit durch den Spieler entwirrt werden, um so den verstörenden Wahrheiten begegnen zu können, die Louis glaubte vergessen zu haben. Lab. 1999 verfügt über ein besonderes duales Inventarsystem, das physische und mentale Objekte kombiniert und Spielern ermöglicht, Rätsel auf vielfältige Weise mit einer Vielzahl von Gegenständen zu lösen. Obwohl dieses Projekt bereits älter ist, möchte ich es hier präsentieren, um meine erste Erfahrung in der Spieleentwicklung zu zeigen.",
+    features: [
+      "Mehrere Lösungswege",
+      "Atmosphärische Erkundung",
+      "Einzigartige Interaktionen mit Gegenständen",
+    ],
+  },
 };

@@ -3,8 +3,9 @@
     <div>
       <q-card class="q-mb-md base-project-card">
         <!-- Image and video -->
-        <q-img v-if="!images[currentImageIndex].isVideo" :ratio="4 / 3" :fit="images[currentImageIndex].fit"
-          :src="images[currentImageIndex].src" class="project-image" @click="showImageModal = true" />
+        <q-img v-if="!images[currentImageIndex].isVideo" :ratio="images[currentImageIndex].ratio"
+          :fit="images[currentImageIndex].fit" :src="images[currentImageIndex].src" class="project-image"
+          @click="showImageModal = true" />
         <div v-else>
           <q-video :src="images[currentImageIndex].src" @click.prevent />
         </div>
@@ -12,8 +13,8 @@
         <div class="justify-center items-center row">
           <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="goBack"
             :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
-          <div class="col-10 text-center image-description">
-            {{ images[currentImageIndex].description }}
+          <div class="col-10 image-description ">
+            {{ imageDescription }}
           </div>
           <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="goForward"
             :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
@@ -67,7 +68,7 @@
           </div>
           <q-separator />
           <!-- Links -->
-          <div class="row quart-3 justify-between q-mt-xs">
+          <div class="row quart-3 justify-between q-mt-xs" v-if="gitHub != ''">
             <div class="col-auto">
               <div class="project-subitem-title">Links</div>
             </div>
@@ -154,6 +155,13 @@ export default {
     },
   },
   computed: {
+    imageDescription() {
+      if (this.$i18n.locale === 'en-US') {
+        return this.images[this.currentImageIndex].description.en;
+      } else {
+        return this.images[this.currentImageIndex].description.de;
+      }
+    },
     features() {
       return this.tm(this.projectName + ".features");
     },
