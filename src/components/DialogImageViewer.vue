@@ -1,0 +1,87 @@
+<template>
+  <q-dialog class="project-image-modal fullscreen-dialog full-width"
+    style="background-color: rgba(0, 0, 0, 0.5); backdrop-filter: blur(13px); width: 500px">
+    <q-page class="full-height full-width column justify-center">
+      <div class="row image-viewer-navigation-bar absolute-top justify-between text-center items-center">
+        <div class="col-1">
+          <q-btn color="white" flat round dense :icon="leftButtonIcon" @click="goBack" />
+        </div>
+        <div class="col-10 text-white text-shadow-3 monospace">
+          {{ images[currentImageIndex].description }}
+        </div>
+        <div class="col-1">
+          <q-btn color="white" flat round dense :icon="rightButtonIcon" @click="goForward" />
+        </div>
+      </div>
+      <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
+        style="margin-top: 20px" />
+    </q-page>
+  </q-dialog>
+</template>
+
+<script>
+export default {
+  name: "DialogImageViewer",
+  emits: ["goBack", "goForward"],
+  props: {
+    images: {
+      type: Array,
+      required: true,
+    },
+    currentImageIndex: {
+      type: Number,
+      required: true,
+    },
+  },
+  methods: {
+    goBack() {
+      this.$emit("goBack");
+    },
+    goForward() {
+      this.$emit("goForward");
+    },
+  },
+  computed: {
+    leftButtonIcon() {
+      if (this.hasPrevImage) {
+        return "mdi-chevron-left";
+      } else {
+        return "mdi-close";
+      }
+    },
+    rightButtonIcon() {
+      if (this.hasNextImage) {
+        return "mdi-chevron-right";
+      } else {
+        return "mdi-close";
+      }
+    },
+    hasPrevImage() {
+      return this.currentImageIndex > 0;
+    },
+    hasNextImage() {
+      return this.currentImageIndex < this.images.length - 1;
+    },
+  },
+};
+</script>
+
+<style>
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 95%;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+.image-viewer-navigation-bar {
+  pointer-events: auto;
+}
+
+.project-image-modal {
+  height: 100vh;
+  overflow: hidden;
+}
+</style>

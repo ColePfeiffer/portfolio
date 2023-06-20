@@ -1,3 +1,6 @@
+.languages-features-container {
+  white-space: pre-wrap;
+}
 .image-description {
   color: gray;
   font-family: monospace;
@@ -8,31 +11,13 @@
   color: gray;
 }
 
-a:visited {
-  color: #009999;
-}
-
 .quart-3 {
   font-size: 12px;
   font-family: monospace;
 }
 
-.fullscreen-dialog .q-dialog-content::-webkit-scrollbar {
-  display: none;
-  /* Hides the scrollbar in WebKit browsers */
-}
-
-.fullscreen-dialog .q-dialog-content::-moz-scrollbar {
-  display: none;
-  /* Hides the scrollbar in Firefox */
-}
-
-.fullscreen-image {
-  max-width: 100%;
-  max-height: 95%;
-}
-
-.q-card {
+.base-project-card {
+  background-color: rgb(245, 245, 245);
   border: none;
   box-shadow: none;
   border-radius: 0px;
@@ -57,17 +42,5 @@ a:visited {
 
 .project-description {
   margin-top: 16px;
-}
-
-.project-image {
-  /* Add this line to set a maximum width */
-  width: 100%;
-}
-
-.project-image-modal {
-  max-width: 100vh;
-  max-height: 100vh;
-  height: 100vh;
-  overflow: hidden;
-  /* Update to allow overflow */
+  white-space: pre-wrap;
 }

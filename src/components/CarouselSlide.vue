@@ -1,10 +1,7 @@
 <template>
   <q-page style="pointer-events: none">
     <div class="row justify-center fit">
-      <div
-        class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-7 col-xl-6"
-        style="pointer-events: auto"
-      >
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-7 col-xl-6" style="pointer-events: auto">
         <slot></slot>
       </div>
     </div>

@@ -20,6 +20,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+a:visited {
+  color: #009999;
+}
+
 .roboto {
   font-family: "Roboto", sans-serif;
 }

@@ -1,127 +1,114 @@
 <template>
   <div>
-    <q-card class="q-mb-md q-card" style="background-color: whitesmoke">
-      <!-- Image and video -->
-      <q-img v-if="!images[currentImageIndex].isVideo" :ratio="4 / 3" :fit="images[currentImageIndex].fit"
-        :src="images[currentImageIndex].src" class="project-image" @click="showImageModal = true" />
-      <div v-else>
-        <q-video :src="images[currentImageIndex].src" @click.prevent />
-      </div>
-      <!-- Navigation buttons for when there is at least one video to display -->
-      <div class="justify-center items-center row">
-        <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="prevImage"
-          :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
-        <div class="col-10 text-center image-description">
-          {{ images[currentImageIndex].description }}
+    <div>
+      <q-card class="q-mb-md base-project-card">
+        <!-- Image and video -->
+        <q-img v-if="!images[currentImageIndex].isVideo" :ratio="4 / 3" :fit="images[currentImageIndex].fit"
+          :src="images[currentImageIndex].src" class="project-image" @click="showImageModal = true" />
+        <div v-else>
+          <q-video :src="images[currentImageIndex].src" @click.prevent />
         </div>
-        <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="nextImage"
-          :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
-      </div>
-      <q-card-section>
-        <!-- Name -->
-        <div class="project-name text-h3">{{ name }}</div>
-        <!-- Subtitle -->
-        <div class="project-subtitle text-caption col-6 text-weight-bold q-mb-md">
-          {{ $t(`${projectName}.subtitle`) }}
+        <!-- Navigation buttons for when there is at least one video to display -->
+        <div class="justify-center items-center row">
+          <q-btn icon="mdi-chevron-left" flat dense class="nav-button-for-video col-1 text-left" @click="goBack"
+            :style="hasPrevImage ? 'visibility:visible' : 'visibility:hidden'" />
+          <div class="col-10 text-center image-description">
+            {{ images[currentImageIndex].description }}
+          </div>
+          <q-btn icon="mdi-chevron-right" flat dense class="nav-button-for-video col-1 text-right" @click="goForward"
+            :style="hasNextImage ? 'visibility:visible' : 'visibility:hidden'" />
         </div>
-        <q-separator />
-        <!-- Date -->
-        <div class="row quart-3 justify-between items-center">
-          <div class="col-auto">
-            <div class="project-subitem-title">
-              {{ $t("projectData.date") }}
+        <q-card-section>
+          <!-- Name -->
+          <div class="project-name text-h3">{{ name }}</div>
+          <!-- Subtitle -->
+          <div class="project-subtitle text-caption col-6 text-weight-bold q-mb-md">
+            {{ $t(`${projectName}.subtitle`) }}
+          </div>
+          <q-separator />
+          <!-- Date -->
+          <div class="row quart-3 justify-between items-center">
+            <div class="col-auto">
+              <div class="project-subitem-title">
+                {{ $t("projectData.date") }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="text-body-1 text-right">
+                {{ date }}
+              </div>
             </div>
           </div>
-          <div class="col">
-            <div class="text-body-1 text-right">
-              {{ date }}
+          <q-separator />
+          <!-- Languages  -->
+          <div class="row quart-3 justify-between q-mt-xs">
+            <div class="col-auto">
+              <div class="project-subitem-title">
+                {{ $t("projectData.languages") }}
+              </div>
             </div>
-          </div>
-        </div>
-        <q-separator />
-        <!-- Languages  -->
-        <div class="row quart-3 justify-between q-mt-xs">
-          <div class="col-auto">
-            <div class="project-subitem-title">
-              {{ $t("projectData.languages") }}
-            </div>
-          </div>
-          <div class="col text-right">
-            <div class="text-body-1" style="white-space: pre-wrap">
-              {{ formattedLanguages }}
-            </div>
-          </div>
-        </div>
-        <q-separator />
-        <!-- Features -->
-        <div class="row quart-3 justify-between q-mt-xs">
-          <div class="col-auto">
-            <div class="project-subitem-title">Features</div>
-          </div>
-          <div class="col text-right">
-            <div class="text-body-1" style="white-space: pre-wrap">
-              {{ formattedFeatures }}
-            </div>
-          </div>
-        </div>
-        <q-separator />
-        <!-- Links -->
-        <div class="row quart-3 justify-between q-mt-xs">
-          <div class="col-auto">
-            <div class="project-subitem-title">Links</div>
-          </div>
-          <div class="col text-right">
             <div class="col text-right">
-              <div v-if="live != ''">
-                <a :href="live" target="_blank" style="text-decoration: none">
-                  <q-icon name="fas fa-globe-americas" />
-                  Live
+              <div class="text-body-1 languages-features-container">
+                {{ formattedLanguages }}
+              </div>
+            </div>
+          </div>
+          <q-separator />
+          <!-- Features -->
+          <div class="row quart-3 justify-between q-mt-xs">
+            <div class="col-auto">
+              <div class="project-subitem-title">Features</div>
+            </div>
+            <div class="col text-right">
+              <div class="text-body-1 languages-features-container">
+                {{ formattedFeatures }}
+              </div>
+            </div>
+          </div>
+          <q-separator />
+          <!-- Links -->
+          <div class="row quart-3 justify-between q-mt-xs">
+            <div class="col-auto">
+              <div class="project-subitem-title">Links</div>
+            </div>
+            <div class="col text-right">
+              <div class="col text-right">
+                <div v-if="live != ''">
+                  <a :href="live" target="_blank" style="text-decoration: none">
+                    <q-icon name="fas fa-globe-americas" />
+                    Live
+                  </a>
+                </div>
+                <a :href="gitHub" target="_blank" style="text-decoration: none">
+                  <q-icon name="fab fa-github" />
+                  Git Repository
                 </a>
               </div>
-              <a :href="gitHub" target="_blank" style="text-decoration: none">
-                <q-icon name="fab fa-github" />
-                Git Repository
-              </a>
             </div>
           </div>
-        </div>
-        <q-separator />
-        <!-- Description -->
-        <div class="project-description text-body-1 q-mt-md text-justify" style="white-space: pre-wrap">
-          {{ $t(`${projectName}.description`) }}
-        </div>
-        <!-- DIALOG... TODO: auslagern! -->
-        <q-dialog v-model="showImageModal" class="project-image-modal fullscreen-dialog" style="
-            background-color: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(13px);
-          ">
-          <q-page class="full-height full-width column justify-center">
-            <div class="row absolute-top justify-between text-center items-center" style="pointer-events: auto">
-              <div class="col-1">
-                <q-btn color="white" flat round dense :icon="leftButtonIcon" @click="prevImage" />
-              </div>
-              <div class="col-10 text-white text-shadow-3" style="font-family: monospace">
-                {{ images[currentImageIndex].description }}
-              </div>
-              <div class="col-1">
-                <q-btn color="white" flat round dense :icon="rightButtonIcon" @click="nextImage" />
-              </div>
-            </div>
-            <q-img :src="images[currentImageIndex].src" fit="contain" class="fullscreen-image absolute-center"
-              style="margin-top: 20px" />
-          </q-page>
-        </q-dialog>
-      </q-card-section>
-    </q-card>
+          <q-separator />
+          <!-- Description -->
+          <div class="project-description text-body-1 q-mt-md text-justify">
+            {{ $t(`${projectName}.description`) }}
+          </div>
+        </q-card-section>
+      </q-card>
+    </div>
+    <DialogImageViewer v-model="showImageModal" :images="images" :currentImageIndex="currentImageIndex" @goBack="goBack"
+      @goForward="goForward" style="background-size: cover;" />
   </div>
 </template>
 
 <script>
 import { Screen } from "quasar";
 import { useI18n } from "vue-i18n";
+import DialogImageViewer from "./DialogImageViewer.vue";
 
 export default {
   name: "BaseProjectContainer",
+  components: {
+    DialogImageViewer,
+  },
   setup() {
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();
@@ -219,30 +206,16 @@ export default {
         return false;
       }
     },
-    leftButtonIcon() {
-      if (this.hasPrevImage) {
-        return "mdi-chevron-left";
-      } else {
-        return "mdi-close";
-      }
-    },
-    rightButtonIcon() {
-      if (this.hasNextImage) {
-        return "mdi-chevron-right";
-      } else {
-        return "mdi-close";
-      }
-    },
   },
   methods: {
-    nextImage() {
+    goForward() {
       if (this.hasNextImage) {
         this.currentImageIndex++;
       } else {
         this.showImageModal = false;
       }
     },
-    prevImage() {
+    goBack() {
       if (this.hasPrevImage) {
         this.currentImageIndex--;
       } else {
