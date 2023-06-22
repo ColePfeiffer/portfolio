@@ -30,7 +30,7 @@
       <!-- Dialogs -->
       <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md placeHolderCol noPointerEvents"></div>
       <div class="col-5 col-xs-11 col-sm-8 col-md-8 col-lg-6 col-xl-5 col-xl-3 q-px-md" :style="dialogContainerStyle"
-        style="margin-bottom: 3.7rem">
+        style="margin-bottom: 4.5rem">
         <!-- Welcome Message -->
         <!-- When using this approach the position does not reset (with v-if it does) -->
         <div :class="{ hidden: !dialogs[0].isVisible }" class="dialog-container">
