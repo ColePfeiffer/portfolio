@@ -178,13 +178,15 @@ export default defineComponent({
           'max-width': '31px',
           'opacity': '77%',
           'flex': 0,
-          'pointer-events': 'auto'
+          'pointer-events': 'auto',
+          'align-self': 'flex-start'
         }
         : {
           'max-width': '31px',
           'opacity': '40%',
           'flex': 0,
-          'pointer-events': 'auto'
+          'pointer-events': 'auto',
+          'align-self': 'flex-start'
         }
     },
     workLabel() {
