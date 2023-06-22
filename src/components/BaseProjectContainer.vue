@@ -5,9 +5,13 @@
         <!-- Image and video -->
         <q-img v-if="!images[currentImageIndex].isVideo" :ratio="images[currentImageIndex].ratio"
           :fit="images[currentImageIndex].fit" :src="images[currentImageIndex].src" class="project-image"
-          @click="showImageModal = true" />
+          @click="showImageModal = true">
+          <template v-slot:loading>
+            <q-spinner color="white" :thickness="2" size="2em" />
+          </template>
+        </q-img>
         <div v-else>
-          <q-video :src="images[currentImageIndex].src" @click.prevent />
+          <q-video loading :src="images[currentImageIndex].src" @click.prevent />
         </div>
         <!-- Navigation buttons for when there is at least one video to display -->
         <div class="justify-center items-center row">

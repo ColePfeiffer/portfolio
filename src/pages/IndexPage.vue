@@ -2,22 +2,23 @@
   <q-page class="noPointerEvents">
     <div class="row items-center justify-center fit">
       <!-- full name + job position -->
-      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-pt-md">
-        <div class="text-center q-mb-lg">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-mt-sm">
+        <div class="text-center">
           <div class="name text-left">
             <div class="animated-text">
               <div class="typing-text">TONI</div>
               <div class="typing-text q-pb-md">DREGER</div>
             </div>
-            <q-separator color="white" class="q-mr-xl" />
-            <q-separator color="white" class="q-ml-xl q-mt-md" />
-            <div class="text-center q-pt-md subtitle">
+            <q-separator color="white" style="opacity: 0.7; margin-right: 5rem" />
+            <q-separator color="white" class="q-mt-md" style="opacity: 0.7; margin-left: 5rem" />
+            <div class="text-center q-pt-md  subtitle">
               {{ $t("jobPosition") }}
             </div>
           </div>
         </div>
-        <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-xs text-center noPointerEvents">
-          <!-- Buttons -->
+        <!-- Buttons -->
+        <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-xs text-center noPointerEvents"
+          style="margin-top: 1.6rem">
           <div>
             <WindowsButton label="Work" color="green" icon="mdi-code-braces" @click="navigateTo('/work')" />
             <WindowsButton color="blue" label="About" icon="mdi-account" @click="navigateTo('/about')" />
@@ -27,8 +28,9 @@
         </div>
       </div>
       <!-- Dialogs -->
-      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md placeHolderCol noPointerEvents"></div>
-      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-pa-md" :style="dialogContainerStyle">
+      <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md placeHolderCol noPointerEvents"></div>
+      <div class="col-5 col-xs-11 col-sm-8 col-md-8 col-lg-6 col-xl-5 col-xl-3 q-px-md" :style="dialogContainerStyle"
+        style="margin-bottom: 1.6rem">
         <!-- Welcome Message -->
         <!-- When using this approach the position does not reset (with v-if it does) -->
         <div :class="{ hidden: !dialogs[0].isVisible }" class="dialog-container">

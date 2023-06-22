@@ -1,23 +1,11 @@
 <template>
-  <BaseContainer
-    :title="$t('indexPath')"
-    titlebarColor="#fa8072"
-    icon="mdi-home"
-    width="600px"
-    :zIndex="zIndex"
-    @close="closeDialog"
-  >
+  <BaseContainer :title="$t('indexPath')" titlebarColor="#fa8072" icon="mdi-home" :zIndex="zIndex" @close="closeDialog">
     <div class="q-pa-sm">
       <div class="row justify-center q-pa-md">
         <div class="welcome-message q-pa-sm col-12">
           <span class="decorative-font">{{ $t("welcomeTitle") }}</span>
-          <q-icon
-            name="code"
-            size="1.7em"
-            color="secondary"
-            class="q-ml-sm q-mr-sm"
-          ></q-icon>
-          <q-icon name="fab fa-vuejs" size="1.7em" color="dark"></q-icon>
+          <q-icon name="code" size="1.6em" color="secondary" class="q-ml-sm q-mr-sm"></q-icon>
+          <q-icon name="fab fa-vuejs" size="1.6em" color="dark"></q-icon>
         </div>
 
         <div class="col-12 q-pa-sm q-mt-sm text-justify">

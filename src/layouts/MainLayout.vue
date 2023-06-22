@@ -107,14 +107,13 @@
       retina_detect: true,
     }" />
     <q-header style="background-color: transparent; pointer-events: none">
-      <q-toolbar class="bg-transparent" style="height: 50px">
-        <!-- Home -->
-        <img :src="eyeImage" class="glow-on-hover" :style="isRouteSetToHome
-            ? 'max-width: 31px; margin-top: -3px; opacity: 77%; flex: 0; pointer-events: auto'
-            : 'max-width: 31px; margin-top: -3px; opacity: 40%; flex: 0; pointer-events: auto'
-          " @click="goToHome" />
+      <q-toolbar class="bg-transparent q-mb-sm">
         <div class="flex-grow absolute-center tabs-container">
-          <q-tabs v-model="currentTab" dense all-caps active-class="q-tabs__item--active" indicator-color="transparent">
+          <q-tabs v-model="currentTab" dense all-caps active-class="q-tabs__item--active text-center"
+            indicator-color="transparent">
+            <q-tab class="q-tabs__items" name="/" @click="navigateTo">
+              <img :src="eyeImage" class="glow-on-hover" :style="homeStyle" />
+            </q-tab>
             <q-tab style="font-size: 15px !important" class="q-tabs__items" name="/work" :label="workLabel"
               @click="navigateTo" />
             <q-tab class="q-tabs__items" name="/about" :label="aboutLabel" @click="navigateTo" />
@@ -173,6 +172,21 @@ export default defineComponent({
     this.currentTab = this.$route.path;
   },
   computed: {
+    homeStyle() {
+      return this.isRouteSetToHome
+        ? {
+          'max-width': '31px',
+          'opacity': '77%',
+          'flex': 0,
+          'pointer-events': 'auto'
+        }
+        : {
+          'max-width': '31px',
+          'opacity': '40%',
+          'flex': 0,
+          'pointer-events': 'auto'
+        }
+    },
     workLabel() {
       return this.$t("work");
     },

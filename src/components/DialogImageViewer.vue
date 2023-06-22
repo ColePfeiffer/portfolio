@@ -15,6 +15,9 @@
       </div>
       <q-img :src="images[currentImageIndex].src" fit="scale-down" class="fullscreen-image absolute-center"
         style="margin-top: 20px; z-index: 100">
+        <template v-slot:loading>
+          <q-spinner color="white" :thickness="2" size="3em" />
+        </template>
         <div class="fit bg-transparent" style="pointer-events: none">
           <div class="overlay left bg-transparent" @click="goBack" :class="{ 'zoom-out': !hasPrevImage }"></div>
           <div class="overlay right bg-transparent" @click="goForward" :class="{ 'zoom-out': !hasNextImage }"></div>

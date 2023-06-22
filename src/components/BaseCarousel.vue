@@ -1,5 +1,5 @@
 <template>
-  <q-carousel v-model="slide" transition-prev="none" transition-next="scale" animated
+  <q-carousel v-model="slide" transition-prev="scale" transition-next="scale" animated
     navigation-icon="radio_button_unchecked" navigation navigation-position="top"
     class="bg-transparent full-height carousel" ref="carousel">
     <slot></slot>
