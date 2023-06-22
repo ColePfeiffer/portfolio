@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lhh Lpr lFf" class="particles-container" style="background-color: black">
+  <q-layout view="lhh Lpr lFf" class="particles-container">
     <Particles id="tsparticles" :particlesInit="particlesInit" :particlesLoaded="particlesLoaded" :options="{
       fpsLimit: 60,
       interactivity: {

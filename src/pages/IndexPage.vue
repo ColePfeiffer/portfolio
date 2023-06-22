@@ -2,7 +2,7 @@
   <q-page class="noPointerEvents">
     <div class="row items-center justify-center fit">
       <!-- full name + job position -->
-      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg q-mt-sm">
+      <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg ">
         <div class="text-center">
           <div class="name text-left">
             <div class="animated-text">
@@ -18,7 +18,7 @@
         </div>
         <!-- Buttons -->
         <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-xs text-center noPointerEvents"
-          style="margin-top: 1.6rem">
+          style="margin-top: 0.8rem">
           <div>
             <WindowsButton label="Work" color="green" icon="mdi-code-braces" @click="navigateTo('/work')" />
             <WindowsButton color="blue" label="About" icon="mdi-account" @click="navigateTo('/about')" />
@@ -30,7 +30,7 @@
       <!-- Dialogs -->
       <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md placeHolderCol noPointerEvents"></div>
       <div class="col-5 col-xs-11 col-sm-8 col-md-8 col-lg-6 col-xl-5 col-xl-3 q-px-md" :style="dialogContainerStyle"
-        style="margin-bottom: 1.6rem">
+        style="margin-bottom: 2.5rem">
         <!-- Welcome Message -->
         <!-- When using this approach the position does not reset (with v-if it does) -->
         <div :class="{ hidden: !dialogs[0].isVisible }" class="dialog-container">
