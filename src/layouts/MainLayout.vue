@@ -175,14 +175,16 @@ export default defineComponent({
     homeStyle() {
       return this.isRouteSetToHome
         ? {
-          'max-width': '31px',
+          'width': '31px',
+          'height': '28px',
           'opacity': '77%',
           'flex': 0,
           'pointer-events': 'auto',
           'align-self': 'flex-start'
         }
         : {
-          'max-width': '31px',
+          'width': '31px',
+          'height': '28px',
           'opacity': '40%',
           'flex': 0,
           'pointer-events': 'auto',
