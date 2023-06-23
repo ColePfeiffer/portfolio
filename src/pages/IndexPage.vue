@@ -1,6 +1,6 @@
 <template>
   <q-page class="noPointerEvents" @touchmove="preventScroll">
-    <div class="row items-center justify-center fit">
+    <div class="row items-center justify-center ">
       <!-- full name + job position -->
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg" style="margin-top: -4px">
         <div class="text-center">
@@ -30,7 +30,7 @@
       </div>
       <!-- Dialogs -->
       <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-md placeHolderCol noPointerEvents"></div>
-      <div class="col-5 col-xs-11 col-sm-8 col-md-8 col-lg-6 col-xl-5 col-xl-3 q-px-md" :style="dialogContainerStyle"
+      <div class="col-3 col-xs-11 col-sm-8 col-md-8 col-lg-6 col-xl-5 col-xl-3 q-px-md" :style="dialogContainerStyle"
         style="margin-bottom: 4.5rem">
         <!-- Welcome Message -->
         <!-- When using this approach the position does not reset (with v-if it does) -->
@@ -39,7 +39,7 @@
         </div>
 
         <!-- Color Picker -->
-        <div :class="{ hidden: !dialogs[1].isVisible }" class="dialog-container dialog-color-picker">
+        <div :class="{ hidden: !dialogs[1].isVisible }" class="dialog-container dialog-color-picker ">
           <DialogColorPicker :zIndex="dialogs[1].zIndex" @close="closeDialog(dialogs[1])" />
         </div>
       </div>

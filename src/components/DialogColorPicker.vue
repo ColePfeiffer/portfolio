@@ -1,11 +1,7 @@
 <template>
-  <BaseContainer :title="$t('indexPath') + $t('colors')" :hasExpandButton="false" :titlebarColor="hex" style="color: auto"
-    icon="mdi-palette" :zIndex="zIndex" @close="closeDialog">
-    <div class="row justify-center ">
-      <div class="col-9 fit">
-        <q-color v-model="hex" no-header class="my-picker" />
-      </div>
-    </div>
+  <BaseContainer :title="$t('indexPath') + $t('colors')" :hasExpandButton="false" :titlebarColor="hex" icon="mdi-palette"
+    :zIndex="zIndex" @close="closeDialog" minWidth="13rem">
+    <q-color square v-model="hex" no-header class="my-picker" />
   </BaseContainer>
 </template>
 <script>
@@ -49,61 +45,4 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap");
 
-$primary: #18181b;
-$secondary: #fff001;
-$accent: #ed008c;
-$info: #03aced;
-
-$textColor: #333333;
-
-$dark: #1d1d1d;
-$dark-page: #121212;
-
-$positive: #25e744;
-$negative: #ea0201;
-
-$warning: #0000ff;
-
-.highlight {
-  color: $accent;
-}
-
-.decorative-font {
-  font-family: "Montserrat Alternates", sans-serif;
-  font-weight: 600;
-}
-
-.animate__animated {
-  animation-duration: 1s;
-}
-
-.animate__pulse {
-  animation-name: pulse;
-}
-
-@keyframes pulse {
-  from {
-    transform: scale3d(1, 1, 1);
-  }
-
-  50% {
-    transform: scale3d(1.05, 1.05, 1.05);
-  }
-
-  to {
-    transform: scale3d(1, 1, 1);
-  }
-}
-
-.q-icon {
-  transition: all 0.3s ease-in-out;
-}
-
-.q-icon:hover {
-  transform: scale(1.1);
-}
-</style>

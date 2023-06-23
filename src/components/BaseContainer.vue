@@ -1,5 +1,6 @@
 <template>
-  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }" :style="{ zIndex: updatedZIndex }">
+  <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }"
+    :style="{ zIndex: updatedZIndex, 'min-width': minWidth }">
     <div id="title-bar-handler" class="title-bar" :style="titleBarStyle" ref="titleBarHandler">
       <!-- Icon and title of window -->
       <div class="title-bar-text" :style="{ color: fontColor }">
@@ -8,11 +9,11 @@
       </div>
       <!-- Buttons -->
       <div class="title-bar-controls">
-        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="{ backgroundColor: titlebarColor }">
-          <q-icon :name="expandIcon" size="16px" class="text-black" />
+        <button v-if="hasExpandButton" class="expand" @click="toggleExpand" :style="buttonStyle">
+          <q-icon :name="expandIcon" size="16px" />
         </button>
-        <button class="close" @click="$emit('close')" :style="{ backgroundColor: titlebarColor }">
-          <q-icon name="mdi-close" size="16px" class="text-black" />
+        <button class="close" @click="$emit('close')" :style="buttonStyle">
+          <q-icon name="mdi-close" size="16px" />
         </button>
       </div>
     </div>
@@ -54,6 +55,10 @@ export default {
     isDraggable: {
       type: Boolean,
       default: true,
+    },
+    minWidth: {
+      type: String,
+      default: "19rem",
     },
   },
   data() {
@@ -120,9 +125,18 @@ export default {
     }
   },
   computed: {
-    fontColor() {
-      console.log(brightness(this.titlebarColor));
+    buttonStyle() {
+      return this.isBackgroundDark ? { "backgroundColor": this.titlebarColor, "border": '1.7px solid white', "color": "white", "opacity": 0.8 } : { "backgroundColor": this.titlebarColor, "border": '1.7px solid black', "color": "black" };
+    },
+    isBackgroundDark() {
       if (brightness(this.titlebarColor) <= 75) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    fontColor() {
+      if (this.isBackgroundDark) {
         return '#ffffff';
       } else {
         return '#000000';

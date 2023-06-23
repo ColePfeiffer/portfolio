@@ -4,7 +4,6 @@
   box-shadow: 3px 3px #000;
   margin: 5px auto;
   position: relative;
-  min-width: 19rem;
   touch-action: none;
   pointer-events: auto;
   touch-action: pan-y;
@@ -53,7 +52,6 @@
 .close {
   width: 16px;
   height: 16px;
-  border: 1.7px solid #181818;
   margin-left: 5px;
   display: flex;
   justify-content: center;
@@ -73,7 +71,6 @@
 .expand {
   width: 16px;
   height: 16px;
-  border: 1.7px solid #181818;
   margin-left: 5px;
   display: flex;
   justify-content: center;
