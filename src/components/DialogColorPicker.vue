@@ -38,8 +38,6 @@ export default {
   },
   watch: {
     hex(newColor, oldColor) {
-      console.log(oldColor);
-      console.log(newColor);
       this.themeStore.setBGColor(newColor)
     },
   },

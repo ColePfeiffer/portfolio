@@ -156,7 +156,6 @@ export default defineComponent({
       await loadFull(engine);
     };
     const particlesLoaded = async (container) => {
-      console.log("Particles container loaded", container);
     };
     return {
       themeStore,
@@ -233,8 +232,7 @@ export default defineComponent({
   },
   watch: {
     currentRoute(newRoute, oldRoute) {
-      console.log(oldRoute);
-      console.log(newRoute);
+      this.currentTab = newRoute;
     },
   },
 });

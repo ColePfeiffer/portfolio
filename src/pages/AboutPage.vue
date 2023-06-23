@@ -121,7 +121,6 @@ export default defineComponent({
       return this.$t("contactTab");
     },
     contactMeText() {
-      console.log(this.aboutTabName);
       if (this.aboutTabName === 'About') {
         return "reach out"
       } else {
