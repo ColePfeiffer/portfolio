@@ -234,6 +234,10 @@ export default defineComponent({
 </script>
 
 <style lang="scss">
+html {
+  background-color: blue;
+}
+
 .glow-on-hover {
   transition: all 0.3s ease-out;
   opacity: 0.4;

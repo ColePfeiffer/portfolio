@@ -149,6 +149,8 @@ export default {
     // Toggles the expanded state of the component and saves the current position in order to restore it later
     toggleExpand() {
       if (this.isExpanded) {
+        console.log("Restoring position", this.positionBeforeExpanding);
+
         const { left, top, width, height } = this.positionBeforeExpanding;
         // Restoring window size and position from before toggling full screen
         this.container.style.left = left;
