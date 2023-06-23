@@ -235,7 +235,7 @@ export default defineComponent({
 
 <style lang="scss">
 html {
-  background-color: blue;
+  background-color: #5a5d85;
 }
 
 .glow-on-hover {

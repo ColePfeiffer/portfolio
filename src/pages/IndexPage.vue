@@ -1,5 +1,5 @@
 <template>
-  <q-page class="noPointerEvents" @touchmove="preventScroll">
+  <q-page class="noPointerEvents">
     <div class="row items-center justify-center fit">
       <!-- full name + job position -->
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-lg" style="margin-top: -4px">
@@ -119,12 +119,6 @@ export default defineComponent({
     preventScroll(event) {
       event.preventDefault();
     },
-  },
-  mounted() {
-    document.addEventListener('touchmove', this.preventScroll, { passive: false });
-  },
-  beforeUnmount() {
-    document.removeEventListener('touchmove', this.preventScroll);
   },
   computed: {
     // takes care of positioning the dialog container according to screen size
