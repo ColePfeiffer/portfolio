@@ -81,8 +81,8 @@ export default {
       const baseContainer = this.container;
       // Enable dragging functionality using the interact.js library
       interact(baseContainer)
-        .allowFrom(titleBarHandler)
         .draggable({
+          allowFrom: titleBarHandler,
           // Set the drag options
           modifiers: [
             interact.modifiers.restrict({

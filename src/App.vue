@@ -11,10 +11,6 @@ export default defineComponent({
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
-
 html,
 body {
   font-family: "Roboto", sans-serif;
@@ -24,20 +20,29 @@ a:visited {
   color: #009999;
 }
 
-.roboto {
-  font-family: "Roboto", sans-serif;
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Montserrat/Montserrat-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Source Sans 3';
+  font-style: normal;
+  font-weight: 400;
+  src: url('fonts/Source_Sans_3/SourceSans3-Regular.ttf') format('truetype');
 }
 
 .monospace {
   font-family: monospace;
-}
-
-.montserrat {
-  font-family: "Montserrat", sans-serif;
-}
-
-.source-sans-pro {
-  font-family: "Source Sans Pro", sans-serif;
 }
 
 #app {
