@@ -1,6 +1,6 @@
 <template>
   <BaseContainer :title="$t('indexPath') + $t('colors')" :hasExpandButton="false" :titlebarColor="hex" icon="mdi-palette"
-    :zIndex="zIndex" @close="closeDialog" minWidth="13rem">
+    :zIndex="zIndex" @close="closeDialog" minWidth="11rem">
     <q-color square v-model="hex" no-header class="my-picker" />
   </BaseContainer>
 </template>
