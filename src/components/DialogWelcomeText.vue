@@ -1,5 +1,6 @@
 <template>
-  <BaseContainer :title="$t('indexPath')" titlebarColor="#fa8072" icon="mdi-home" :zIndex="zIndex" @close="closeDialog">
+  <BaseContainer :title="$t('indexPath') + $t('welcomeMessage')" titlebarColor="#fa8072" icon="mdi-home" :zIndex="zIndex"
+    @close="closeDialog">
     <div class="q-pa-sm">
       <div class="row justify-center q-pa-md">
         <div class="welcome-message q-pa-sm col-12">

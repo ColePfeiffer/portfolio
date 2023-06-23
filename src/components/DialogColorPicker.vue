@@ -1,25 +1,18 @@
 <template>
-  <BaseContainer
-    :title="$t('colorPickerPath')"
-    :hasExpandButton="false"
-    titlebarColor="lightgreen"
-    icon="mdi-palette"
-    width="400px"
-    :zIndex="zIndex"
-    @close="closeDialog"
-  >
-    <div class="q-pa-sm">
-      <div class="row justify-center q-pa-md">
-        <div class="welcome-message q-pa-sm col-12">
-          PICK A COLOR! PLEASE. RED PINK GREEN BLUE. IM A PLACEHOLDER RIGHT NOW.
-        </div>
+  <BaseContainer :title="$t('indexPath') + $t('colors')" :hasExpandButton="false" :titlebarColor="hex" style="color: auto"
+    icon="mdi-palette" :zIndex="zIndex" @close="closeDialog">
+    <div class="row justify-center ">
+      <div class="col-9 fit">
+        <q-color v-model="hex" no-header class="my-picker" />
       </div>
     </div>
   </BaseContainer>
 </template>
 <script>
 import { useI18n } from "vue-i18n";
+import { ref } from "vue";
 import BaseContainer from "src/components/BaseContainer.vue";
+import { useThemeStore } from 'src/stores/useThemeStore'
 
 export default {
   name: "DialogColorPicker",
@@ -37,12 +30,22 @@ export default {
     },
   },
   setup() {
+    const themeStore = useThemeStore();
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();
     return {
       t,
       tm,
+      hex: ref('#0d0d0d'),
+      themeStore
     };
+  },
+  watch: {
+    hex(newColor, oldColor) {
+      console.log(oldColor);
+      console.log(newColor);
+      this.themeStore.setBGColor(newColor)
+    },
   },
 };
 </script>
@@ -64,11 +67,6 @@ $positive: #25e744;
 $negative: #ea0201;
 
 $warning: #0000ff;
-
-.welcome-message {
-  font-size: 1.5rem;
-  text-align: left;
-}
 
 .highlight {
   color: $accent;

@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lhh Lpr lFf" class="particles-container">
+  <q-layout view="lhh Lpr lFf" class="particles-container" :style="getBackground">
     <Particles id="tsparticles" :particlesInit="particlesInit" :particlesLoaded="particlesLoaded" :options="{
       fpsLimit: 60,
       interactivity: {
@@ -142,6 +142,7 @@ import { useI18n } from "vue-i18n";
 import { defineComponent, ref } from "vue";
 import { loadFull } from "tsparticles";
 import LanguageSwitcher from "src/components/LanguageSwitcher.vue";
+import { useThemeStore } from 'src/stores/useThemeStore'
 
 export default defineComponent({
   name: "MainLayout",
@@ -149,7 +150,7 @@ export default defineComponent({
   setup() {
     const { t } = useI18n(); // use as global scope
     const { tm } = useI18n();
-
+    const themeStore = useThemeStore();
     const leftDrawerOpen = ref(false);
     const particlesInit = async (engine) => {
       await loadFull(engine);
@@ -158,6 +159,7 @@ export default defineComponent({
       console.log("Particles container loaded", container);
     };
     return {
+      themeStore,
       currentTab: ref("/"),
       particlesInit,
       particlesLoaded,
@@ -172,6 +174,11 @@ export default defineComponent({
     this.currentTab = this.$route.path;
   },
   computed: {
+    getBackground() {
+      return {
+        "background-image": 'linear-gradient(to bottom, ' + '#a1a8e6' + ',' + this.themeStore.mainBGColor + ')'
+      };
+    },
     homeStyle() {
       return this.isRouteSetToHome
         ? {
@@ -251,7 +258,7 @@ html {
 
 .particles-container {
   position: absolute;
-  background-image: linear-gradient(to bottom, #a1a8e6, #0d0d0d);
+  //background-image: linear-gradient(to bottom, #a1a8e6, #0d0d0d);
 }
 
 .tabs-container {

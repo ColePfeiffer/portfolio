@@ -3,11 +3,12 @@ export default {
   work: "Projekte",
   about: "Profil",
   // index C:\Daten
-  indexPath: "C:\\Start\\willkommen.txt",
-  colorPickerPath: "C:\\Start\\Farben.exe",
+  indexPath: "C:\\Start\\",
+  welcomeMessage: "willkommen.txt",
+  colors: "Farben.exe",
   welcomeTitle: "Hallo!",
   welcomeText:
-    "Dieses Portfolio wurde mit Vue.js 3, Quasar 2 und Vite realisiert und stellt eine Sammlung einiger meiner Arbeiten dar. Viel Spaß beim Umsehen!",
+    "Dieses interaktive Portfolio wurde mit Vue.js 3, Quasar 2 und Vite realisiert und stellt eine Sammlung einiger meiner Arbeiten dar. Viel Spaß beim Umsehen!",
   // about
   aboutTab: "Über mich",
   contactTab: "Kontakt",

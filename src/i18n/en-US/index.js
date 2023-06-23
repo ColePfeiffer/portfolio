@@ -2,11 +2,12 @@ export default {
   //navigation
   work: "Work",
   about: "About",
-  indexPath: "C:\\Home\\welcome.txt",
-  colorPickerPath: "C:\\Home\\ColorPicker.exe",
+  indexPath: "C:\\Home\\",
+  welcomeMessage: "welcome.txt",
+  colors: "Colors.exe",
   welcomeTitle: "Hello!",
   welcomeText:
-    "This portfolio was made with Vue.js 3, Quasar 2 and Vite and is a collection of some of my work. Feel free to browse around!",
+    "This interactive portfolio was made with Vue.js 3, Quasar 2 and Vite and is a collection of some of my work. Feel free to browse around!",
   // about
   aboutTab: "About",
   contactTab: "Contact",

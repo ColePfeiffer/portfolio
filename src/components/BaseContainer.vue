@@ -2,7 +2,7 @@
   <div class="window" ref="fullBaseContainer" :class="{ expanded: isExpanded }" :style="{ zIndex: updatedZIndex }">
     <div id="title-bar-handler" class="title-bar" :style="titleBarStyle" ref="titleBarHandler">
       <!-- Icon and title of window -->
-      <div class="title-bar-text">
+      <div class="title-bar-text" :style="{ color: fontColor }">
         <q-icon :name="icon" class="icon" />
         {{ title }}
       </div>
@@ -25,6 +25,8 @@
 <script>
 import interact from "interactjs";
 import { ref } from "vue";
+import { colors } from "quasar";
+const { brightness } = colors;
 
 export default {
   name: "BaseContainer",
@@ -118,6 +120,14 @@ export default {
     }
   },
   computed: {
+    fontColor() {
+      console.log(brightness(this.titlebarColor));
+      if (brightness(this.titlebarColor) <= 75) {
+        return '#ffffff';
+      } else {
+        return '#000000';
+      }
+    },
     // If the component is expanded, the z-index is set to 2002, otherwise it's set to the default value
     updatedZIndex() {
       return this.isExpanded ? 2002 : this.zIndex;
