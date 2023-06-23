@@ -20,11 +20,6 @@ a:visited {
   color: #009999;
 }
 
-
-.montserrat {
-  font-family: 'Montserrat';
-}
-
 .monospace {
   font-family: monospace;
 }

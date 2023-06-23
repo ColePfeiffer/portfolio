@@ -5,7 +5,7 @@
   font-style: normal;
   font-display: auto;
   src: local("Roboto"),
-    url("fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+    url("./fonts/Roboto/Roboto-Regular.ttf") format("truetype");
 }
 
 @font-face {
@@ -14,7 +14,8 @@
   font-style: normal;
   font-display: auto;
   src: local("Montserrat"),
-    url("fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+    url("./fonts/Montserrat/Montserrat-VariableFont_wght.ttf")
+      format("truetype");
 }
 
 @font-face {
@@ -23,5 +24,17 @@
   font-style: normal;
   font-display: auto;
   src: local("Source Sans 3"),
-    url("fonts/Source_Sans_3/SourceSans3-Regular.ttf") format("truetype");
+    url("./fonts/Source_Sans_3/SourceSans3-Regular.ttf") format("truetype");
+}
+
+.roboto {
+  font-family: "Roboto";
+}
+
+.montserrat {
+  font-family: "Montserrat";
+}
+
+.source-sans {
+  font-family: "Source Sans 3";
 }
