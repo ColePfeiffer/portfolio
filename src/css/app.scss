@@ -1,1 +1,27 @@
 // app global css in SCSS form
+@font-face {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local("Roboto"),
+    url("fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local("Montserrat"),
+    url("fonts/Montserrat/Montserrat-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  font-weight: 400;
+  font-style: normal;
+  font-display: auto;
+  src: local("Source Sans 3"),
+    url("fonts/Source_Sans_3/SourceSans3-Regular.ttf") format("truetype");
+}

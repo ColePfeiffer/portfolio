@@ -71,8 +71,8 @@ $warning: #0000ff;
 }
 
 .decorative-font {
-  font-family: "Montserrat Alternates", sans-serif;
   font-weight: 600;
+  font-size: 1.5rem;
 }
 
 .animate__animated {
