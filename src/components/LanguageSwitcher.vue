@@ -1,22 +1,11 @@
 <template>
   <div class="language-switcher">
-    <q-btn
-      padding="0"
-      flat
-      class="language-switcher-button"
-      :class="{ active: $i18n.locale === 'en-US' }"
-      @click="switchLocale('en-US')"
-      >EN</q-btn
-    >
+    <div class="q-mr-sm" style="font-size: 9px">v1</div>
+    <q-btn padding="0" flat class="language-switcher-button" :class="{ active: $i18n.locale === 'en-US' }"
+      @click="switchLocale('en-US')">EN</q-btn>
     <div class="q-px-xs">|</div>
-    <q-btn
-      padding="0"
-      flat
-      class="language-switcher-button"
-      :class="{ active: $i18n.locale === 'de-DE' }"
-      @click="switchLocale('de-DE')"
-      >DE</q-btn
-    >
+    <q-btn padding="0" flat class="language-switcher-button" :class="{ active: $i18n.locale === 'de-DE' }"
+      @click="switchLocale('de-DE')">DE</q-btn>
   </div>
 </template>
 
