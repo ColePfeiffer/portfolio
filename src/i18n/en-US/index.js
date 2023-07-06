@@ -7,7 +7,7 @@ export default {
   colors: "Colors.exe",
   welcomeTitle: "Hello!",
   welcomeText:
-    "This interactive portfolio was made with Vue.js 3, Quasar 2 and Vite and is a collection of some of my work. Feel free to browse around!",
+    "This interactive portfolio was developed using Vue.js 3, Quasar 2, and Vite, showcasing a collection of my work. Feel free to explore and browse through the projects. The source code for this portfolio can be found on ",
   // about
   aboutTab: "About",
   contactTab: "Contact",

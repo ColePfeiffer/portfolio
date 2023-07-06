@@ -35,12 +35,13 @@
         <!-- Welcome Message -->
         <!-- When using this approach the position does not reset (with v-if it does) -->
         <div :class="{ hidden: !dialogs[0].isVisible }" class="dialog-container">
-          <DialogWelcomeText :zIndex="dialogs[0].zIndex" @close="closeDialog(dialogs[0])"></DialogWelcomeText>
+          <DialogWelcomeText :zIndex="dialogs[0].zIndex" @mousedown="testMe(0)" @close="closeDialog(dialogs[0])">
+          </DialogWelcomeText>
         </div>
 
         <!-- Color Picker -->
         <div :class="{ hidden: !dialogs[1].isVisible }" class="dialog-container dialog-color-picker ">
-          <DialogColorPicker :zIndex="dialogs[1].zIndex" @close="closeDialog(dialogs[1])" />
+          <DialogColorPicker :zIndex="dialogs[1].zIndex" @mousedown="testMe(1)" @close="closeDialog(dialogs[1])" />
         </div>
       </div>
     </div>
@@ -73,6 +74,11 @@ export default defineComponent({
         isVisible: ref(false),
       },
     ]);
+
+    const testMe = (number) => {
+      console.log("test", number);
+      bringToFront(dialogs[number]);
+    };
 
     // Method to handle bringing a dialog to the front
     const bringToFront = (dialog) => {
@@ -114,6 +120,7 @@ export default defineComponent({
       closeDialog,
       openDialog,
       toggleDialog,
+      testMe
     };
   },
   methods: {

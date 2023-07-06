@@ -11,6 +11,7 @@
 
         <div class="col-12 q-pa-sm q-mt-sm text-justify">
           {{ $t("welcomeText") }}
+          <a href="https://github.com/ToniTechBot/portfolio" target="_blank" class="highlight">GitHub</a>.
         </div>
       </div>
     </div>
