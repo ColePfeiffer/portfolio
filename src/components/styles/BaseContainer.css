@@ -60,12 +60,12 @@
 
 .close:hover {
   cursor: pointer;
-  background-color: magenta !important;
+  background-color: #ff4081 !important;
 }
 
 .expand:hover {
   cursor: pointer;
-  background-color: yellow !important;
+  background-color: #ffeb3b !important;
 }
 
 .expand {

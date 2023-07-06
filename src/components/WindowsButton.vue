@@ -1,16 +1,11 @@
 <template>
-  <q-btn
-    square
-    no-caps
-    flat
-    class="windows-button"
-    @click="executeProgram"
-    @mouseover="isHovered = true"
-    @mouseout="isHovered = false"
-  >
+  <q-btn square no-caps flat class="windows-button" @click="executeProgram" @mouseover="isHovered = true"
+    @mouseout="isHovered = false">
     <div class="button-content">
       <q-icon :name="icon" class="icon" :color="color" size="2rem" />
-      <div class="text" v-if="label">{{ label }}</div>
+      <div class="text" v-if="label">
+        {{ label }}
+      </div>
     </div>
   </q-btn>
 </template>

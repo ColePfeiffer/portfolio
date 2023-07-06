@@ -126,7 +126,7 @@ export default {
   },
   computed: {
     buttonStyle() {
-      return this.isBackgroundDark ? { "backgroundColor": this.titlebarColor, "border": '1.7px solid white', "color": "white", "opacity": 0.8 } : { "backgroundColor": this.titlebarColor, "border": '1.7px solid black', "color": "black" };
+      return this.isBackgroundDark ? { "backgroundColor": this.titlebarColor, "border": "none", "color": "white", "opacity": 0.8 } : { "backgroundColor": this.titlebarColor, "border": "none", "color": "black" };
     },
     isBackgroundDark() {
       if (brightness(this.titlebarColor) <= 75) {

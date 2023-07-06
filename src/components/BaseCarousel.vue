@@ -5,9 +5,9 @@
     <slot></slot>
     <template v-slot:control>
       <q-carousel-control position="top" class="q-gutter-xs carousel-control">
-        <q-btn class="arrow-left" v-if="hasPrevProject" flat round dense icon="mdi-chevron-left"
+        <q-btn class="arrow-left" v-if="hasPrevProject" flat round dense icon="mdi-chevron-left" color="lightGreen"
           @click="$refs.carousel.previous()" :style="leftArrowSpacing" />
-        <q-btn class="arrow-right" v-if="hasNextProject" flat round dense icon="mdi-chevron-right"
+        <q-btn class="arrow-right" v-if="hasNextProject" flat round dense icon="mdi-chevron-right" color="lightGreen"
           @click="$refs.carousel.next()" :style="rightArrowSpacing" />
       </q-carousel-control>
     </template>

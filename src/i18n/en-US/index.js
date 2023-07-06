@@ -3,8 +3,8 @@ export default {
   work: "Work",
   about: "About",
   indexPath: "C:\\Home\\",
-  welcomeMessage: "welcome.txt",
-  colors: "Colors.exe",
+  welcomeMessage: "hello.txt",
+  colors: "color.exe",
   welcomeTitle: "Hello!",
   welcomeText:
     "This interactive portfolio was developed using Vue.js 3, Quasar 2, and Vite, showcasing a collection of my work. Feel free to explore and browse through the projects. The source code for this portfolio can be found on ",

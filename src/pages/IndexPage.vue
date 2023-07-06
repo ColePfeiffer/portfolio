@@ -20,11 +20,11 @@
         <div class="col-5 col-xs-12 col-sm-11 col-md-10 col-lg-6 col-xl-6 q-px-xs text-center noPointerEvents"
           style="margin-top: 0.8rem">
           <div>
-            <WindowsButton :label="$t('work')" color="green" icon="mdi-code-braces" @click="navigateTo('/work')" />
-            <WindowsButton color="blue" :label="$t('about')" icon="mdi-account" @click="navigateTo('/about')" />
+            <WindowsButton color="white" :label="$t('work')" icon="mdi-code-braces" @click="navigateTo('/work')" />
+            <WindowsButton color="white" :label="$t('about')" icon="mdi-account" @click="navigateTo('/about')" />
             <WindowsButton color="white" :label="messageTranslation" icon="mdi-text-box"
               @click="toggleDialog(dialogs[0])" />
-            <WindowsButton color="red" icon="mdi-palette" :label="colorTranslation" @click="toggleDialog(dialogs[1])" />
+            <WindowsButton color="white" icon="mdi-palette" :label="colorTranslation" @click="toggleDialog(dialogs[1])" />
           </div>
         </div>
       </div>
@@ -136,10 +136,10 @@ export default defineComponent({
   },
   computed: {
     messageTranslation() {
-      return this.$t("welcomeMessage").slice(0, -4);
+      return this.$t("welcomeMessage");
     },
     colorTranslation() {
-      return this.$t("colors").slice(0, -4);
+      return this.$t("colors");
     },
     // takes care of positioning the dialog container according to screen size
     dialogContainerStyle() {

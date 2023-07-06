@@ -11,7 +11,7 @@
 
         <div class="col-12 q-pa-sm q-mt-sm text-justify">
           {{ $t("welcomeText") }}
-          <a href="https://github.com/ToniTechBot/portfolio" target="_blank" class="highlight">GitHub</a>.
+          <a href="https://github.com/ToniTechBot/portfolio" target="_blank" class="text-salmon">GitHub</a>.
         </div>
       </div>
     </div>
@@ -47,28 +47,11 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-$primary: #18181b;
-$secondary: #fff001;
-$accent: #ed008c;
-$info: #03aced;
-
 $textColor: #333333;
-
-$dark: #1d1d1d;
-$dark-page: #121212;
-
-$positive: #25e744;
-$negative: #ea0201;
-
-$warning: #0000ff;
 
 .welcome-message {
   font-size: 1.5rem;
   text-align: left;
-}
-
-.highlight {
-  color: $accent;
 }
 
 .decorative-font {

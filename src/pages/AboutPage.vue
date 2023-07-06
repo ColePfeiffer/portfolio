@@ -2,7 +2,7 @@
   <q-page style="pointer-events: none">
     <div class="row q-mt-sm q-pt-sm justify-center fit">
       <div class="col-6 col-xs-12 col-sm-11 col-md-10 col-lg-8 col-xl-6">
-        <BaseContainer :title="$t('aboutPath')" icon="mdi-application" titlebarColor="#FF007F     "
+        <BaseContainer :title="$t('aboutPath')" icon="mdi-application" titlebarColor="#483D8B"
           style="background-color: whitesmoke; pointer-events: auto" :hasExpandButton="false" @close="redirectToIndex">
           <q-card>
             <q-tabs v-model="tab" dense class="text-grey" active-color="primary" indicator-color="transparent"

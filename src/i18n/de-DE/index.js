@@ -4,8 +4,8 @@ export default {
   about: "Profil",
   // index C:\Daten
   indexPath: "C:\\Start\\",
-  welcomeMessage: "willkommen.txt",
-  colors: "Farben.exe",
+  welcomeMessage: "hallo.txt",
+  colors: "farbe.exe",
   welcomeTitle: "Hallo!",
   welcomeText:
     "Dieses interaktive Portfolio wurde mit Vue.js 3, Quasar 2 und Vite entwickelt und stellt eine Sammlung einiger meiner Arbeiten dar. Viel Spaß beim Umsehen. Der Quellcode für dieses Portfolio ist auf ",

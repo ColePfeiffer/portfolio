@@ -13,9 +13,37 @@
 // Tip: Use the "Theme Builder" on Quasar's documentation website.
 
 //$primary: #f4f4f4; // #12130F
+
+.text-lightOrange {
+  color: #ff7f50;
+}
+.bg-lightOrange {
+  background: #ff7f50;
+}
+
+.text-lightGreen {
+  color: #ccff00;
+}
+
+.bg-lightGreen {
+  background: #ccff00;
+}
+
+.text-salmon {
+  color: #fa8072;
+}
+
+.bg-salmon {
+  background: #fa8072;
+}
+
+$lightOrange: #ff7f50;
+$lightGreen: #ccff00;
+$salmon: #fa8072;
+
 $primary: #18181b;
-$secondary: #f5e901;
-$accent: #ed008c;
+$secondary: #ffeb3b;
+$accent: #ff4081;
 $info: #007aff;
 
 $textColor: #333333;
