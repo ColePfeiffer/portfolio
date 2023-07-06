@@ -59,6 +59,7 @@
             </div>
           </div>
           <q-separator />
+
           <!-- Features -->
           <div class="row quart-3 justify-between q-mt-xs">
             <div class="col-auto">
@@ -67,6 +68,29 @@
             <div class="col text-right">
               <div class="text-body-1 languages-features-container">
                 {{ formattedFeatures }}
+              </div>
+            </div>
+          </div>
+          <q-separator />
+          <!-- Information about team size -->
+          <div class="row quart-3 justify-between q-mt-xs">
+            <div class="col-auto">
+              <div class="project-subitem-title"> {{ $t("projectData.teamSize") }}</div>
+            </div>
+            <div class="col text-right">
+              <div class="text-body-1 languages-features-container">
+                {{ teamSize }}
+              </div>
+            </div>
+          </div>
+          <!-- role  -->
+          <div class="row quart-3 justify-between q-mt-xs">
+            <div class="col-auto">
+              <div class="project-subitem-title">{{ $t("projectData.role") }}</div>
+            </div>
+            <div class="col text-right">
+              <div class="text-body-1 languages-features-container">
+                {{ formattedRole }}
               </div>
             </div>
           </div>
@@ -145,6 +169,10 @@ export default {
       type: Array,
       required: true,
     },
+    teamSize: {
+      type: String,
+      required: true,
+    },
     date: {
       type: String,
       required: true,
@@ -177,6 +205,20 @@ export default {
         return true;
       } else {
         return false;
+      }
+    },
+    formattedRole() {
+      let role = this.tm(this.projectName + ".role");
+      if (this.isXS) {
+        return role.join("\n");
+      } else {
+        return (
+          role
+            .slice(0, Math.ceil(role.length / 2))
+            .join(", ") +
+          "\n" +
+          role.slice(Math.ceil(role.length / 2)).join(", ")
+        );
       }
     },
     formattedFeatures() {

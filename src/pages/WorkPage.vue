@@ -10,7 +10,8 @@
             <div class="col-0.5" style="width: 3%"></div>
             <div class="col-11" style="width: 94%">
               <BaseProjectContainer :name="project.name" :path="project.path" :images="project.images"
-                :languages="project.languages" :date="project.date" :gitHub="project.gitHub" :live="project.live" />
+                :languages="project.languages" :teamSize="project.teamSize" :role="project.role" :date="project.date"
+                :gitHub="project.gitHub" :live="project.live" />
             </div>
             <div class="col-0.5" style="width: 3%"></div>
           </div>

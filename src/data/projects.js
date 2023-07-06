@@ -5,6 +5,7 @@ export const projects = [
     containerTitle: "Vue\\ToEGO",
     containerIcon: "fab fa-vuejs",
     containerTitlebarColor: "#FEF501",
+    teamSize: "Solo",
     date: "2022 - 2023",
     name: "ToEGO",
     path: "toEGO",
@@ -81,6 +82,7 @@ export const projects = [
     date: "2021",
     containerIcon: "fab fa-vuejs",
     containerTitlebarColor: "#FEF501",
+    teamSize: "2",
     name: "RoomMe",
     path: "roomMe",
     images: [
@@ -136,6 +138,7 @@ export const projects = [
     date: "2019",
     containerIcon: "fab fa-python",
     containerTitlebarColor: "#04B2D9",
+    teamSize: "2",
     name: "Philips HUE-Light Controller ",
     path: "hueLight",
     images: [
@@ -178,6 +181,7 @@ export const projects = [
     containerIcon: "fab fa-unity",
     containerTitlebarColor: "#D90479",
     date: "2018",
+    teamSize: "2",
     name: "KreideWelt",
     path: "kreideWelt",
     images: [
@@ -243,6 +247,7 @@ export const projects = [
     containerIcon: "fab fa-unity",
     containerTitlebarColor: "#D90479",
     date: "2016",
+    teamSize: "4",
     name: "Lab. 1999",
     path: "lab1999",
     images: [

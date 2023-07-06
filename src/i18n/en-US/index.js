@@ -27,17 +27,21 @@ export default {
   projectData: {
     date: "Date",
     languages: "Languages",
+    teamSize: "Team Size",
+    role: "Role",
   },
   toEGO: {
     subtitle: "Diary App for Introspection",
+    role: ["Full-stack Developer"],
     description:
-      "ToEGO is a diary app for introspection that I developed as part of my Bachelor's thesis using Vue.js and Quasar. It serves as a tool for self-reflection, allowing users to capture events in their life and experiences throughout the day. Users can create notes to track their thoughts, emotions, and experiences, which can be reviewed and reflected upon before creating a diary entry.\nThe app provides customizable templates for notes and diary entries, making it easy for users to format their text and save it for future use. Additionally, users can set default templates that are automatically applied when creating a new entry or note.\nToEGO features a customizable user interface, allowing users to personalize it according to their preferences. Changes can be saved, and various themes reminiscent of the customization options offered by platforms like MySpace and blog sites are available for selection or creation.",
+      "ToEGO is a diary app for introspection that I developed as part of my Bachelor's thesis using Vue.js and Quasar. It serves as a tool for self-reflection, allowing users to capture events in their life and experiences throughout the day.\n\nUsers can create notes to track their thoughts, emotions, and experiences, which can be reviewed and reflected upon before creating a diary entry. The app provides customizable templates for notes and diary entries, making it easy for users to format their text and save it for future use. Additionally, users can set default templates that are automatically applied when creating a new entry or note.\n\nToEGO features a customizable user interface that allows users to personalize it according to their preferences. Users can save their changes, and they have the option to select or create various themes, reminiscent of the customization options offered by platforms like MySpace and other nostalgic blog sites.",
     features: ["customizable ui", "mood tracking", "reuseable templates"],
   },
   roomMe: {
     subtitle: "Managing tool for shared flats",
+    role: ["Application Development", "Testing Collaborator"],
     description:
-      "RoomMe is a management tool designed specifically for individuals living in shared flats. The application enables users to create cleaning schedules, allocate tasks among roommates, and customize rules to fit their preferences. For example, roommates can assign specific tasks to particular individuals or rotate them between themselves. They can also set the frequency for each task, whether it be weekly, bi-weekly, or monthly. RoomMe offers a unique family tree feature that shows users who lived in each room and when. The chat function facilitates easy communication among roommates, while the expense tracking feature allows users to monitor costs and split them accordingly. Roommates can add items to a shared grocery list and log purchases in the app. They can specify which roommates the item will be shared with, and the app will provide a clear breakdown of who owes what to whom.",
+      "RoomMe is a management tool designed for shared flats. It streamlines task allocation, communication, and expense tracking for roommates, enhancing their daily life.\n\nWith RoomMe, users can easily create customizable cleaning schedules and allocate tasks among roommates. The app offers a unique family tree feature, showcasing the history of roommates in each room.\n\nThe chat function facilitates easy communication among roommates, while the expense tracking feature allows users to monitor costs and split them accurately. The app provides a shared grocery list feature, ensuring transparent cost-sharing among roommates.",
     features: [
       "cleaning schedules",
       "rotation of assigned tasks",
@@ -47,8 +51,10 @@ export default {
   },
   hueLight: {
     subtitle: "On a Raspberry Pi",
+    role: ["Python Developer"],
     description:
-      "This project created an app that manipulates a Philips Hue light strip based on sound input. Python and audio-processing libraries enabled the app to interact with the light strip via the deCONZ API and Postman requests. Challenges included the light strip's technical limitations, which were overcome by reducing the command rate and adjusting input sensitivity. The app created a visually appealing display that responds to sound input and provides creative lighting effects. Features included pitch recognition (Aubio), volume calculation (Audioop) and microphone input (PyAudio). The project achieved its goal.",
+      "This project created an app that manipulates a Philips Hue light strip based on sound input. Python and audio-processing libraries enabled the app to interact with the light strip via the deCONZ API and Postman requests.\n\nChallenges included the light strip's technical limitations, which were overcome by reducing the command rate and adjusting input sensitivity. The app created a visually appealing display that responds to sound input and provides creative lighting effects.\n\nFeatures included pitch recognition (Aubio), volume calculation (Audioop) and microphone input (PyAudio). The project successfully achieved its goal.",
+
     features: [
       "pitch and volume visualization",
       "VNC-viewer for easier management",
@@ -56,8 +62,9 @@ export default {
   },
   kreideWelt: {
     subtitle: "An Interactive Augmented Reality Game",
+    role: ["Raycast Implementation", "Unity Development"],
     description:
-      'Developed as part of the exhibition "The Digital Plays With The Analogue" during the annual HAW Hamburg Rundgang, KreideWelt aims to bridge the gap between the digital and real worlds through interactive experiences.\nPlayers engage directly with a virtual character and its environment by utilizing raycasts to draw in the real world. By leveraging a digital stylus, players navigate through levels, fostering creativity and problem-solving skills. KreideWelt showcases the potential of AR and VR technology and how such games could enhance exhibitions and provide visitors with unique levels of interactivity.',
+      'Developed as part of the exhibition "The Digital Plays With The Analogue" during the annual HAW Hamburg Rundgang, KreideWelt aims to bridge the gap between the digital and real worlds through interactive experiences.\n\nPlayers engage directly with a virtual character and its environment by utilizing raycasts to draw in the real world. By leveraging a digital stylus, players navigate through levels, fostering creativity and problem-solving skills.\n\nKreideWelt showcases the potential of AR and VR technology and how such games could enhance exhibitions and provide visitors with unique levels of interactivity.',
     features: [
       "Real-Time Raycast Implementation",
       "Unity and Vuforia Integration",
@@ -65,8 +72,9 @@ export default {
   },
   lab1999: {
     subtitle: "An Immersive Point-and-Click Adventure",
+    role: ["Project Manager", "Lead Programmer", "Game Designer"],
     description:
-      "In Lab. 1999, an immersive point-and-click adventure, you'll explore the enigmatic world of Louis De Poitiers, a scientist plagued by headaches and fragmented memories. Trapped within a mysterious laboratory, Louis must untangle the threads of his past and confront the unsettling truths lurking behind its walls. Lab. 1999 features a unique dual inventory system, combining physical and mental objects, empowering players to solve puzzles in multiple ways using a variety of items. Even though this is an old project, it was my initial venture into Unity and I wanted to include it here to showcase my first endeavor in game development.",
+      "In Lab. 1999, an immersive point-and-click adventure, you'll explore the enigmatic world of Louis De Poitiers, a scientist plagued by headaches and fragmented memories. Trapped within a mysterious laboratory, Louis must untangle the threads of his past and confront the unsettling truths lurking behind its walls.\n\nLab. 1999 features a unique dual inventory system, combining physical and mental objects, empowering players to solve puzzles in multiple ways using a variety of items.\n\nEven though this is an old project, it was my initial venture into Unity and I wanted to include it here to showcase my first endeavor in game development.",
     features: [
       "Multiple solutions",
       "Atmospheric Exploration",

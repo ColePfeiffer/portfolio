@@ -28,11 +28,14 @@ export default {
   projectData: {
     date: "Datum",
     languages: "Sprachen",
+    teamSize: "Team",
+    role: "Rolle",
   },
   toEGO: {
     subtitle: "Tagebuch-App für Introspektion",
+    role: ["Full-stack Entwicklerin"],
     description:
-      "ToEGO ist eine Tagebuch-App, die ich im Rahmen meiner Bachelorarbeit mit Vue.js und Quasar entwickelt habe. Sie dient der Selbstreflexion und ermöglicht es Benutzern, Ereignisse und Erfahrungen im Laufe des Tages festzuhalten. Benutzer können Notizen erstellen, um ihre Gedanken, Emotionen und Erfahrungen zu verfolgen. Vor der Erstellung eines Tagebucheintrags, haben sie die Möglichkeit, diese Notizen zu überprüfen und zu reflektieren.\nDie App bietet anpassbare Vorlagen für Notizen und Tagebucheinträge, die es Benutzern ermöglichen, Texte einfach zu formatieren und für zukünftige Verwendung zu speichern. Es besteht auch die Möglichkeit, Standardvorlagen festzulegen, die automatisch verwendet werden, wenn ein neuer Eintrag oder eine neue Notiz erstellt wird.\nToEGO verfügt über eine anpassbare Benutzeroberfläche. Benutzer können die Benutzeroberfläche nach ihren Vorlieben gestalten und Änderungen in Form von Themes speichern. Die Funktion ist inspiriert von Individualisierungsmöglichkeiten auf nostalgischen Plattformen wie MySpace und anderen Blog-Sites.",
+      "ToEGO ist eine Tagebuch-App, die ich im Rahmen meiner Bachelorarbeit mit Vue.js und Quasar entwickelt habe. Sie dient als Werkzeug für die Selbstreflexion und ermöglicht es Benutzern, Ereignisse in ihrem Leben und ihre Erfahrungen im Laufe des Tages festzuhalten.\n\nBenutzer können Notizen erstellen, um ihre Gedanken, Emotionen und Erlebnisse zu verfolgen. Diese Notizen können vor der Erstellung eines Tagebucheintrags überprüft und reflektiert werden können.\n\nDie App bietet anpassbare Vorlagen für Notizen und Tagebucheinträge, die es Benutzern ermöglichen, Texte einfach zu formatieren und für zukünftige Verwendung zu speichern. Es besteht auch die Möglichkeit, Standardvorlagen festzulegen, die automatisch verwendet werden, wenn ein neuer Eintrag oder eine neue Notiz erstellt wird.\n\nToEGO verfügt über eine anpassbare Benutzeroberfläche. Benutzer können die Benutzeroberfläche nach ihren Vorlieben gestalten und Änderungen in Form von Themes speichern. Die Funktion ist inspiriert von Individualisierungsmöglichkeiten nostalgischer Plattformen wie MySpace und anderen Blog-Sites.",
     features: [
       "hohe Individualisierbarkeit",
       "Stimmungstracker",
@@ -41,8 +44,9 @@ export default {
   },
   roomMe: {
     subtitle: "Verwaltungstool für Wohngemeinschaften",
+    role: ["Anwendungsentwicklung", "Qualitätssicherung"],
     description:
-      "RoomMe ist ein Verwaltungstool, das speziell für Personen entwickelt wurde, die in Wohngemeinschaften leben. Die Anwendung ermöglicht es Benutzern, Putzpläne zu erstellen, Aufgaben unter Mitbewohnern aufzuteilen und anpassbare Regeln festzulegen. Zum Beispiel können Mitbewohner bestimmte Aufgaben einer Person zuweisen oder sie untereinander rotieren. Sie können auch die Häufigkeit für jede Aufgabe festlegen, beispielsweise wöchentlich, alle zwei Wochen oder monatlich.\nDie Chat-Funktion erleichtert die Kommunikation zwischen Mitbewohnern, während die Ausgabenverfolgungsfunktion es Benutzern ermöglicht, Kosten zu überwachen und entsprechend zu verteilen. Mitbewohner können Artikel zu einer gemeinsamen Einkaufsliste hinzufügen und Käufe in der App protokollieren. Sie können angeben, mit welchen Mitbewohnern der Artikel geteilt wird, und die App bietet eine klare Aufschlüsselung darüber, wer wem was schuldet. RoomMe verfügt über einen WG-Familienbaum, der den Benutzern zeigt, wer in jedem Raum zu welchem Zeitpunkt gewohnt hat.",
+      "RoomMe ist ein Management-Tool, das speziell für Wohngemeinschaften entwickelt wurde. Es erleichtert die Aufgabenverteilung, die Ausgabenverfolgung- und verteilung, sowie die Kommunikation.\n\nMit RoomMe können Benutzer problemlos anpassbare Putzpläne erstellen, Aufgaben zuweisen oder untereinander rotieren lassen. Sie können auch die Häufigkeit für jede Aufgabe festlegen, beispielsweise wöchentlich, alle zwei Wochen oder monatlich. Die App bietet einen WG-Familienbaum, der für jedes Zimmer zeigt, wer bis zu welchem Zeitpunkt dort gewohnt hat.\n\nDie Chat-Funktion erleichtert die Kommunikation zwischen Mitbewohnern, während die Ausgabenverfolgung den Benutzern ermöglicht, Kosten genau zu überwachen und aufzuteilen. Die App bietet eine gemeinsame Einkaufsliste, um eine transparente Kostenverteilung unter allen Beteiligten zu gewährleisten.",
     features: [
       "Familienbaum für Räume",
       "Rotation von Aufgaben",
@@ -52,8 +56,9 @@ export default {
   },
   hueLight: {
     subtitle: "Mit dem Raspberry Pi",
+    role: ["Python-Entwicklerin"],
     description:
-      "In diesem Projekt wurde eine App entwickelt, die einen Philips Hue Lichtstreifen auf der Grundlage von Toneingaben steuert. Python und Audioverarbeitungsbibliotheken ermöglichten der App die Interaktion mit dem Lichtstreifen über die deCONZ-API und Postman-Anfragen. Zu den Herausforderungen gehörten die technischen Beschränkungen des Lichtstreifens, die durch die Reduzierung der Befehlsrate und die Anpassung der Eingabeempfindlichkeit überwunden wurden. Mit der App wurde ein visuell ansprechendes Display geschaffen, das auf Toneingaben reagiert und kreative Lichteffekte bietet. Zu den Funktionen gehörten Tonhöhenerkennung (Aubio), Lautstärkeberechnung (Audioop) und Mikrofoneingabe (PyAudio). Das Projekt hat sein Ziel erreicht.",
+      "In diesem Projekt wurde eine App entwickelt, die einen Philips Hue Lichtstreifen auf der Grundlage von Toneingaben steuert. Python und Audioverarbeitungsbibliotheken ermöglichten der App die Interaktion mit dem Lichtstreifen über die deCONZ-API und Postman-Anfragen.\n\nZu den Herausforderungen gehörten die technischen Beschränkungen des Lichtstreifens, die durch die Reduzierung der Befehlsrate und die Anpassung der Eingabeempfindlichkeit überwunden wurden. Mit der App wurde ein visuell ansprechendes Display geschaffen, das auf Toneingaben reagiert und kreative Lichteffekte bietet.\n\nZu den Funktionen gehörten Tonhöhenerkennung (Aubio), Lautstärkeberechnung (Audioop) und Mikrofoneingabe (PyAudio). Das Projekt hat sein Ziel erreicht.",
     features: [
       "pitch and volume visualization",
       "VNC-viewer for easier management",
@@ -61,8 +66,9 @@ export default {
   },
   kreideWelt: {
     subtitle: "Ein interaktives Augmented-Reality-Spiel",
+    role: ["Raycast Implementierung", "Unity Entwicklung"],
     description:
-      'Im Rahmen der Ausstellung "The Digital Plays With The Analogue" während des jährlichen HAW Hamburg Rundgangs entwickelt, zielt KreideWelt darauf ab, die Kluft zwischen der digitalen und realen Welt durch interaktive Erfahrungen zu überbrücken.\nSpieler interagieren direkt mit einer virtuellen Figur und ihrer Umgebung, indem Raycasts genutzt werden, um in der realen Welt zu zeichnen. Durch den Einsatz eines digitalen Stiftes navigieren die Spieler durch verschiedene Level und fördern dabei ihre Kreativität und Problemlösungsfähigkeiten. KreideWelt präsentiert das Potenzial von AR- und VR-Technologie und zeigt wie Spiele wie dieses Ausstellungen bereichern und den Besuchern ein besonderes Maß an Interaktivität bieten können.',
+      'Im Rahmen der Ausstellung "The Digital Plays With The Analogue" während des jährlichen HAW Hamburg Rundgangs entwickelt, zielt KreideWelt darauf ab, die Kluft zwischen der digitalen und realen Welt durch interaktive Erfahrungen zu überbrücken.\n\nSpieler interagieren direkt mit einer virtuellen Figur und ihrer Umgebung, indem Raycasts genutzt werden, um in der realen Welt zu zeichnen. Durch den Einsatz eines digitalen Stiftes navigieren die Spieler durch verschiedene Level und fördern dabei ihre Kreativität und Problemlösungsfähigkeiten.\n\nKreideWelt präsentiert das Potenzial von AR- und VR-Technologie und zeigt wie Spiele wie dieses Ausstellungen bereichern und den Besuchern ein besonderes Maß an Interaktivität bieten können.',
     features: [
       "Echtzeit-Raycast-Implementierung",
       "Unity und Vuforia Integration",
@@ -70,8 +76,9 @@ export default {
   },
   lab1999: {
     subtitle: "Ein immersives Point-and-Click-Abenteuer",
+    role: ["Projektmanagerin", "Leitende Programmiererin", "Spiel-Designerin"],
     description:
-      "In Lab. 1999 taucht die spielende Person in eine fesselnde Welt ein und erkundet das enigmatische Universum von Louis De Poitiers, einem Wissenschaftler, der von Kopfschmerzen und fragmentierten Erinnerungen geplagt wird. Gefangen in einem mysteriösen Laboratorium können die Fäden von Louis' Vergangenheit durch den Spieler entwirrt werden, um so den verstörenden Wahrheiten begegnen zu können, die Louis glaubte vergessen zu haben. Lab. 1999 verfügt über ein besonderes duales Inventarsystem, das physische und mentale Objekte kombiniert und Spielern ermöglicht, Rätsel auf vielfältige Weise mit einer Vielzahl von Gegenständen zu lösen. Obwohl dieses Projekt bereits älter ist, möchte ich es hier präsentieren, um meine erste Erfahrung in der Spieleentwicklung zu zeigen.",
+      "In Lab. 1999 taucht die spielende Person in eine fesselnde Welt ein und erkundet das enigmatische Universum von Louis De Poitiers, einem Wissenschaftler, der von Kopfschmerzen und fragmentierten Erinnerungen geplagt wird. Gefangen in einem mysteriösen Laboratorium können die Fäden von Louis' Vergangenheit durch den Spieler entwirrt werden, um so den verstörenden Wahrheiten begegnen zu können, die Louis glaubte vergessen zu haben.\n\nLab. 1999 verfügt über ein besonderes duales Inventarsystem, das physische und mentale Objekte kombiniert und Spielern ermöglicht, Rätsel auf vielfältige Weise mit einer Vielzahl von Gegenständen zu lösen.\n\nObwohl dieses Projekt bereits älter ist, möchte ich es hier präsentieren, um meine erste Erfahrung in der Spieleentwicklung zu zeigen.",
     features: [
       "Mehrere Lösungswege",
       "Atmosphärische Erkundung",
